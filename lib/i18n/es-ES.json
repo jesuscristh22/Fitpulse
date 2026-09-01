@@ -1,0 +1,167 @@
+{
+  "common": {
+    "appName": "FitPulse",
+    "slogan": "Tu entrenamiento. Tu ritmo. Tus resultados."
+  },
+  "nav": {
+    "home": "Inicio",
+    "features": "Recursos",
+    "pricing": "Planes",
+    "about": "Nosotros",
+    "contact": "Contacto",
+    "login": "Iniciar Sesión",
+    "cta": "Comenzar Ahora"
+  },
+  "hero": {
+    "eyebrow": "Tu entrenamiento. Tu ritmo. Tus resultados.",
+    "headlineLine1": "Transforma tu",
+    "headlineHighlight1": "cuerpo",
+    "headlineMid": "y tu",
+    "headlineHighlight2": "vida",
+    "subtext": "Planes de entrenamiento personalizados, seguimiento inteligente y una comunidad que te impulsa a ir más lejos.",
+    "ctaPrimary": "Comenzar Ahora",
+    "ctaSecondary": "Ver Cómo Funciona",
+    "weeklyGoalLabel": "Meta Semanal",
+    "weeklyGoalValue": "4/5 entrenos",
+    "caloriesLabel": "Calorías Hoy",
+    "caloriesValue": "1.250",
+    "caloriesTarget": "/ 2.000 kcal",
+    "nextWorkoutLabel": "Próximo Entreno",
+    "nextWorkoutName": "Espalda y Bíceps",
+    "nextWorkoutMeta": "45 min · Intermedio",
+    "overallProgressLabel": "Progreso General",
+    "overallProgressValue": "78%"
+  },
+  "miniFeatures": [
+    {
+      "title": "Entrenos Personalizados",
+      "desc": "Hechos para ti"
+    },
+    {
+      "title": "Seguimiento",
+      "desc": "Tu progreso importa"
+    },
+    {
+      "title": "Comunidad Activa",
+      "desc": "Juntos somos más fuertes"
+    },
+    {
+      "title": "Resultados Reales",
+      "desc": "Foco, disciplina y evolución"
+    }
+  ],
+  "featuresSection": {
+    "eyebrow": "¿Por qué elegir FitPulse?",
+    "headline": "Todo lo que necesitas para",
+    "headlineHighlight": "evolucionar",
+    "subtext": "Una plataforma completa para convertir tus objetivos en logros reales.",
+    "cta": "Saber Más",
+    "cards": [
+      {
+        "title": "Entrenos Inteligentes",
+        "desc": "Planes personalizados según tu objetivo, nivel y disponibilidad."
+      },
+      {
+        "title": "Seguimiento Total",
+        "desc": "Monitorea tus entrenos, medidas, peso y evolución en tiempo real."
+      },
+      {
+        "title": "Comunidad Motivadora",
+        "desc": "Conéctate con personas, comparte logros y mantente motivado."
+      },
+      {
+        "title": "Resultados Reales",
+        "desc": "Método comprobado que ya transformó miles de vidas."
+      }
+    ]
+  },
+  "manifesto": "Tu salud. Tu entrenador. Tu progreso.",
+  "scoreSection": {
+    "headline": "Un puntaje que se explica solo.",
+    "subtext": "El FitPulse Score analiza tu constancia, volumen de entreno y recuperación — y muestra exactamente por qué cambió.",
+    "bullets": [
+      "Constancia semanal y rachas, registradas automáticamente",
+      "Récords personales en fuerza, calistenia y resistencia",
+      "Compartido con un entrenador solo si tú lo decides"
+    ]
+  },
+  "testimonial": {
+    "quote": "Dejé de necesitar un gimnasio para sentirme una atleta.",
+    "author": "Marta R., miembro de FitPulse desde 2024"
+  },
+  "finalCta": {
+    "headline": "Tu primer entreno está listo cuando tú lo estés.",
+    "cta": "Comenzar Ahora"
+  },
+  "footer": {
+    "product": "Producto",
+    "company": "Empresa",
+    "support": "Soporte",
+    "about": "Nosotros",
+    "faq": "Preguntas Frecuentes",
+    "contact": "Contacto",
+    "rights": "Todos los derechos reservados."
+  },
+  "pages": {
+    "features": {
+      "title": "Recursos",
+      "headline": "Cada herramienta que necesitas, en un solo lugar.",
+      "subtext": "Desde tu primer entreno hasta tu próximo récord personal, FitPulse sigue cada paso de tu evolución."
+    },
+    "pricing": {
+      "title": "Planes",
+      "headline": "Un plan para cada etapa de tu camino.",
+      "subtext": "Empieza gratis. Mejora cuando tenga sentido para ti.",
+      "plans": [
+        {
+          "name": "Free",
+          "price": "€0",
+          "interval": "siempre",
+          "features": [
+            "Entrenos manuales ilimitados",
+            "Biblioteca de ejercicios",
+            "Historial de entrenos"
+          ]
+        },
+        {
+          "name": "Member Pro",
+          "price": "€12,99",
+          "interval": "mes",
+          "features": [
+            "Generación de entrenos por IA ilimitada",
+            "AI Copilot",
+            "Progreso y analítica avanzada",
+            "Desafíos premium"
+          ]
+        },
+        {
+          "name": "Business",
+          "price": "A consultar",
+          "interval": "",
+          "features": [
+            "Gestión de miembros y staff",
+            "CRM y leads",
+            "Analítica del gimnasio"
+          ]
+        }
+      ]
+    },
+    "about": {
+      "title": "Nosotros",
+      "headline": "Entreno. Salud. Evolución. Comunidad.",
+      "body": "FitPulse nació para ser el sistema operativo del fitness: un solo lugar donde puedes entrenar solo, con un entrenador, o dentro de tu gimnasio — sin perder nunca tu historial ni tu identidad."
+    },
+    "contact": {
+      "title": "Contacto",
+      "headline": "Habla con nosotros.",
+      "subtext": "Dudas, alianzas o soporte — estamos aquí.",
+      "formName": "Nombre",
+      "formEmail": "Correo",
+      "formMessage": "Mensaje",
+      "formSubmit": "Enviar Mensaje"
+    }
+  },
+  "dashboard": {
+    "greeting": "Buenos días"
+  }
+}

@@ -1,0 +1,167 @@
+{
+  "common": {
+    "appName": "FitPulse",
+    "slogan": "Your workout. Your pace. Your results."
+  },
+  "nav": {
+    "home": "Home",
+    "features": "Features",
+    "pricing": "Pricing",
+    "about": "About",
+    "contact": "Contact",
+    "login": "Log In",
+    "cta": "Get Started"
+  },
+  "hero": {
+    "eyebrow": "Your workout. Your pace. Your results.",
+    "headlineLine1": "Transform your",
+    "headlineHighlight1": "body",
+    "headlineMid": "and your",
+    "headlineHighlight2": "life",
+    "subtext": "Personalized training plans, smart tracking, and a community that pushes you further.",
+    "ctaPrimary": "Get Started",
+    "ctaSecondary": "See How It Works",
+    "weeklyGoalLabel": "Weekly Goal",
+    "weeklyGoalValue": "4/5 workouts",
+    "caloriesLabel": "Calories Today",
+    "caloriesValue": "1,250",
+    "caloriesTarget": "/ 2,000 kcal",
+    "nextWorkoutLabel": "Next Workout",
+    "nextWorkoutName": "Back & Biceps",
+    "nextWorkoutMeta": "45 min · Intermediate",
+    "overallProgressLabel": "Overall Progress",
+    "overallProgressValue": "78%"
+  },
+  "miniFeatures": [
+    {
+      "title": "Personalized Workouts",
+      "desc": "Built around you"
+    },
+    {
+      "title": "Progress Tracking",
+      "desc": "Your progress matters"
+    },
+    {
+      "title": "Active Community",
+      "desc": "Stronger together"
+    },
+    {
+      "title": "Real Results",
+      "desc": "Focus, discipline, growth"
+    }
+  ],
+  "featuresSection": {
+    "eyebrow": "Why choose FitPulse?",
+    "headline": "Everything you need to",
+    "headlineHighlight": "evolve",
+    "subtext": "One complete platform to turn your goals into real achievements.",
+    "cta": "Learn More",
+    "cards": [
+      {
+        "title": "Smart Workouts",
+        "desc": "Personalized plans based on your goal, level, and availability."
+      },
+      {
+        "title": "Full Tracking",
+        "desc": "Monitor your workouts, measurements, weight, and progress in real time."
+      },
+      {
+        "title": "Motivating Community",
+        "desc": "Connect with people, share wins, and stay motivated."
+      },
+      {
+        "title": "Real Results",
+        "desc": "A proven method that has already changed thousands of lives."
+      }
+    ]
+  },
+  "manifesto": "Your health. Your coach. Your progress.",
+  "scoreSection": {
+    "headline": "A score that explains itself.",
+    "subtext": "The FitPulse Score reads your consistency, training volume, and recovery — and shows exactly why it moved.",
+    "bullets": [
+      "Weekly consistency and streaks, tracked automatically",
+      "Personal records across strength, calisthenics, and endurance",
+      "Shared with a coach only if and when you choose to"
+    ]
+  },
+  "testimonial": {
+    "quote": "I stopped needing a gym membership to feel like an athlete.",
+    "author": "Marta R., FitPulse member since 2024"
+  },
+  "finalCta": {
+    "headline": "Your first workout is ready whenever you are.",
+    "cta": "Get Started"
+  },
+  "footer": {
+    "product": "Product",
+    "company": "Company",
+    "support": "Support",
+    "about": "About",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "rights": "All rights reserved."
+  },
+  "pages": {
+    "features": {
+      "title": "Features",
+      "headline": "Every tool you need, in one place.",
+      "subtext": "From your first workout to your next personal record, FitPulse tracks every step of your progress."
+    },
+    "pricing": {
+      "title": "Pricing",
+      "headline": "A plan for every stage of your journey.",
+      "subtext": "Start for free. Upgrade when it makes sense for you.",
+      "plans": [
+        {
+          "name": "Free",
+          "price": "$0",
+          "interval": "forever",
+          "features": [
+            "Unlimited manual workouts",
+            "Exercise library",
+            "Workout history"
+          ]
+        },
+        {
+          "name": "Member Pro",
+          "price": "$14.99",
+          "interval": "mo",
+          "features": [
+            "Unlimited AI workout generation",
+            "AI Copilot",
+            "Advanced progress & analytics",
+            "Premium challenges"
+          ]
+        },
+        {
+          "name": "Business",
+          "price": "Custom",
+          "interval": "",
+          "features": [
+            "Member & staff management",
+            "CRM and leads",
+            "Gym-wide analytics"
+          ]
+        }
+      ]
+    },
+    "about": {
+      "title": "About",
+      "headline": "Training. Health. Evolution. Community.",
+      "body": "FitPulse was built to be the operating system for fitness: one place where you can train alone, with a coach, or inside your gym — without ever losing your history or your identity."
+    },
+    "contact": {
+      "title": "Contact",
+      "headline": "Get in touch.",
+      "subtext": "Questions, partnerships, or support — we're here.",
+      "formName": "Name",
+      "formEmail": "Email",
+      "formMessage": "Message",
+      "formSubmit": "Send Message"
+    }
+  },
+  "dashboard": {
+    "greeting": "Good morning"
+  }
+}

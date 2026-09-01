@@ -1,0 +1,10 @@
+{
+  "name": "FitPulse",
+  "short_name": "FitPulse",
+  "description": "Your Health. Your Coach. Your Progress.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A0A0A",
+  "theme_color": "#E8A942",
+  "icons": []
+}

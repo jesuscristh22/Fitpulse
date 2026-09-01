@@ -1,0 +1,88 @@
+// Central domain types. Kept framework-agnostic on purpose.
+
+export type UserRole =
+  | "member"
+  | "coach"
+  | "gym_staff"
+  | "gym_manager"
+  | "gym_owner"
+  | "support"
+  | "platform_admin"
+  | "super_admin";
+
+export type SupportedCountry = "BR" | "PT" | "ES" | "US";
+export type SupportedLocale = "pt-BR" | "pt-PT" | "es-ES" | "en-US";
+
+export interface FitPulseUser {
+  id: string; // Firebase UID — never use email as primary identifier
+  email: string;
+  displayName: string;
+  photoURL?: string;
+  roles: UserRole[];
+  country: SupportedCountry;
+  locale: SupportedLocale;
+  createdAt: string;
+}
+
+export interface UserProfile {
+  userId: string;
+  birthDate?: string;
+  age?: number;
+  gender?: "male" | "female" | "other" | "prefer_not_to_say";
+  heightCm?: number;
+  weightKg?: number;
+  bodyTypeSelfDescription?:
+    | "lean" | "average" | "athletic" | "higher_body_weight" | "muscular" | "prefer_not_to_say";
+}
+
+export type FitnessGoal =
+  | "lose_weight" | "build_muscle" | "increase_strength" | "improve_conditioning"
+  | "military_fitness" | "calisthenics" | "improve_mobility" | "improve_endurance"
+  | "stay_active" | "general_fitness";
+
+export type TrainingEnvironment =
+  | "gym" | "home" | "outdoor" | "military_calisthenics" | "hybrid" | "with_coach";
+
+export type ExperienceLevel = "beginner" | "intermediate" | "advanced";
+
+export interface FitnessProfile {
+  userId: string;
+  goals: FitnessGoal[];
+  environment: TrainingEnvironment[];
+  experience: ExperienceLevel;
+  daysAvailable: number;
+  minutesAvailable: number;
+  equipment: string[];
+}
+
+export interface Organization {
+  id: string;
+  name: string;
+  ownerId: string;
+  country: SupportedCountry;
+}
+
+export interface OrganizationMember {
+  organizationId: string;
+  userId: string;
+  role: Extract<UserRole, "gym_staff" | "gym_manager" | "gym_owner" | "coach" | "member">;
+  active: boolean;
+}
+
+export interface CoachRelationship {
+  id: string;
+  memberId: string;
+  coachId: string;
+  status: "pending" | "active" | "ended";
+  permissions: {
+    workouts: boolean;
+    progress: boolean;
+    measurements: boolean;
+    progressPhotos: boolean;
+    healthIntegrations: boolean;
+    checkins: boolean;
+  };
+  createdAt: string;
+  startDate?: string;
+  endDate?: string;
+}
