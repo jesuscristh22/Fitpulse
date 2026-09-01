@@ -163,5 +163,14 @@
   },
   "dashboard": {
     "greeting": "Good morning"
+  },
+  "authForm": {
+    "google": "Continue with Google",
+    "email": "Email",
+    "password": "Password",
+    "loginSubmit": "Log In",
+    "signupSubmit": "Create Account",
+    "error": "Something went wrong. Check your details and try again.",
+    "signOut": "Sign Out"
   }
 }

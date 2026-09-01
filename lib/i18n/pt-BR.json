@@ -163,5 +163,14 @@
   },
   "dashboard": {
     "greeting": "Bom dia"
+  },
+  "authForm": {
+    "google": "Continuar com Google",
+    "email": "E-mail",
+    "password": "Senha",
+    "loginSubmit": "Entrar",
+    "signupSubmit": "Criar Conta",
+    "error": "Algo deu errado. Verifique os dados e tente novamente.",
+    "signOut": "Sair"
   }
 }
