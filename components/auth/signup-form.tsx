@@ -3,7 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { auth } from "@/lib/firebase-client";
+import { getFirebaseAuth } from "@/lib/firebase-client";
 import { Button } from "@/components/ui/button";
 import type { LocaleSlug } from "@/lib/locales-config";
 
@@ -37,7 +37,7 @@ export function SignupForm({
     setError(null);
     setBusy(true);
     try {
-      const credential = await createUserWithEmailAndPassword(auth, email, password);
+      const credential = await createUserWithEmailAndPassword(getFirebaseAuth(), email, password);
       const idToken = await credential.user.getIdToken();
       await provisionAndRedirect(idToken, locale, router);
     } catch {
@@ -51,7 +51,7 @@ export function SignupForm({
     setError(null);
     setBusy(true);
     try {
-      const credential = await signInWithPopup(auth, new GoogleAuthProvider());
+      const credential = await signInWithPopup(getFirebaseAuth(), new GoogleAuthProvider());
       const idToken = await credential.user.getIdToken();
       await provisionAndRedirect(idToken, locale, router);
     } catch {

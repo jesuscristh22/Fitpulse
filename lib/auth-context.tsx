@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 import { onAuthStateChanged, type User } from "firebase/auth";
-import { auth } from "./firebase-client";
+import { getFirebaseAuth } from "./firebase-client";
 
 interface AuthContextValue {
   user: User | null;
@@ -18,7 +18,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     // If Firebase isn't configured yet ([CONFIGURATION REQUIRED]), this listener
     // simply never fires with a user — the app still renders, auth just stays "signed out".
-    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+    const unsubscribe = onAuthStateChanged(getFirebaseAuth(), (firebaseUser) => {
       setUser(firebaseUser);
       setLoading(false);
     });

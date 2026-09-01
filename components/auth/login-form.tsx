@@ -3,7 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { auth } from "@/lib/firebase-client";
+import { getFirebaseAuth } from "@/lib/firebase-client";
 import { Button } from "@/components/ui/button";
 import type { LocaleSlug } from "@/lib/locales-config";
 
@@ -25,7 +25,7 @@ export function LoginForm({
     setError(null);
     setBusy(true);
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      await signInWithEmailAndPassword(getFirebaseAuth(), email, password);
       router.push(`/${locale}/dashboard`);
     } catch {
       setError(labels.error);
@@ -38,7 +38,7 @@ export function LoginForm({
     setError(null);
     setBusy(true);
     try {
-      await signInWithPopup(auth, new GoogleAuthProvider());
+      await signInWithPopup(getFirebaseAuth(), new GoogleAuthProvider());
       router.push(`/${locale}/dashboard`);
     } catch {
       setError(labels.error);
