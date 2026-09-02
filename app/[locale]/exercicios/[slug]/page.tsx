@@ -41,7 +41,7 @@ export default async function ExerciseDetailPage({
         <p className="mt-4 text-silver">{exercise.description}</p>
 
         <div className="mt-6">
-          <ExerciseVideoPlayer slug={exercise.slug} title={exercise.name} />
+          <ExerciseVideoPlayer slug={exercise.slug} title={exercise.name} locale={locale} />
         </div>
 
         <div className="mt-8 flex flex-wrap gap-2">
