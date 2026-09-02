@@ -16,11 +16,11 @@ export default async function ExerciseDetailPage({
   if (!isLocaleSlug(params.locale)) notFound();
   const locale = params.locale as LocaleSlug;
   const dict = getDictionary(locale);
-  const exercise = await getExercise(params.slug);
+  const exercise = await getExercise(locale, params.slug);
   if (!exercise) notFound();
 
   const lib = dict.library;
-  const allExercises = await getExercises();
+  const allExercises = await getExercises(locale);
   const alternatives = allExercises.filter((e) => exercise.alternatives?.includes(e.slug));
 
   return (

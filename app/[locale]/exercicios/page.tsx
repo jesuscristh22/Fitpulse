@@ -12,7 +12,7 @@ export default async function ExerciseLibraryPage({ params }: { params: { locale
   if (!isLocaleSlug(params.locale)) notFound();
   const locale = params.locale as LocaleSlug;
   const dict = getDictionary(locale);
-  const exercises = await getExercises();
+  const exercises = await getExercises(locale);
 
   return (
     <main className="bg-carbon">
