@@ -18,6 +18,7 @@ export function WorkoutDetail({
 }) {
   const mw = dict.myWorkouts;
   const wb = dict.workoutBuilder;
+  const we = dict.workoutExecution;
   const { workouts, loading } = useMyWorkouts();
   const workout = workouts.find((w) => w.id === workoutId);
 
@@ -50,7 +51,14 @@ export function WorkoutDetail({
         <ArrowLeft size={14} /> {mw.back}
       </Link>
 
-      <h1 className="mt-6 font-heading text-3xl font-extrabold">{workout.name}</h1>
+      <div className="mt-6 flex items-center justify-between">
+        <h1 className="font-heading text-3xl font-extrabold">{workout.name}</h1>
+        <Link href={`${base}/treinos/${workout.id}/executar`}>
+          <button className="rounded-md bg-gold px-5 py-2.5 text-sm font-bold uppercase text-carbon hover:bg-gold-light">
+            {we.startWorkout}
+          </button>
+        </Link>
+      </div>
 
       <div className="mt-8 flex flex-col gap-5">
         {Array.from(groups.entries()).map(([exerciseId, group]) => (

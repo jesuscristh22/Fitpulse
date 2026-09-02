@@ -53,6 +53,9 @@ export function MyWorkoutsList({ locale, dict }: { locale: LocaleSlug; dict: Dic
                     <p className="mt-1 text-sm text-silver">{mw.exercisesCount.replace("{count}", String(exerciseCount))}</p>
                   </div>
                   <div className="flex items-center gap-4">
+                    <Link href={`${base}/treinos/${workout.id}/executar`}>
+                      <Button variant="primary" size="sm">{dict.workoutExecution.startWorkout}</Button>
+                    </Link>
                     <Link href={`${base}/treinos/${workout.id}`} className="text-sm font-semibold text-gold hover:underline">
                       {mw.viewDetails}
                     </Link>

@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useUserData, calculateBmi, bmiCategory } from "@/lib/use-user-data";
+import { useWeeklyCompletedCount } from "@/lib/workout-sessions-client";
 import type { Dictionary } from "@/lib/i18n";
 import type { LocaleSlug } from "@/lib/locales-config";
 import type { BlogPost } from "@/lib/blog-content";
@@ -43,6 +44,7 @@ export function DashboardContent({
   blogPosts: BlogPost[];
 }) {
   const { account, profile, fitness, loading } = useUserData();
+  const { count: weeklyCompleted } = useWeeklyCompletedCount();
   const base = `/${locale}`;
   const de = dict.dashboardExtra;
 
@@ -114,16 +116,18 @@ export function DashboardContent({
           {fitness?.daysAvailable ? (
             <>
               <p className="mt-2 font-heading text-2xl font-extrabold">
-                {de.workoutsOfGoal.replace("{done}", "0").replace("{goal}", String(fitness.daysAvailable))}
+                {de.workoutsOfGoal.replace("{done}", String(weeklyCompleted)).replace("{goal}", String(fitness.daysAvailable))}
               </p>
               <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-white/10">
-                <div className="h-full w-0 rounded-full bg-gold" />
+                <div
+                  className="h-full rounded-full bg-gold transition-all"
+                  style={{ width: `${Math.min(100, (weeklyCompleted / fitness.daysAvailable) * 100)}%` }}
+                />
               </div>
             </>
           ) : (
             <p className="mt-3 text-sm text-silver">{de.noDataYet}</p>
           )}
-          <p className="mt-3 text-xs text-silver/70">{de.comingSoon} — {dict.pages.features.title}</p>
         </Card>
 
         {/* Training profile summary */}
