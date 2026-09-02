@@ -16,13 +16,21 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // If Firebase isn't configured yet ([CONFIGURATION REQUIRED]), this listener
-    // simply never fires with a user — the app still renders, auth just stays "signed out".
-    const unsubscribe = onAuthStateChanged(getFirebaseAuth(), (firebaseUser) => {
-      setUser(firebaseUser);
+    let unsubscribe: (() => void) | undefined;
+    try {
+      // If Firebase isn't configured yet, or a env var is malformed, this
+      // must never take down the entire app — every page renders through
+      // this provider. Fail safe: treat it as "signed out" and log the
+      // real reason to the console for debugging.
+      unsubscribe = onAuthStateChanged(getFirebaseAuth(), (firebaseUser) => {
+        setUser(firebaseUser);
+        setLoading(false);
+      });
+    } catch (error) {
+      console.error("[AuthProvider] Firebase Auth failed to initialize:", error);
       setLoading(false);
-    });
-    return unsubscribe;
+    }
+    return () => unsubscribe?.();
   }, []);
 
   return <AuthContext.Provider value={{ user, loading }}>{children}</AuthContext.Provider>;

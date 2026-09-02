@@ -8,15 +8,17 @@ import { Button } from "@/components/ui/button";
 import type { LocaleSlug } from "@/lib/locales-config";
 
 async function provisionAndRedirect(idToken: string, locale: LocaleSlug, router: ReturnType<typeof useRouter>) {
-  // Fire-and-verify: creates the Firestore user doc + default Custom Claims
-  // server-side (see /api/auth/register). Onboarding (Phase 4) isn't built
-  // yet, so new users land on the dashboard skeleton for now.
-  await fetch("/api/auth/register", {
+  // Creates the Firestore user doc + default Custom Claims server-side (see
+  // /api/auth/register). New users go through onboarding (Phase 4); existing
+  // users (e.g. Google sign-in on an already-provisioned account) skip straight
+  // to the dashboard.
+  const res = await fetch("/api/auth/register", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ idToken }),
   });
-  router.push(`/${locale}/dashboard`);
+  const data = await res.json().catch(() => ({}));
+  router.push(data?.isNewUser === false ? `/${locale}/dashboard` : `/${locale}/onboarding`);
 }
 
 export function SignupForm({

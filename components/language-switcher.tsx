@@ -24,7 +24,7 @@ export function LanguageSwitcher({ current }: { current: LocaleSlug }) {
   function switchTo(slug: LocaleSlug) {
     setOpen(false);
     // Replace the leading locale segment, keep the rest of the path.
-    const rest = pathname.split("/").slice(2).join("/");
+    const rest = pathname ? pathname.split("/").slice(2).join("/") : "";
     router.push(`/${slug}${rest ? `/${rest}` : ""}`);
   }
 

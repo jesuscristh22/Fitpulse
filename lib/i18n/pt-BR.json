@@ -172,5 +172,116 @@
     "signupSubmit": "Criar Conta",
     "error": "Algo deu errado. Verifique os dados e tente novamente.",
     "signOut": "Sair"
+  },
+  "onboarding": {
+    "title": "Vamos te conhecer melhor",
+    "back": "Voltar",
+    "next": "Continuar",
+    "finish": "Concluir Cadastro",
+    "skip": "Prefiro não dizer",
+    "stepOf": "Passo {current} de {total}",
+    "steps": {
+      "name": {
+        "title": "Como podemos te chamar?",
+        "placeholder": "Seu nome"
+      },
+      "birthDate": {
+        "title": "Qual sua data de nascimento?",
+        "ageLabel": "anos"
+      },
+      "gender": {
+        "title": "Qual seu gênero?",
+        "options": {
+          "male": "Masculino",
+          "female": "Feminino",
+          "other": "Outro",
+          "prefer_not_to_say": "Prefiro não dizer"
+        }
+      },
+      "country": {
+        "title": "Onde você mora?",
+        "options": {
+          "BR": "Brasil",
+          "PT": "Portugal",
+          "ES": "Espanha",
+          "US": "Estados Unidos"
+        }
+      },
+      "language": {
+        "title": "Qual idioma você prefere?",
+        "options": {
+          "pt-BR": "Português (Brasil)",
+          "pt-PT": "Português (Portugal)",
+          "es-ES": "Español",
+          "en-US": "English"
+        }
+      },
+      "height": {
+        "title": "Qual sua altura?",
+        "unit": "cm"
+      },
+      "weight": {
+        "title": "Qual seu peso?",
+        "unit": "kg"
+      },
+      "goal": {
+        "title": "Qual seu principal objetivo?",
+        "options": {
+          "lose_weight": "Perder peso",
+          "build_muscle": "Ganhar músculo",
+          "increase_strength": "Aumentar força",
+          "improve_conditioning": "Melhorar condicionamento",
+          "military_fitness": "Condicionamento militar",
+          "calisthenics": "Calistenia",
+          "improve_mobility": "Melhorar mobilidade",
+          "improve_endurance": "Melhorar resistência",
+          "stay_active": "Manter-se ativo",
+          "general_fitness": "Fitness geral"
+        }
+      },
+      "environment": {
+        "title": "Onde você treina? (pode marcar mais de um)",
+        "options": {
+          "gym": "Academia",
+          "home": "Em casa",
+          "outdoor": "Ao ar livre",
+          "military_calisthenics": "Calistenia militar",
+          "hybrid": "Híbrido",
+          "with_coach": "Com coach"
+        }
+      },
+      "experience": {
+        "title": "Qual seu nível de experiência?",
+        "options": {
+          "beginner": "Iniciante",
+          "intermediate": "Intermediário",
+          "advanced": "Avançado"
+        }
+      },
+      "days": {
+        "title": "Quantos dias por semana você pode treinar?",
+        "suffix": "dias"
+      },
+      "time": {
+        "title": "Quanto tempo você tem por treino?",
+        "suffix": "min"
+      },
+      "equipment": {
+        "title": "Quais equipamentos você tem disponível?",
+        "options": {
+          "no_equipment": "Nenhum equipamento",
+          "dumbbells": "Halteres",
+          "barbell": "Barra",
+          "resistance_bands": "Faixas de resistência",
+          "pull_up_bar": "Barra fixa",
+          "full_gym": "Academia completa",
+          "other": "Outro"
+        }
+      },
+      "review": {
+        "title": "Confirme suas informações",
+        "subtext": "Você pode alterar tudo isso depois nas configurações."
+      }
+    }
   }
 }
