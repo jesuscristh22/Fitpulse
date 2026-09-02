@@ -52,3 +52,5 @@ export const EQUIPMENT_OPTIONS = [
   "full_gym",
   "other",
 ] as const;
+
+export const ACTIVITY_LEVEL_OPTIONS = ["sedentary", "light", "moderate", "active", "very_active"] as const;

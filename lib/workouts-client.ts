@@ -8,6 +8,7 @@ import {
   onSnapshot,
   query,
   serverTimestamp,
+  updateDoc,
   where,
 } from "firebase/firestore";
 import { useEffect, useState } from "react";
@@ -29,6 +30,13 @@ export async function saveWorkout(ownerId: string, workout: Omit<Workout, "id" |
 export async function deleteWorkout(workoutId: string) {
   const db = getFirebaseDb();
   await deleteDoc(doc(db, "workouts", workoutId));
+}
+
+// Assigns/updates which weekdays a saved workout shows up on in the training
+// calendar. Pass an empty array to unschedule it entirely.
+export async function updateWorkoutSchedule(workoutId: string, scheduledDays: string[]) {
+  const db = getFirebaseDb();
+  await updateDoc(doc(db, "workouts", workoutId), { scheduledDays });
 }
 
 // Live list of the signed-in user's own workouts ("My Workouts", §24).

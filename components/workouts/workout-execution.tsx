@@ -165,9 +165,9 @@ export function WorkoutExecution({
             <p className="mt-6 text-silver">
               {we.nextUp}: <span className="font-semibold text-white">{nextSet.exerciseName}</span>
             </p>
-            {nextSet.exerciseSlug && getExerciseVideoId(nextSet.exerciseSlug) && (
+            {nextSet.exerciseSlug && getExerciseVideoId(nextSet.exerciseSlug, locale) && (
               <div className="mx-auto mt-4 max-w-sm">
-                <ExerciseVideoPlayer slug={nextSet.exerciseSlug} title={nextSet.exerciseName ?? ""} />
+                <ExerciseVideoPlayer slug={nextSet.exerciseSlug} title={nextSet.exerciseName ?? ""} locale={locale} />
               </div>
             )}
           </>
@@ -198,9 +198,9 @@ export function WorkoutExecution({
           {currentSet?.durationSeconds ? ` · ${currentSet.durationSeconds}s` : ""}
         </p>
 
-        {currentSet?.exerciseSlug && getExerciseVideoId(currentSet.exerciseSlug) && (
+        {currentSet?.exerciseSlug && getExerciseVideoId(currentSet.exerciseSlug, locale) && (
           <div className="mt-4">
-            <ExerciseVideoPlayer slug={currentSet.exerciseSlug} title={currentSet.exerciseName ?? ""} />
+            <ExerciseVideoPlayer slug={currentSet.exerciseSlug} title={currentSet.exerciseName ?? ""} locale={locale} />
           </div>
         )}
 

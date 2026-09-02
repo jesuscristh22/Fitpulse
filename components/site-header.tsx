@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { AuthNavActions } from "@/components/auth/auth-nav-actions";
+import { NavMoreMenu } from "@/components/nav-more-menu";
+import { MobileNav } from "@/components/mobile-nav";
 import type { Dictionary } from "@/lib/i18n";
 import type { LocaleSlug } from "@/lib/locales-config";
 
@@ -13,7 +15,7 @@ export function SiteHeader({ locale, dict }: { locale: LocaleSlug; dict: Diction
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 sm:px-10">
         <Link href={base} className="flex items-center gap-3">
           <Image src="/images/app-icon.png" alt="FitPulse" width={40} height={40} className="rounded-lg" />
-          <div className="leading-tight">
+          <div className="hidden leading-tight sm:block">
             <p className="font-heading text-lg font-extrabold tracking-tight">
               FIT<span className="text-gold">PULSE</span>
             </p>
@@ -23,19 +25,29 @@ export function SiteHeader({ locale, dict }: { locale: LocaleSlug; dict: Diction
           </div>
         </Link>
 
-        <div className="hidden items-center gap-7 text-sm text-silver md:flex">
+        <div className="hidden items-center gap-6 text-sm text-silver md:flex">
           <Link href={base} className="hover:text-white">{dict.nav.home}</Link>
-          <Link href={`${base}/recursos`} className="hover:text-white">{dict.nav.features}</Link>
-          <Link href={`${base}/planos`} className="hover:text-white">{dict.nav.pricing}</Link>
           <Link href={`${base}/exercicios`} className="hover:text-white">{dict.nav.library}</Link>
+          <Link href={`${base}/treinos/funcionais`} className="hover:text-white">{dict.functionalWorkouts.navLabel}</Link>
+          <Link href={`${base}/militar`} className="hover:text-white">{dict.military.badge}</Link>
+          <Link href={`${base}/planos`} className="hover:text-white">{dict.nav.pricing}</Link>
           <Link href={`${base}/blog`} className="hover:text-white">{dict.blog.title}</Link>
-          <Link href={`${base}/sobre`} className="hover:text-white">{dict.nav.about}</Link>
-          <Link href={`${base}/contato`} className="hover:text-white">{dict.nav.contact}</Link>
+          <NavMoreMenu
+            label={dict.nav.more}
+            items={[
+              { href: `${base}/recursos`, label: dict.nav.features },
+              { href: `${base}/sobre`, label: dict.nav.about },
+              { href: `${base}/contato`, label: dict.nav.contact },
+            ]}
+          />
         </div>
 
         <div className="flex items-center gap-3">
-          <LanguageSwitcher current={locale} />
+          <div className="hidden sm:block">
+            <LanguageSwitcher current={locale} />
+          </div>
           <AuthNavActions locale={locale} dict={dict} />
+          <MobileNav locale={locale} dict={dict} />
         </div>
       </nav>
     </header>

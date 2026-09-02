@@ -13,7 +13,8 @@
     "cta": "Comenzar Ahora",
     "dashboard": "Panel",
     "library": "Ejercicios",
-    "myWorkouts": "Mis Entrenos"
+    "myWorkouts": "Mis Entrenos",
+    "more": "Más"
   },
   "hero": {
     "eyebrow": "Tu entrenamiento. Tu ritmo. Tus resultados.",
@@ -474,5 +475,88 @@
     "savedSubtext": "El siguiente paso es el pago — esa parte llega pronto. Tus respuestas ya están guardadas y listas para generar tu programa en cuanto el checkout esté disponible.",
     "checkoutComingSoon": "Checkout próximamente",
     "backToTactical": "Volver a FitPulse Tactical"
+  },
+  "profile": {
+    "navLabel": "Perfil",
+    "title": "Mi Perfil",
+    "subtitle": "Tus datos personales y de entreno. Puedes actualizar todo aquí.",
+    "save": "Guardar Cambios",
+    "saved": "¡Guardado!",
+    "saveError": "No se pudo guardar. Inténtalo de nuevo.",
+    "sections": {
+      "personal": "Datos Personales",
+      "body": "Medidas Corporales",
+      "training": "Perfil de Entreno",
+      "health": "Tu Salud Ahora",
+      "diet": "Alimentación"
+    },
+    "fields": {
+      "name": "Nombre",
+      "birthDate": "Fecha de nacimiento",
+      "gender": "Género",
+      "height": "Altura (cm)",
+      "weight": "Peso (kg)",
+      "waist": "Cintura (cm)",
+      "neck": "Cuello (cm)",
+      "hip": "Cadera (cm)",
+      "activityLevel": "Nivel de actividad",
+      "bodyMeasurementsNote": "Opcional — solo se usa para estimar tu porcentaje de grasa corporal."
+    },
+    "activityLevels": {
+      "sedentary": "Sedentario (poco o ningún ejercicio)",
+      "light": "Ligero (ejercicio 1-3 días/semana)",
+      "moderate": "Moderado (ejercicio 3-5 días/semana)",
+      "active": "Activo (ejercicio 6-7 días/semana)",
+      "very_active": "Muy activo (ejercicio intenso diario)"
+    },
+    "health": {
+      "bmiLabel": "IMC",
+      "bodyFatLabel": "% de Grasa Estimado",
+      "bodyFatMissing": "Añade cintura y cuello arriba para calcular.",
+      "bmrLabel": "Tasa Metabólica Basal",
+      "tdeeLabel": "Calorías para Mantener el Peso",
+      "tdeeSubtext": "Estimación de cuántas calorías al día gasta tu cuerpo, según tu nivel de actividad.",
+      "disclaimer": "Son estimaciones generales, no sustituyen la evaluación de un médico o nutricionista."
+    },
+    "diet": {
+      "intro": "Algunas referencias generales de alimentación — no es un plan personalizado.",
+      "tips": [
+        "Prioriza proteínas magras (pollo, pescado, huevos, legumbres) en cada comida principal.",
+        "Incluye fuentes de carbohidratos complejos (arroz integral, avena, batata) para energía en los entrenos.",
+        "Come verduras y frutas variadas durante el día para fibra y micronutrientes.",
+        "Bebe agua de forma constante — no esperes a tener sed para hidratarte.",
+        "Presta atención a las porciones en vez de eliminar grupos de alimentos enteros."
+      ],
+      "disclaimer": "Esto es educativo y general. Para un plan de alimentación personalizado, habla con un nutricionista."
+    }
+  },
+  "calendar": {
+    "navLabel": "Calendario",
+    "title": "Calendario de Entrenos",
+    "subtitle": "Asigna tus entrenos a los días de la semana y sigue lo que ya se completó.",
+    "days": {
+      "mon": "Lun",
+      "tue": "Mar",
+      "wed": "Mié",
+      "thu": "Jue",
+      "fri": "Vie",
+      "sat": "Sáb",
+      "sun": "Dom"
+    },
+    "assign": "+ Asignar entreno",
+    "unassign": "Quitar",
+    "restDay": "Día de descanso",
+    "completed": "Completado",
+    "noWorkouts": "Todavía no has creado entrenos.",
+    "createWorkout": "Crear un entreno"
+  },
+  "functionalWorkouts": {
+    "navLabel": "Funcional",
+    "title": "Entrenos Funcionales",
+    "subtitle": "Entrenos listos y gratuitos, con video — empieza ahora sin tener que armar nada.",
+    "freeBadge": "Gratis",
+    "startButton": "Iniciar Entreno",
+    "minutesLabel": "min",
+    "exercisesCount": "{count} ejercicios"
   }
 }

@@ -13,7 +13,8 @@
     "cta": "Começar Agora",
     "dashboard": "Painel",
     "library": "Exercícios",
-    "myWorkouts": "Meus Treinos"
+    "myWorkouts": "Meus Treinos",
+    "more": "Mais"
   },
   "hero": {
     "eyebrow": "Seu treino. Seu ritmo. Seus resultados.",
@@ -474,5 +475,88 @@
     "savedSubtext": "O próximo passo é o pagamento — essa parte chega em breve. Suas respostas já estão guardadas e prontas para gerar seu programa assim que o checkout estiver disponível.",
     "checkoutComingSoon": "Checkout em breve",
     "backToTactical": "Voltar ao FitPulse Tactical"
+  },
+  "profile": {
+    "navLabel": "Perfil",
+    "title": "Meu Perfil",
+    "subtitle": "Seus dados pessoais e de treino. Você pode atualizar tudo aqui.",
+    "save": "Salvar Alterações",
+    "saved": "Salvo!",
+    "saveError": "Não foi possível salvar. Tente novamente.",
+    "sections": {
+      "personal": "Dados Pessoais",
+      "body": "Medidas Corporais",
+      "training": "Perfil de Treino",
+      "health": "Sua Saúde Agora",
+      "diet": "Alimentação"
+    },
+    "fields": {
+      "name": "Nome",
+      "birthDate": "Data de nascimento",
+      "gender": "Gênero",
+      "height": "Altura (cm)",
+      "weight": "Peso (kg)",
+      "waist": "Cintura (cm)",
+      "neck": "Pescoço (cm)",
+      "hip": "Quadril (cm)",
+      "activityLevel": "Nível de atividade",
+      "bodyMeasurementsNote": "Opcional — usado só para estimar seu percentual de gordura."
+    },
+    "activityLevels": {
+      "sedentary": "Sedentário (pouco ou nenhum exercício)",
+      "light": "Leve (exercício 1-3 dias/semana)",
+      "moderate": "Moderado (exercício 3-5 dias/semana)",
+      "active": "Ativo (exercício 6-7 dias/semana)",
+      "very_active": "Muito ativo (exercício intenso diário)"
+    },
+    "health": {
+      "bmiLabel": "IMC",
+      "bodyFatLabel": "% de Gordura Estimada",
+      "bodyFatMissing": "Adicione cintura e pescoço acima para calcular.",
+      "bmrLabel": "Taxa Metabólica Basal",
+      "tdeeLabel": "Calorias para Manter o Peso",
+      "tdeeSubtext": "Estimativa de quantas calorias por dia seu corpo gasta, considerando seu nível de atividade.",
+      "disclaimer": "Essas são estimativas gerais, não substituem avaliação de um médico ou nutricionista."
+    },
+    "diet": {
+      "intro": "Algumas referências gerais de alimentação — não é um plano personalizado.",
+      "tips": [
+        "Priorize proteínas magras (frango, peixe, ovos, leguminosas) em cada refeição principal.",
+        "Inclua fontes de carboidrato complexo (arroz integral, aveia, batata-doce) para ter energia nos treinos.",
+        "Coma vegetais e frutas variados ao longo do dia para fibras e micronutrientes.",
+        "Beba água regularmente — não espere sentir sede para se hidratar.",
+        "Preste atenção às porções em vez de cortar grupos alimentares inteiros."
+      ],
+      "disclaimer": "Isso é educativo e geral. Para um plano alimentar personalizado, converse com um nutricionista."
+    }
+  },
+  "calendar": {
+    "navLabel": "Calendário",
+    "title": "Calendário de Treinos",
+    "subtitle": "Atribua seus treinos aos dias da semana e acompanhe o que já foi concluído.",
+    "days": {
+      "mon": "Seg",
+      "tue": "Ter",
+      "wed": "Qua",
+      "thu": "Qui",
+      "fri": "Sex",
+      "sat": "Sáb",
+      "sun": "Dom"
+    },
+    "assign": "+ Atribuir treino",
+    "unassign": "Remover",
+    "restDay": "Dia de descanso",
+    "completed": "Concluído",
+    "noWorkouts": "Você ainda não criou treinos.",
+    "createWorkout": "Criar um treino"
+  },
+  "functionalWorkouts": {
+    "navLabel": "Funcional",
+    "title": "Treinos Funcionais",
+    "subtitle": "Treinos prontos, gratuitos, com vídeo — comece agora sem precisar montar nada.",
+    "freeBadge": "Grátis",
+    "startButton": "Iniciar Treino",
+    "minutesLabel": "min",
+    "exercisesCount": "{count} exercícios"
   }
 }

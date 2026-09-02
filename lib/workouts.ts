@@ -19,4 +19,5 @@ export interface Workout {
   id?: string; // Firestore doc id, attached when reading — never stored inside the doc itself
   ownerId: string; name: string; createdBy: "member" | "coach" | "ai"; sets: WorkoutSet[];
   createdAt?: string;
+  scheduledDays?: string[]; // e.g. ["mon", "wed", "fri"] — used by the training calendar
 }

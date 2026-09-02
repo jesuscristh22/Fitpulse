@@ -159,9 +159,9 @@ export function WorkoutBuilder({
               </button>
             </div>
 
-            {getExerciseVideoId(entry.exerciseSlug) && (
+            {getExerciseVideoId(entry.exerciseSlug, locale) && (
               <div className="mt-3">
-                <ExerciseVideoPlayer slug={entry.exerciseSlug} title={entry.exerciseName} />
+                <ExerciseVideoPlayer slug={entry.exerciseSlug} title={entry.exerciseName} locale={locale} />
               </div>
             )}
 

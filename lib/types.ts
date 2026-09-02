@@ -31,6 +31,10 @@ export interface UserProfile {
   gender?: "male" | "female" | "other" | "prefer_not_to_say";
   heightCm?: number;
   weightKg?: number;
+  waistCm?: number;
+  neckCm?: number;
+  hipCm?: number;
+  activityLevel?: "sedentary" | "light" | "moderate" | "active" | "very_active";
   bodyTypeSelfDescription?:
     | "lean" | "average" | "athletic" | "higher_body_weight" | "muscular" | "prefer_not_to_say";
 }

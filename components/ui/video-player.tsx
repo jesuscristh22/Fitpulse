@@ -1,9 +1,10 @@
 import { getExerciseVideoId } from "@/lib/exercise-videos";
+import type { LocaleSlug } from "@/lib/locales-config";
 
 // Responsive 16:9 embed using youtube-nocookie.com (privacy-enhanced mode —
 // no tracking cookies until the person actually presses play).
-export function ExerciseVideoPlayer({ slug, title }: { slug: string; title: string }) {
-  const videoId = getExerciseVideoId(slug);
+export function ExerciseVideoPlayer({ slug, title, locale }: { slug: string; title: string; locale: LocaleSlug }) {
+  const videoId = getExerciseVideoId(slug, locale);
   if (!videoId) return null;
 
   return (

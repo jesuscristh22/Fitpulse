@@ -13,7 +13,8 @@
     "cta": "Get Started",
     "dashboard": "Dashboard",
     "library": "Exercises",
-    "myWorkouts": "My Workouts"
+    "myWorkouts": "My Workouts",
+    "more": "More"
   },
   "hero": {
     "eyebrow": "Your workout. Your pace. Your results.",
@@ -474,5 +475,88 @@
     "savedSubtext": "The next step is payment — that part is coming soon. Your answers are already saved and ready to generate your program as soon as checkout is available.",
     "checkoutComingSoon": "Checkout coming soon",
     "backToTactical": "Back to FitPulse Tactical"
+  },
+  "profile": {
+    "navLabel": "Profile",
+    "title": "My Profile",
+    "subtitle": "Your personal and training data. You can update everything here.",
+    "save": "Save Changes",
+    "saved": "Saved!",
+    "saveError": "Couldn't save. Please try again.",
+    "sections": {
+      "personal": "Personal Info",
+      "body": "Body Measurements",
+      "training": "Training Profile",
+      "health": "Your Health Right Now",
+      "diet": "Nutrition"
+    },
+    "fields": {
+      "name": "Name",
+      "birthDate": "Birth date",
+      "gender": "Gender",
+      "height": "Height (cm)",
+      "weight": "Weight (kg)",
+      "waist": "Waist (cm)",
+      "neck": "Neck (cm)",
+      "hip": "Hip (cm)",
+      "activityLevel": "Activity level",
+      "bodyMeasurementsNote": "Optional — only used to estimate your body fat percentage."
+    },
+    "activityLevels": {
+      "sedentary": "Sedentary (little or no exercise)",
+      "light": "Light (exercise 1-3 days/week)",
+      "moderate": "Moderate (exercise 3-5 days/week)",
+      "active": "Active (exercise 6-7 days/week)",
+      "very_active": "Very active (intense daily exercise)"
+    },
+    "health": {
+      "bmiLabel": "BMI",
+      "bodyFatLabel": "Estimated Body Fat",
+      "bodyFatMissing": "Add waist and neck above to calculate.",
+      "bmrLabel": "Basal Metabolic Rate",
+      "tdeeLabel": "Calories to Maintain Weight",
+      "tdeeSubtext": "Estimate of how many calories a day your body burns, based on your activity level.",
+      "disclaimer": "These are general estimates and don't replace a doctor's or dietitian's assessment."
+    },
+    "diet": {
+      "intro": "Some general nutrition references — not a personalized plan.",
+      "tips": [
+        "Prioritize lean protein (chicken, fish, eggs, legumes) at each main meal.",
+        "Include complex carb sources (brown rice, oats, sweet potato) for training energy.",
+        "Eat a variety of vegetables and fruit throughout the day for fiber and micronutrients.",
+        "Drink water steadily — don't wait until you're thirsty to hydrate.",
+        "Pay attention to portions rather than cutting out entire food groups."
+      ],
+      "disclaimer": "This is general and educational. For a personalized meal plan, talk to a registered dietitian."
+    }
+  },
+  "calendar": {
+    "navLabel": "Calendar",
+    "title": "Training Calendar",
+    "subtitle": "Assign your workouts to weekdays and track what's already done.",
+    "days": {
+      "mon": "Mon",
+      "tue": "Tue",
+      "wed": "Wed",
+      "thu": "Thu",
+      "fri": "Fri",
+      "sat": "Sat",
+      "sun": "Sun"
+    },
+    "assign": "+ Assign workout",
+    "unassign": "Remove",
+    "restDay": "Rest day",
+    "completed": "Completed",
+    "noWorkouts": "You haven't created any workouts yet.",
+    "createWorkout": "Create a workout"
+  },
+  "functionalWorkouts": {
+    "navLabel": "Functional",
+    "title": "Functional Workouts",
+    "subtitle": "Ready-made, free workouts with video — start now, nothing to build.",
+    "freeBadge": "Free",
+    "startButton": "Start Workout",
+    "minutesLabel": "min",
+    "exercisesCount": "{count} exercises"
   }
 }
