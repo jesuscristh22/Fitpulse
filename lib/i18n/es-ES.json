@@ -11,7 +11,8 @@
     "contact": "Contacto",
     "login": "Iniciar Sesión",
     "cta": "Comenzar Ahora",
-    "dashboard": "Panel"
+    "dashboard": "Panel",
+    "library": "Ejercicios"
   },
   "hero": {
     "eyebrow": "Tu entrenamiento. Tu ritmo. Tus resultados.",
@@ -315,5 +316,58 @@
     "subtitle": "Consejos de salud, hidratación y entreno, actualizado cada semana.",
     "updatedWeekly": "Actualizado semanalmente por nuestra IA",
     "back": "Volver al blog"
+  },
+  "library": {
+    "title": "Biblioteca de Ejercicios",
+    "subtitle": "Explora ejercicios por categoría, músculo, equipo y dificultad.",
+    "allCategories": "Todos",
+    "categories": {
+      "strength": "Fuerza",
+      "cardio": "Cardio",
+      "calisthenics": "Calistenia",
+      "military": "Militar",
+      "mobility": "Movilidad",
+      "warm-up": "Calentamiento",
+      "recovery": "Recuperación"
+    },
+    "difficulty": {
+      "beginner": "Principiante",
+      "intermediate": "Intermedio",
+      "advanced": "Avanzado"
+    },
+    "filterMuscle": "Músculo",
+    "filterEquipment": "Equipo",
+    "filterDifficulty": "Dificultad",
+    "allMuscles": "Todos los músculos",
+    "allEquipment": "Todo el equipo",
+    "allDifficulty": "Toda dificultad",
+    "noResults": "Ningún ejercicio coincide con estos filtros.",
+    "clearFilters": "Limpiar filtros",
+    "muscles": {
+      "chest": "Pecho",
+      "back": "Espalda",
+      "shoulders": "Hombros",
+      "biceps": "Bíceps",
+      "triceps": "Tríceps",
+      "quads": "Cuádriceps",
+      "hamstrings": "Isquiotibiales",
+      "glutes": "Glúteos",
+      "calves": "Pantorrillas",
+      "core": "Core",
+      "full_body": "Cuerpo completo"
+    },
+    "equipment": {
+      "no_equipment": "Sin equipo",
+      "dumbbells": "Mancuernas",
+      "barbell": "Barra",
+      "resistance_bands": "Bandas",
+      "pull_up_bar": "Barra de dominadas",
+      "full_gym": "Gimnasio completo",
+      "other": "Otro"
+    },
+    "instructionsTitle": "Cómo hacerlo",
+    "safetyTitle": "Seguridad",
+    "alternativesTitle": "Alternativas",
+    "back": "Volver a ejercicios"
   }
 }

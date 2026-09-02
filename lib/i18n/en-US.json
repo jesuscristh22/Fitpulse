@@ -11,7 +11,8 @@
     "contact": "Contact",
     "login": "Log In",
     "cta": "Get Started",
-    "dashboard": "Dashboard"
+    "dashboard": "Dashboard",
+    "library": "Exercises"
   },
   "hero": {
     "eyebrow": "Your workout. Your pace. Your results.",
@@ -315,5 +316,58 @@
     "subtitle": "Health, hydration, and training tips, updated every week.",
     "updatedWeekly": "Updated weekly by our AI",
     "back": "Back to blog"
+  },
+  "library": {
+    "title": "Exercise Library",
+    "subtitle": "Browse exercises by category, muscle, equipment, and difficulty.",
+    "allCategories": "All",
+    "categories": {
+      "strength": "Strength",
+      "cardio": "Cardio",
+      "calisthenics": "Calisthenics",
+      "military": "Military",
+      "mobility": "Mobility",
+      "warm-up": "Warm-up",
+      "recovery": "Recovery"
+    },
+    "difficulty": {
+      "beginner": "Beginner",
+      "intermediate": "Intermediate",
+      "advanced": "Advanced"
+    },
+    "filterMuscle": "Muscle",
+    "filterEquipment": "Equipment",
+    "filterDifficulty": "Difficulty",
+    "allMuscles": "All muscles",
+    "allEquipment": "All equipment",
+    "allDifficulty": "All difficulty",
+    "noResults": "No exercises match these filters.",
+    "clearFilters": "Clear filters",
+    "muscles": {
+      "chest": "Chest",
+      "back": "Back",
+      "shoulders": "Shoulders",
+      "biceps": "Biceps",
+      "triceps": "Triceps",
+      "quads": "Quads",
+      "hamstrings": "Hamstrings",
+      "glutes": "Glutes",
+      "calves": "Calves",
+      "core": "Core",
+      "full_body": "Full body"
+    },
+    "equipment": {
+      "no_equipment": "No equipment",
+      "dumbbells": "Dumbbells",
+      "barbell": "Barbell",
+      "resistance_bands": "Bands",
+      "pull_up_bar": "Pull-up bar",
+      "full_gym": "Full gym",
+      "other": "Other"
+    },
+    "instructionsTitle": "How to do it",
+    "safetyTitle": "Safety",
+    "alternativesTitle": "Alternatives",
+    "back": "Back to exercises"
   }
 }

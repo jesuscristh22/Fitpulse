@@ -11,7 +11,8 @@
     "contact": "Contato",
     "login": "Entrar",
     "cta": "Começar Agora",
-    "dashboard": "Painel"
+    "dashboard": "Painel",
+    "library": "Exercícios"
   },
   "hero": {
     "eyebrow": "Seu treino. Seu ritmo. Seus resultados.",
@@ -315,5 +316,58 @@
     "subtitle": "Dicas de saúde, hidratação e treino, atualizado toda semana.",
     "updatedWeekly": "Atualizado semanalmente pela nossa IA",
     "back": "Voltar ao blog"
+  },
+  "library": {
+    "title": "Biblioteca de Exercícios",
+    "subtitle": "Explore exercícios por categoria, músculo, equipamento e dificuldade.",
+    "allCategories": "Todas",
+    "categories": {
+      "strength": "Força",
+      "cardio": "Cardio",
+      "calisthenics": "Calistenia",
+      "military": "Militar",
+      "mobility": "Mobilidade",
+      "warm-up": "Aquecimento",
+      "recovery": "Recuperação"
+    },
+    "difficulty": {
+      "beginner": "Iniciante",
+      "intermediate": "Intermediário",
+      "advanced": "Avançado"
+    },
+    "filterMuscle": "Músculo",
+    "filterEquipment": "Equipamento",
+    "filterDifficulty": "Dificuldade",
+    "allMuscles": "Todos os músculos",
+    "allEquipment": "Todo equipamento",
+    "allDifficulty": "Toda dificuldade",
+    "noResults": "Nenhum exercício encontrado com esses filtros.",
+    "clearFilters": "Limpar filtros",
+    "muscles": {
+      "chest": "Peito",
+      "back": "Costas",
+      "shoulders": "Ombros",
+      "biceps": "Bíceps",
+      "triceps": "Tríceps",
+      "quads": "Quadríceps",
+      "hamstrings": "Posterior de coxa",
+      "glutes": "Glúteos",
+      "calves": "Panturrilhas",
+      "core": "Core",
+      "full_body": "Corpo inteiro"
+    },
+    "equipment": {
+      "no_equipment": "Sem equipamento",
+      "dumbbells": "Halteres",
+      "barbell": "Barra",
+      "resistance_bands": "Faixas",
+      "pull_up_bar": "Barra fixa",
+      "full_gym": "Academia completa",
+      "other": "Outro"
+    },
+    "instructionsTitle": "Como fazer",
+    "safetyTitle": "Segurança",
+    "alternativesTitle": "Alternativas",
+    "back": "Voltar aos exercícios"
   }
 }
