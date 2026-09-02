@@ -474,7 +474,11 @@
     "savedTitle": "Respostas salvas!",
     "savedSubtext": "O próximo passo é o pagamento — essa parte chega em breve. Suas respostas já estão guardadas e prontas para gerar seu programa assim que o checkout estiver disponível.",
     "checkoutComingSoon": "Checkout em breve",
-    "backToTactical": "Voltar ao FitPulse Tactical"
+    "backToTactical": "Voltar ao FitPulse Tactical",
+    "readyForCheckout": "Suas respostas foram salvas. O próximo passo é o pagamento — depois disso seu programa é gerado automaticamente.",
+    "goToCheckout": "Ir para Pagamento",
+    "redirecting": "Redirecionando...",
+    "checkoutError": "Não foi possível iniciar o pagamento. Tente novamente."
   },
   "profile": {
     "navLabel": "Perfil",
@@ -558,5 +562,12 @@
     "startButton": "Iniciar Treino",
     "minutesLabel": "min",
     "exercisesCount": "{count} exercícios"
+  },
+  "militarySuccess": {
+    "title": "Pagamento confirmado!",
+    "subtitle": "Seu crédito de Military AI Workout já foi liberado na sua conta. A geração automática do programa chega na próxima atualização.",
+    "notConfirmedTitle": "Pagamento não confirmado",
+    "notConfirmedSubtitle": "Não conseguimos confirmar esse pagamento. Se você foi cobrado, entre em contato pelo suporte.",
+    "backToDashboard": "Voltar ao Painel"
   }
 }

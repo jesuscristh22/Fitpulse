@@ -474,7 +474,11 @@
     "savedTitle": "Answers saved!",
     "savedSubtext": "The next step is payment — that part is coming soon. Your answers are already saved and ready to generate your program as soon as checkout is available.",
     "checkoutComingSoon": "Checkout coming soon",
-    "backToTactical": "Back to FitPulse Tactical"
+    "backToTactical": "Back to FitPulse Tactical",
+    "readyForCheckout": "Your answers are saved. The next step is payment — after that, your program is generated automatically.",
+    "goToCheckout": "Go to Checkout",
+    "redirecting": "Redirecting...",
+    "checkoutError": "Couldn't start checkout. Please try again."
   },
   "profile": {
     "navLabel": "Profile",
@@ -558,5 +562,12 @@
     "startButton": "Start Workout",
     "minutesLabel": "min",
     "exercisesCount": "{count} exercises"
+  },
+  "militarySuccess": {
+    "title": "Payment confirmed!",
+    "subtitle": "Your Military AI Workout credit has been added to your account. Automatic program generation is coming in the next update.",
+    "notConfirmedTitle": "Payment not confirmed",
+    "notConfirmedSubtitle": "We couldn't confirm this payment. If you were charged, please contact support.",
+    "backToDashboard": "Back to Dashboard"
   }
 }
