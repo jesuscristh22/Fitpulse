@@ -421,5 +421,58 @@
     "startWorkout": "Iniciar Treino",
     "backToWorkouts": "Voltar aos meus treinos",
     "notFound": "Treino não encontrado."
+  },
+  "military": {
+    "badge": "FitPulse Tactical",
+    "headline": "SEM ACADEMIA?",
+    "headlineHighlight": "SEM PROBLEMA.",
+    "subheadline": "Ganhe um programa de calistenia inspirado em condicionamento militar, feito por IA a partir das suas respostas.",
+    "disclaimer": "FitPulse Tactical é um programa de fitness inspirado em condicionamento militar — não é afiliado a nenhuma força militar oficial.",
+    "priceNote": "Compra única, sem assinatura",
+    "cta": "Montar Meu Programa",
+    "featuresTitle": "O que vem no programa",
+    "features": [
+      "Programa de 4 a 8 semanas, no seu ritmo",
+      "Só peso corporal — sem equipamento necessário",
+      "Adaptado ao seu nível e disponibilidade"
+    ],
+    "price": "R$ 19,90"
+  },
+  "militaryIntake": {
+    "title": "Questionário Tactical",
+    "subtitle": "Suas respostas vão moldar o programa gerado pela IA.",
+    "steps": {
+      "experience": {
+        "title": "Qual seu nível de experiência?"
+      },
+      "focus": {
+        "title": "Qual o foco principal?",
+        "options": {
+          "selection_prep": "Preparação para processo seletivo",
+          "endurance": "Resistência",
+          "strength": "Força",
+          "general_conditioning": "Condicionamento geral"
+        }
+      },
+      "days": {
+        "title": "Quantos dias por semana?",
+        "suffix": "dias"
+      },
+      "weeks": {
+        "title": "Duração do programa?",
+        "suffix": "semanas"
+      },
+      "limitations": {
+        "title": "Alguma lesão ou limitação? (opcional)",
+        "placeholder": "Ex: dor no joelho direito"
+      }
+    },
+    "back": "Voltar",
+    "next": "Continuar",
+    "submit": "Salvar Respostas",
+    "savedTitle": "Respostas salvas!",
+    "savedSubtext": "O próximo passo é o pagamento — essa parte chega em breve. Suas respostas já estão guardadas e prontas para gerar seu programa assim que o checkout estiver disponível.",
+    "checkoutComingSoon": "Checkout em breve",
+    "backToTactical": "Voltar ao FitPulse Tactical"
   }
 }

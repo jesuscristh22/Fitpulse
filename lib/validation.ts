@@ -16,6 +16,18 @@ export const onboardingSchema = z.object({
   equipment: z.array(z.string()),
 });
 
+// User-submitted intake for the Military Calisthenics questionnaire (§30,
+// "Complete Specific Questionnaire" step — comes before Stripe checkout,
+// which is Phase 10). Distinct from militaryProgramSchema below, which
+// validates the AI-generated program output (Phase 11).
+export const militaryIntakeSchema = z.object({
+  experience: z.enum(["beginner", "intermediate", "advanced"]),
+  focus: z.enum(["selection_prep", "endurance", "strength", "general_conditioning"]),
+  daysPerWeek: z.number().min(2).max(7),
+  durationWeeks: z.number().min(4).max(8),
+  limitations: z.string().max(500).optional(),
+});
+
 export const militaryProgramSchema = z.object({
   programName: z.string(),
   durationWeeks: z.number().int().positive(),

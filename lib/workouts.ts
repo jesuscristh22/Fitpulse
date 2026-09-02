@@ -10,6 +10,7 @@ export interface Exercise {
 export interface WorkoutSet {
   exerciseId: string;
   exerciseName?: string; // denormalized for display without re-joining the exercise library
+  exerciseSlug?: string; // used to look up the demonstration video
   setNumber: number; reps?: number; weightKg?: number;
   durationSeconds?: number; restSeconds?: number; notes?: string;
 }

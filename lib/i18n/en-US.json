@@ -421,5 +421,58 @@
     "startWorkout": "Start Workout",
     "backToWorkouts": "Back to my workouts",
     "notFound": "Workout not found."
+  },
+  "military": {
+    "badge": "FitPulse Tactical",
+    "headline": "NO GYM?",
+    "headlineHighlight": "NO PROBLEM.",
+    "subheadline": "Get an AI-powered military-inspired calisthenics program, built from your answers.",
+    "disclaimer": "FitPulse Tactical is a fitness program inspired by military-style conditioning — it is not affiliated with any official military force.",
+    "priceNote": "One-time purchase, no subscription",
+    "cta": "Build My Program",
+    "featuresTitle": "What's in the program",
+    "features": [
+      "4 to 8 week program, at your pace",
+      "Bodyweight only — no equipment needed",
+      "Adapted to your level and availability"
+    ],
+    "price": "$5.99"
+  },
+  "militaryIntake": {
+    "title": "Tactical Questionnaire",
+    "subtitle": "Your answers will shape the AI-generated program.",
+    "steps": {
+      "experience": {
+        "title": "What's your experience level?"
+      },
+      "focus": {
+        "title": "What's the main focus?",
+        "options": {
+          "selection_prep": "Selection process prep",
+          "endurance": "Endurance",
+          "strength": "Strength",
+          "general_conditioning": "General conditioning"
+        }
+      },
+      "days": {
+        "title": "How many days a week?",
+        "suffix": "days"
+      },
+      "weeks": {
+        "title": "Program length?",
+        "suffix": "weeks"
+      },
+      "limitations": {
+        "title": "Any injuries or limitations? (optional)",
+        "placeholder": "e.g. right knee pain"
+      }
+    },
+    "back": "Back",
+    "next": "Continue",
+    "submit": "Save Answers",
+    "savedTitle": "Answers saved!",
+    "savedSubtext": "The next step is payment — that part is coming soon. Your answers are already saved and ready to generate your program as soon as checkout is available.",
+    "checkoutComingSoon": "Checkout coming soon",
+    "backToTactical": "Back to FitPulse Tactical"
   }
 }
