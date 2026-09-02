@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { useParams } from "next/navigation";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ProgressBar } from "@/components/ui/progress-bar";
 import { useAuth } from "@/lib/auth-context";
+import { getFirebaseAuth } from "@/lib/firebase-client";
 import { saveMilitaryIntake, type MilitaryIntake } from "@/lib/military-intake-client";
 import { MILITARY_FOCUS_OPTIONS, MILITARY_DURATION_WEEKS_OPTIONS } from "@/lib/military-options";
 import { EXPERIENCE_OPTIONS, DAYS_OPTIONS } from "@/lib/onboarding-options";
@@ -29,9 +31,13 @@ function Pill({ active, onClick, children }: { active: boolean; onClick: () => v
 export function MilitaryIntakeWizard({ dict }: { dict: Dictionary }) {
   const mi = dict.militaryIntake;
   const { user } = useAuth();
+  const params = useParams();
+  const locale = params.locale as string;
   const [stepIndex, setStepIndex] = useState(0);
   const [saved, setSaved] = useState(false);
   const [saving, setSaving] = useState(false);
+  const [checkingOut, setCheckingOut] = useState(false);
+  const [checkoutError, setCheckoutError] = useState<string | null>(null);
   const [form, setForm] = useState<Partial<MilitaryIntake>>({ daysPerWeek: 4, durationWeeks: 4 });
 
   const step = STEPS[stepIndex];
@@ -65,14 +71,36 @@ export function MilitaryIntakeWizard({ dict }: { dict: Dictionary }) {
     setStepIndex((i) => Math.max(i - 1, 0));
   }
 
+  async function handleCheckout() {
+    if (!user) return;
+    setCheckingOut(true);
+    setCheckoutError(null);
+    try {
+      const idToken = await getFirebaseAuth().currentUser?.getIdToken();
+      const res = await fetch("/api/checkout/military", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ idToken, locale }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.url) throw new Error(data.error ?? "Checkout failed");
+      window.location.href = data.url;
+    } catch (err) {
+      console.error("[MilitaryIntakeWizard] checkout failed:", err);
+      setCheckoutError(mi.checkoutError);
+      setCheckingOut(false);
+    }
+  }
+
   if (saved) {
     return (
       <Card className="mx-auto max-w-lg text-center">
         <h2 className="font-heading text-2xl font-bold text-gold">{mi.savedTitle}</h2>
-        <p className="mt-4 text-silver">{mi.savedSubtext}</p>
-        <div className="mt-6 inline-block rounded-full border border-white/10 px-4 py-2 text-sm text-silver">
-          {mi.checkoutComingSoon}
-        </div>
+        <p className="mt-4 text-silver">{mi.readyForCheckout}</p>
+        {checkoutError && <p className="mt-4 text-sm text-red-400">{checkoutError}</p>}
+        <Button variant="primary" size="lg" onClick={handleCheckout} disabled={checkingOut} className="mt-6 w-full">
+          {checkingOut ? mi.redirecting : mi.goToCheckout}
+        </Button>
       </Card>
     );
   }

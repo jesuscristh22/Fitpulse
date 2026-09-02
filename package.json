@@ -19,7 +19,8 @@
     "clsx": "2.1.1",
     "tailwind-merge": "2.4.0",
     "lucide-react": "0.383.0",
-    "server-only": "0.0.1"
+    "server-only": "0.0.1",
+    "stripe": "16.2.0"
   },
   "devDependencies": {
     "typescript": "5.5.4",
