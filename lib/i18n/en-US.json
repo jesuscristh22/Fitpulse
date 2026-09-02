@@ -12,7 +12,8 @@
     "login": "Log In",
     "cta": "Get Started",
     "dashboard": "Dashboard",
-    "library": "Exercises"
+    "library": "Exercises",
+    "myWorkouts": "My Workouts"
   },
   "hero": {
     "eyebrow": "Your workout. Your pace. Your results.",
@@ -369,5 +370,37 @@
     "safetyTitle": "Safety",
     "alternativesTitle": "Alternatives",
     "back": "Back to exercises"
+  },
+  "workoutBuilder": {
+    "title": "Create Workout",
+    "namePlaceholder": "Workout name (e.g. Back Day)",
+    "addExercise": "Add Exercise",
+    "searchPlaceholder": "Search exercise...",
+    "noExercisesAdded": "No exercises added yet.",
+    "set": "Set",
+    "reps": "Reps",
+    "weightKg": "Weight (kg)",
+    "durationSec": "Duration (s)",
+    "restSec": "Rest (s)",
+    "notes": "Notes",
+    "addSet": "+ Set",
+    "removeSet": "Remove",
+    "removeExercise": "Remove exercise",
+    "save": "Save Workout",
+    "saving": "Saving...",
+    "nameRequired": "Give your workout a name before saving.",
+    "atLeastOneExercise": "Add at least one exercise.",
+    "saveError": "Couldn't save. Please try again."
+  },
+  "myWorkouts": {
+    "title": "My Workouts",
+    "newWorkout": "New Workout",
+    "empty": "You haven't created any workouts yet.",
+    "createFirst": "Create my first workout",
+    "exercisesCount": "{count} exercises",
+    "viewDetails": "View details",
+    "delete": "Delete",
+    "confirmDelete": "Delete this workout? This can't be undone.",
+    "back": "Back to my workouts"
   }
 }

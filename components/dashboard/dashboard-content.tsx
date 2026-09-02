@@ -61,6 +61,19 @@ export function DashboardContent({
         ) : null}
       </h1>
 
+      <div className="mt-6 flex flex-wrap gap-3">
+        <Link href={`${base}/treinos`}>
+          <Button variant="secondary" size="sm">
+            {dict.myWorkouts.title}
+          </Button>
+        </Link>
+        <Link href={`${base}/treinos/novo`}>
+          <Button variant="primary" size="sm">
+            {dict.myWorkouts.newWorkout}
+          </Button>
+        </Link>
+      </div>
+
       <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-3">
         {/* Plan card */}
         <Card>

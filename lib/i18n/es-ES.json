@@ -12,7 +12,8 @@
     "login": "Iniciar Sesión",
     "cta": "Comenzar Ahora",
     "dashboard": "Panel",
-    "library": "Ejercicios"
+    "library": "Ejercicios",
+    "myWorkouts": "Mis Entrenos"
   },
   "hero": {
     "eyebrow": "Tu entrenamiento. Tu ritmo. Tus resultados.",
@@ -369,5 +370,37 @@
     "safetyTitle": "Seguridad",
     "alternativesTitle": "Alternativas",
     "back": "Volver a ejercicios"
+  },
+  "workoutBuilder": {
+    "title": "Crear Entreno",
+    "namePlaceholder": "Nombre del entreno (ej: Día de Espalda)",
+    "addExercise": "Añadir Ejercicio",
+    "searchPlaceholder": "Buscar ejercicio...",
+    "noExercisesAdded": "Todavía no has añadido ejercicios.",
+    "set": "Serie",
+    "reps": "Reps",
+    "weightKg": "Peso (kg)",
+    "durationSec": "Duración (s)",
+    "restSec": "Descanso (s)",
+    "notes": "Notas",
+    "addSet": "+ Serie",
+    "removeSet": "Quitar",
+    "removeExercise": "Quitar ejercicio",
+    "save": "Guardar Entreno",
+    "saving": "Guardando...",
+    "nameRequired": "Ponle un nombre al entreno antes de guardar.",
+    "atLeastOneExercise": "Añade al menos un ejercicio.",
+    "saveError": "No se pudo guardar. Inténtalo de nuevo."
+  },
+  "myWorkouts": {
+    "title": "Mis Entrenos",
+    "newWorkout": "Nuevo Entreno",
+    "empty": "Todavía no has creado ningún entreno.",
+    "createFirst": "Crear mi primer entreno",
+    "exercisesCount": "{count} ejercicios",
+    "viewDetails": "Ver detalles",
+    "delete": "Eliminar",
+    "confirmDelete": "¿Eliminar este entreno? Esta acción no se puede deshacer.",
+    "back": "Volver a mis entrenos"
   }
 }

@@ -8,10 +8,14 @@ export interface Exercise {
 }
 
 export interface WorkoutSet {
-  exerciseId: string; setNumber: number; reps?: number; weightKg?: number;
+  exerciseId: string;
+  exerciseName?: string; // denormalized for display without re-joining the exercise library
+  setNumber: number; reps?: number; weightKg?: number;
   durationSeconds?: number; restSeconds?: number; notes?: string;
 }
 
 export interface Workout {
-  id: string; ownerId: string; name: string; createdBy: "member" | "coach" | "ai"; sets: WorkoutSet[];
+  id?: string; // Firestore doc id, attached when reading — never stored inside the doc itself
+  ownerId: string; name: string; createdBy: "member" | "coach" | "ai"; sets: WorkoutSet[];
+  createdAt?: string;
 }

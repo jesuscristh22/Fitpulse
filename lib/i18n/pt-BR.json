@@ -12,7 +12,8 @@
     "login": "Entrar",
     "cta": "Começar Agora",
     "dashboard": "Painel",
-    "library": "Exercícios"
+    "library": "Exercícios",
+    "myWorkouts": "Meus Treinos"
   },
   "hero": {
     "eyebrow": "Seu treino. Seu ritmo. Seus resultados.",
@@ -369,5 +370,37 @@
     "safetyTitle": "Segurança",
     "alternativesTitle": "Alternativas",
     "back": "Voltar aos exercícios"
+  },
+  "workoutBuilder": {
+    "title": "Criar Treino",
+    "namePlaceholder": "Nome do treino (ex: Treino de Costas)",
+    "addExercise": "Adicionar Exercício",
+    "searchPlaceholder": "Buscar exercício...",
+    "noExercisesAdded": "Nenhum exercício adicionado ainda.",
+    "set": "Série",
+    "reps": "Reps",
+    "weightKg": "Carga (kg)",
+    "durationSec": "Duração (s)",
+    "restSec": "Descanso (s)",
+    "notes": "Notas",
+    "addSet": "+ Série",
+    "removeSet": "Remover",
+    "removeExercise": "Remover exercício",
+    "save": "Salvar Treino",
+    "saving": "Salvando...",
+    "nameRequired": "Dê um nome ao treino antes de salvar.",
+    "atLeastOneExercise": "Adicione pelo menos um exercício.",
+    "saveError": "Não foi possível salvar. Tente novamente."
+  },
+  "myWorkouts": {
+    "title": "Meus Treinos",
+    "newWorkout": "Novo Treino",
+    "empty": "Você ainda não criou nenhum treino.",
+    "createFirst": "Criar meu primeiro treino",
+    "exercisesCount": "{count} exercícios",
+    "viewDetails": "Ver detalhes",
+    "delete": "Excluir",
+    "confirmDelete": "Excluir este treino? Essa ação não pode ser desfeita.",
+    "back": "Voltar aos meus treinos"
   }
 }

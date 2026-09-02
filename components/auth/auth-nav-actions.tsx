@@ -22,6 +22,9 @@ export function AuthNavActions({ locale, dict }: { locale: LocaleSlug; dict: Dic
   if (user) {
     return (
       <div className="flex items-center gap-4">
+        <Link href={`${base}/treinos`} className="hidden text-sm text-silver hover:text-white sm:block">
+          {dict.nav.myWorkouts}
+        </Link>
         <Link href={`${base}/dashboard`} className="hidden text-sm text-silver hover:text-white sm:block">
           {dict.nav.dashboard}
         </Link>
