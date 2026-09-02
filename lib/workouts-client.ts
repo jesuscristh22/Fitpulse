@@ -13,12 +13,13 @@ import {
 import { useEffect, useState } from "react";
 import { getFirebaseDb } from "./firebase-client";
 import { useAuth } from "./auth-context";
+import { stripUndefined } from "./firestore-utils";
 import type { Workout } from "./workouts";
 
 export async function saveWorkout(ownerId: string, workout: Omit<Workout, "id" | "ownerId" | "createdAt">) {
   const db = getFirebaseDb();
   const docRef = await addDoc(collection(db, "workouts"), {
-    ...workout,
+    ...stripUndefined(workout),
     ownerId,
     createdAt: serverTimestamp(),
   });

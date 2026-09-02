@@ -4,12 +4,13 @@ import { collection, addDoc, query, where, onSnapshot, serverTimestamp } from "f
 import { useEffect, useState } from "react";
 import { getFirebaseDb } from "./firebase-client";
 import { useAuth } from "./auth-context";
+import { stripUndefined } from "./firestore-utils";
 import type { WorkoutSession } from "./workout-sessions";
 
 export async function saveWorkoutSession(userId: string, session: Omit<WorkoutSession, "id" | "userId">) {
   const db = getFirebaseDb();
   const docRef = await addDoc(collection(db, "workout_sessions"), {
-    ...session,
+    ...stripUndefined(session),
     userId,
     createdAt: serverTimestamp(),
   });

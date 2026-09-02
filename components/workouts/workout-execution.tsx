@@ -140,7 +140,7 @@ export function WorkoutExecution({
           </div>
           <div>
             <p className="font-heading text-3xl font-extrabold text-gold">
-              {Math.floor(elapsedSeconds / 60)}m
+              {elapsedSeconds < 60 ? `${elapsedSeconds}s` : `${Math.floor(elapsedSeconds / 60)}m`}
             </p>
             <p className="text-xs text-silver">{we.elapsedTimeLabel}</p>
           </div>
