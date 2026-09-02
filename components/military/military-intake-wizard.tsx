@@ -87,7 +87,7 @@ export function MilitaryIntakeWizard({ dict }: { dict: Dictionary }) {
       window.location.href = data.url;
     } catch (err) {
       console.error("[MilitaryIntakeWizard] checkout failed:", err);
-      setCheckoutError(mi.checkoutError);
+      setCheckoutError(`${mi.checkoutError} (${err instanceof Error ? err.message : "unknown error"})`);
       setCheckingOut(false);
     }
   }
