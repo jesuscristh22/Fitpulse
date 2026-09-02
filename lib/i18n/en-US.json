@@ -10,7 +10,8 @@
     "about": "About",
     "contact": "Contact",
     "login": "Log In",
-    "cta": "Get Started"
+    "cta": "Get Started",
+    "dashboard": "Dashboard"
   },
   "hero": {
     "eyebrow": "Your workout. Your pace. Your results.",
@@ -283,5 +284,36 @@
         "subtext": "You can change all of this later in settings."
       }
     }
+  },
+  "dashboardExtra": {
+    "planLabel": "Your Plan",
+    "planFree": "Free",
+    "viewPlans": "View Plans",
+    "healthTitle": "Your Health Right Now",
+    "bmiLabel": "BMI",
+    "bmiDisclaimer": "A general reference, not a substitute for medical advice.",
+    "bmiCategories": {
+      "underweight": "Underweight",
+      "normal": "Normal weight",
+      "overweight": "Overweight",
+      "obese": "Obesity"
+    },
+    "consistencyLabel": "This Week's Consistency",
+    "workoutsOfGoal": "{done} of {goal} workouts",
+    "goalSummaryTitle": "Your Training Profile",
+    "goalLabelText": "Goal",
+    "experienceLabelText": "Experience",
+    "environmentLabelText": "Environment",
+    "comingSoon": "Coming soon",
+    "noDataYet": "Complete onboarding to see this here.",
+    "blogTeaserTitle": "From the FitPulse Blog",
+    "viewAllPosts": "View all posts",
+    "readMore": "Read more"
+  },
+  "blog": {
+    "title": "FitPulse Blog",
+    "subtitle": "Health, hydration, and training tips, updated every week.",
+    "updatedWeekly": "Updated weekly by our AI",
+    "back": "Back to blog"
   }
 }

@@ -1,0 +1,166 @@
+"use client";
+
+import Link from "next/link";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { useUserData, calculateBmi, bmiCategory } from "@/lib/use-user-data";
+import type { Dictionary } from "@/lib/i18n";
+import type { LocaleSlug } from "@/lib/locales-config";
+import type { BlogPost } from "@/lib/blog-content";
+
+const BMI_MIN = 15;
+const BMI_MAX = 35;
+const BMI_ZONE_WIDTHS = { underweight: 17.5, normal: 32.5, overweight: 25, obese: 25 };
+
+function BmiGauge({ bmi }: { bmi: number }) {
+  const clamped = Math.min(BMI_MAX, Math.max(BMI_MIN, bmi));
+  const markerPct = ((clamped - BMI_MIN) / (BMI_MAX - BMI_MIN)) * 100;
+
+  return (
+    <div className="relative mt-4">
+      <div className="flex h-2.5 w-full overflow-hidden rounded-full">
+        <div style={{ width: `${BMI_ZONE_WIDTHS.underweight}%` }} className="bg-sky-500" />
+        <div style={{ width: `${BMI_ZONE_WIDTHS.normal}%` }} className="bg-emerald-500" />
+        <div style={{ width: `${BMI_ZONE_WIDTHS.overweight}%` }} className="bg-amber-500" />
+        <div style={{ width: `${BMI_ZONE_WIDTHS.obese}%` }} className="bg-red-500" />
+      </div>
+      <div
+        className="absolute -top-1 h-[18px] w-1 -translate-x-1/2 rounded-full bg-white shadow"
+        style={{ left: `${markerPct}%` }}
+      />
+    </div>
+  );
+}
+
+export function DashboardContent({
+  locale,
+  dict,
+  blogPosts,
+}: {
+  locale: LocaleSlug;
+  dict: Dictionary;
+  blogPosts: BlogPost[];
+}) {
+  const { account, profile, fitness, loading } = useUserData();
+  const base = `/${locale}`;
+  const de = dict.dashboardExtra;
+
+  const bmi = calculateBmi(profile?.heightCm, profile?.weightKg);
+  const category = bmi !== null ? bmiCategory(bmi) : null;
+  const displayName = account?.displayName?.split(" ")[0] || "";
+
+  return (
+    <div className="mx-auto max-w-5xl px-6 py-10 pt-28">
+      <h1 className="font-heading text-2xl font-bold">
+        {dict.dashboard.greeting}
+        {displayName ? (
+          <>
+            , <span className="text-gold">{displayName}</span>
+          </>
+        ) : null}
+      </h1>
+
+      <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-3">
+        {/* Plan card */}
+        <Card>
+          <p className="text-xs uppercase text-silver">{de.planLabel}</p>
+          <div className="mt-2 flex items-center gap-2">
+            <p className="font-heading text-2xl font-extrabold">{de.planFree}</p>
+            <Badge variant="gold">{de.planFree}</Badge>
+          </div>
+          <Link href={`${base}/planos`}>
+            <Button variant="secondary" size="sm" className="mt-4 w-full">
+              {de.viewPlans}
+            </Button>
+          </Link>
+        </Card>
+
+        {/* Health snapshot / BMI */}
+        <Card className="lg:col-span-2">
+          <p className="text-xs uppercase text-silver">{de.healthTitle}</p>
+          {!loading && bmi !== null && category ? (
+            <>
+              <div className="mt-2 flex items-baseline gap-3">
+                <p className="font-heading text-3xl font-extrabold">{bmi}</p>
+                <p className="text-sm text-silver">
+                  {de.bmiLabel} · <span className="font-semibold text-white">{de.bmiCategories[category]}</span>
+                </p>
+              </div>
+              <BmiGauge bmi={bmi} />
+              <p className="mt-3 text-xs text-silver">{de.bmiDisclaimer}</p>
+            </>
+          ) : (
+            <p className="mt-3 text-sm text-silver">{de.noDataYet}</p>
+          )}
+        </Card>
+
+        {/* Weekly consistency */}
+        <Card>
+          <p className="text-xs uppercase text-silver">{de.consistencyLabel}</p>
+          {fitness?.daysAvailable ? (
+            <>
+              <p className="mt-2 font-heading text-2xl font-extrabold">
+                {de.workoutsOfGoal.replace("{done}", "0").replace("{goal}", String(fitness.daysAvailable))}
+              </p>
+              <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-white/10">
+                <div className="h-full w-0 rounded-full bg-gold" />
+              </div>
+            </>
+          ) : (
+            <p className="mt-3 text-sm text-silver">{de.noDataYet}</p>
+          )}
+          <p className="mt-3 text-xs text-silver/70">{de.comingSoon} — {dict.pages.features.title}</p>
+        </Card>
+
+        {/* Training profile summary */}
+        <Card className="lg:col-span-2">
+          <p className="text-xs uppercase text-silver">{de.goalSummaryTitle}</p>
+          {fitness ? (
+            <dl className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-3">
+              <div>
+                <dt className="text-xs text-silver">{de.goalLabelText}</dt>
+                <dd className="font-semibold capitalize">{fitness.goals?.[0]?.replaceAll("_", " ") ?? "—"}</dd>
+              </div>
+              <div>
+                <dt className="text-xs text-silver">{de.experienceLabelText}</dt>
+                <dd className="font-semibold capitalize">{fitness.experience ?? "—"}</dd>
+              </div>
+              <div>
+                <dt className="text-xs text-silver">{de.environmentLabelText}</dt>
+                <dd className="font-semibold capitalize">
+                  {fitness.environment?.map((e) => e.replaceAll("_", " ")).join(", ") || "—"}
+                </dd>
+              </div>
+            </dl>
+          ) : (
+            <p className="mt-3 text-sm text-silver">{de.noDataYet}</p>
+          )}
+        </Card>
+      </div>
+
+      {/* Blog teaser */}
+      <div className="mt-10">
+        <div className="flex items-center justify-between">
+          <h2 className="font-heading text-lg font-bold">{de.blogTeaserTitle}</h2>
+          <Link href={`${base}/blog`} className="text-sm font-semibold text-gold hover:underline">
+            {de.viewAllPosts}
+          </Link>
+        </div>
+        <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {blogPosts.map((post) => (
+            <Link
+              key={post.slug}
+              href={`${base}/blog/${post.slug}`}
+              className="block rounded-xl border border-white/10 bg-graphite p-5 transition-colors hover:border-gold/40"
+            >
+              <p className="font-heading text-sm font-bold leading-snug">{post.title}</p>
+              <p className="mt-2 text-sm text-silver line-clamp-2">{post.excerpt}</p>
+              <span className="mt-3 inline-block text-xs font-semibold text-gold">{de.readMore}</span>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}

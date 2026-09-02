@@ -10,7 +10,8 @@
     "about": "Sobre",
     "contact": "Contato",
     "login": "Entrar",
-    "cta": "Começar Agora"
+    "cta": "Começar Agora",
+    "dashboard": "Painel"
   },
   "hero": {
     "eyebrow": "Seu treino. Seu ritmo. Seus resultados.",
@@ -283,5 +284,36 @@
         "subtext": "Você pode alterar tudo isso depois nas configurações."
       }
     }
+  },
+  "dashboardExtra": {
+    "planLabel": "Seu Plano",
+    "planFree": "Free",
+    "viewPlans": "Ver Planos",
+    "healthTitle": "Sua Saúde Agora",
+    "bmiLabel": "IMC",
+    "bmiDisclaimer": "Referência geral, não substitui orientação médica.",
+    "bmiCategories": {
+      "underweight": "Abaixo do peso",
+      "normal": "Peso normal",
+      "overweight": "Sobrepeso",
+      "obese": "Obesidade"
+    },
+    "consistencyLabel": "Consistência da Semana",
+    "workoutsOfGoal": "{done} de {goal} treinos",
+    "goalSummaryTitle": "Seu Perfil de Treino",
+    "goalLabelText": "Objetivo",
+    "experienceLabelText": "Experiência",
+    "environmentLabelText": "Ambiente",
+    "comingSoon": "Em breve",
+    "noDataYet": "Complete seu perfil no onboarding para ver isso aqui.",
+    "blogTeaserTitle": "Do Blog FitPulse",
+    "viewAllPosts": "Ver todos os posts",
+    "readMore": "Ler mais"
+  },
+  "blog": {
+    "title": "Blog FitPulse",
+    "subtitle": "Dicas de saúde, hidratação e treino, atualizado toda semana.",
+    "updatedWeekly": "Atualizado semanalmente pela nossa IA",
+    "back": "Voltar ao blog"
   }
 }
