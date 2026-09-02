@@ -402,5 +402,24 @@
     "delete": "Excluir",
     "confirmDelete": "Excluir este treino? Essa ação não pode ser desfeita.",
     "back": "Voltar aos meus treinos"
+  },
+  "workoutExecution": {
+    "title": "Executando Treino",
+    "setOf": "Série {current} de {total}",
+    "target": "Alvo",
+    "actualReps": "Reps feitas",
+    "actualWeight": "Carga usada (kg)",
+    "completeSet": "Concluir Série",
+    "restTitle": "Descanso",
+    "restSkip": "Pular descanso",
+    "nextUp": "Próximo",
+    "finishNow": "Finalizar Treino",
+    "summaryTitle": "Treino Concluído!",
+    "setsCompletedLabel": "Séries concluídas",
+    "elapsedTimeLabel": "Tempo total",
+    "saveAndFinish": "Salvar e Finalizar",
+    "startWorkout": "Iniciar Treino",
+    "backToWorkouts": "Voltar aos meus treinos",
+    "notFound": "Treino não encontrado."
   }
 }

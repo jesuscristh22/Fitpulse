@@ -402,5 +402,24 @@
     "delete": "Delete",
     "confirmDelete": "Delete this workout? This can't be undone.",
     "back": "Back to my workouts"
+  },
+  "workoutExecution": {
+    "title": "Workout In Progress",
+    "setOf": "Set {current} of {total}",
+    "target": "Target",
+    "actualReps": "Reps done",
+    "actualWeight": "Weight used (kg)",
+    "completeSet": "Complete Set",
+    "restTitle": "Rest",
+    "restSkip": "Skip rest",
+    "nextUp": "Next up",
+    "finishNow": "Finish Workout",
+    "summaryTitle": "Workout Complete!",
+    "setsCompletedLabel": "Sets completed",
+    "elapsedTimeLabel": "Total time",
+    "saveAndFinish": "Save & Finish",
+    "startWorkout": "Start Workout",
+    "backToWorkouts": "Back to my workouts",
+    "notFound": "Workout not found."
   }
 }
