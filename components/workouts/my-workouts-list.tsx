@@ -11,7 +11,7 @@ import type { LocaleSlug } from "@/lib/locales-config";
 
 export function MyWorkoutsList({ locale, dict }: { locale: LocaleSlug; dict: Dictionary }) {
   const mw = dict.myWorkouts;
-  const { workouts, loading } = useMyWorkouts();
+  const { workouts, loading, error } = useMyWorkouts();
   const base = `/${locale}`;
 
   async function handleDelete(id: string) {
@@ -31,7 +31,9 @@ export function MyWorkoutsList({ locale, dict }: { locale: LocaleSlug; dict: Dic
       </div>
 
       <div className="mt-8">
-        {loading ? null : workouts.length === 0 ? (
+        {error ? (
+          <p className="text-sm text-red-400">Error: {error}</p>
+        ) : loading ? null : workouts.length === 0 ? (
           <EmptyState
             title={mw.empty}
             action={

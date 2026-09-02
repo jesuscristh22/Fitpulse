@@ -104,8 +104,9 @@ export function WorkoutBuilder({
       );
       await saveWorkout(user.uid, { name: workoutName.trim(), createdBy: "member", sets });
       router.push(`/${locale}/treinos`);
-    } catch {
-      setError(wb.saveError);
+    } catch (err) {
+      console.error("[WorkoutBuilder] save failed:", err);
+      setError(`${wb.saveError} (${err instanceof Error ? err.message : "unknown error"})`);
     } finally {
       setSaving(false);
     }
