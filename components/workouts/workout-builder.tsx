@@ -6,6 +6,8 @@ import { Plus, X } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { ExerciseVideoPlayer } from "@/components/ui/video-player";
+import { getExerciseVideoId } from "@/lib/exercise-videos";
 import { useAuth } from "@/lib/auth-context";
 import { saveWorkout } from "@/lib/workouts-client";
 import type { Dictionary } from "@/lib/i18n";
@@ -23,6 +25,7 @@ interface SetRow {
 interface EntryRow {
   exerciseId: string;
   exerciseName: string;
+  exerciseSlug: string;
   sets: SetRow[];
 }
 
@@ -53,7 +56,7 @@ export function WorkoutBuilder({
   function addExercise(exercise: Exercise) {
     setEntries((prev) => [
       ...prev,
-      { exerciseId: exercise.id, exerciseName: exercise.name, sets: [{ reps: 10 }] },
+      { exerciseId: exercise.id, exerciseName: exercise.name, exerciseSlug: exercise.slug, sets: [{ reps: 10 }] },
     ]);
     setSearch("");
   }
@@ -98,6 +101,7 @@ export function WorkoutBuilder({
         entry.sets.map((s, i) => ({
           exerciseId: entry.exerciseId,
           exerciseName: entry.exerciseName,
+          exerciseSlug: entry.exerciseSlug,
           setNumber: i + 1,
           ...s,
         })),
@@ -154,6 +158,12 @@ export function WorkoutBuilder({
                 <X size={16} />
               </button>
             </div>
+
+            {getExerciseVideoId(entry.exerciseSlug) && (
+              <div className="mt-3">
+                <ExerciseVideoPlayer slug={entry.exerciseSlug} title={entry.exerciseName} />
+              </div>
+            )}
 
             <div className="mt-4 flex flex-col gap-3">
               {entry.sets.map((set, setIndex) => (

@@ -3,6 +3,7 @@ import { ArrowLeft, ShieldAlert } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { Badge } from "@/components/ui/badge";
+import { ExerciseVideoPlayer } from "@/components/ui/video-player";
 import { getDictionary } from "@/lib/i18n";
 import { getExercise, getExercises } from "@/lib/exercise-server";
 import { isLocaleSlug, type LocaleSlug } from "@/lib/locales-config";
@@ -38,6 +39,10 @@ export default async function ExerciseDetailPage({
         </div>
         <p className="mt-2 text-sm text-silver">{lib.categories[exercise.category]}</p>
         <p className="mt-4 text-silver">{exercise.description}</p>
+
+        <div className="mt-6">
+          <ExerciseVideoPlayer slug={exercise.slug} title={exercise.name} />
+        </div>
 
         <div className="mt-8 flex flex-wrap gap-2">
           {exercise.muscles.map((m) => (

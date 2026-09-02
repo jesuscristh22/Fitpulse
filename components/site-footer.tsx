@@ -20,6 +20,8 @@ export function SiteFooter({ locale, dict }: { locale: LocaleSlug; dict: Diction
             <ul className="space-y-2">
               <li><Link href={`${base}/recursos`} className="hover:text-white">{dict.nav.features}</Link></li>
               <li><Link href={`${base}/planos`} className="hover:text-white">{dict.nav.pricing}</Link></li>
+              <li><Link href={`${base}/exercicios`} className="hover:text-white">{dict.nav.library}</Link></li>
+              <li><Link href={`${base}/militar`} className="hover:text-white">{dict.military.badge}</Link></li>
               <li><Link href={`${base}/blog`} className="hover:text-white">{dict.blog.title}</Link></li>
             </ul>
           </div>

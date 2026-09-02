@@ -8,6 +8,8 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ProgressBar } from "@/components/ui/progress-bar";
+import { ExerciseVideoPlayer } from "@/components/ui/video-player";
+import { getExerciseVideoId } from "@/lib/exercise-videos";
 import { useAuth } from "@/lib/auth-context";
 import { useMyWorkouts } from "@/lib/workouts-client";
 import { saveWorkoutSession } from "@/lib/workout-sessions-client";
@@ -159,9 +161,16 @@ export function WorkoutExecution({
         <p className="text-xs uppercase tracking-wide text-silver">{we.restTitle}</p>
         <p className="mt-4 font-heading text-7xl font-extrabold text-gold">{restLeft}s</p>
         {nextSet && (
-          <p className="mt-6 text-silver">
-            {we.nextUp}: <span className="font-semibold text-white">{nextSet.exerciseName}</span>
-          </p>
+          <>
+            <p className="mt-6 text-silver">
+              {we.nextUp}: <span className="font-semibold text-white">{nextSet.exerciseName}</span>
+            </p>
+            {nextSet.exerciseSlug && getExerciseVideoId(nextSet.exerciseSlug) && (
+              <div className="mx-auto mt-4 max-w-sm">
+                <ExerciseVideoPlayer slug={nextSet.exerciseSlug} title={nextSet.exerciseName ?? ""} />
+              </div>
+            )}
+          </>
         )}
         <button
           onClick={() => setResting(false)}
@@ -188,6 +197,12 @@ export function WorkoutExecution({
           {currentSet?.weightKg ? ` · ${currentSet.weightKg} kg` : ""}
           {currentSet?.durationSeconds ? ` · ${currentSet.durationSeconds}s` : ""}
         </p>
+
+        {currentSet?.exerciseSlug && getExerciseVideoId(currentSet.exerciseSlug) && (
+          <div className="mt-4">
+            <ExerciseVideoPlayer slug={currentSet.exerciseSlug} title={currentSet.exerciseName ?? ""} />
+          </div>
+        )}
 
         <div className="mt-6 grid grid-cols-2 gap-4">
           <div>
