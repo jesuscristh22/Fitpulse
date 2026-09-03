@@ -110,7 +110,9 @@
     "features": {
       "title": "Recursos",
       "headline": "Cada ferramenta que você precisa, num só lugar.",
-      "subtext": "Do primeiro treino ao seu recorde pessoal, o FitPulse acompanha cada etapa da sua evolução."
+      "subtext": "Do primeiro treino ao seu recorde pessoal, o FitPulse acompanha cada etapa da sua evolução.",
+      "realFeaturesTitle": "Explore cada parte do FitPulse",
+      "myWorkoutsDesc": "Monte seu próprio treino, escolhendo exercícios, séries e descanso."
     },
     "pricing": {
       "title": "Planos",

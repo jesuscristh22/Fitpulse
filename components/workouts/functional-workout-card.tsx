@@ -6,6 +6,7 @@ import { Clock, Zap } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { VideoEmbed } from "@/components/ui/video-embed";
 import { useAuth } from "@/lib/auth-context";
 import { saveWorkout } from "@/lib/workouts-client";
 import type { Dictionary } from "@/lib/i18n";
@@ -65,6 +66,12 @@ export function FunctionalWorkoutCard({
         <Badge variant="success">{fw.freeBadge}</Badge>
       </div>
       <p className="mt-2 text-sm text-silver">{template.description}</p>
+
+      {template.videoId && (
+        <div className="mt-4">
+          <VideoEmbed videoId={template.videoId} title={template.name} />
+        </div>
+      )}
 
       <div className="mt-3 flex items-center gap-4 text-xs text-silver">
         <span className="flex items-center gap-1">

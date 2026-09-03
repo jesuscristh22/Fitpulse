@@ -2,6 +2,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { VideoEmbed } from "@/components/ui/video-embed";
 import { getDictionary } from "@/lib/i18n";
 import { getDanceRoutines } from "@/lib/dance-content";
 import { buildExerciseVideoSearchUrl } from "@/lib/youtube-search-link";
@@ -37,6 +38,12 @@ export default function DancePage({ params }: { params: { locale: string } }) {
                 <Badge variant="success">{dict.functionalWorkouts.freeBadge}</Badge>
               </div>
               <p className="mt-2 text-sm text-silver">{routine.description}</p>
+
+              {routine.videoId && (
+                <div className="mt-3">
+                  <VideoEmbed videoId={routine.videoId} title={routine.name} />
+                </div>
+              )}
               <div className="mt-3 flex items-center gap-3 text-xs text-silver">
                 <span className="flex items-center gap-1">
                   <Clock size={12} /> {routine.estimatedMinutes} {dict.functionalWorkouts.minutesLabel}

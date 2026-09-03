@@ -110,7 +110,9 @@
     "features": {
       "title": "Features",
       "headline": "Every tool you need, in one place.",
-      "subtext": "From your first workout to your next personal record, FitPulse tracks every step of your progress."
+      "subtext": "From your first workout to your next personal record, FitPulse tracks every step of your progress.",
+      "realFeaturesTitle": "Explore every part of FitPulse",
+      "myWorkoutsDesc": "Build your own workout, choosing exercises, sets, and rest."
     },
     "pricing": {
       "title": "Pricing",

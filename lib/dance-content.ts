@@ -7,6 +7,9 @@ export interface DanceRoutine {
   estimatedMinutes: number;
   difficulty: "beginner" | "intermediate" | "advanced";
   moves: string[];
+  // [CONFIGURATION REQUIRED] YouTube video ID for a real class recording of
+  // this routine — left undefined until real footage exists.
+  videoId?: string;
 }
 
 // Dance-based functional training — a distinct category from calisthenics/

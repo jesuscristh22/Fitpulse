@@ -40,7 +40,7 @@ export function MobileNav({ locale, dict }: { locale: LocaleSlug; dict: Dictiona
       ];
 
   return (
-    <div className="md:hidden">
+    <div className="xl:hidden">
       <button
         type="button"
         onClick={() => setOpen(true)}

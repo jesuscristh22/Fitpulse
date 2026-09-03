@@ -21,6 +21,7 @@ export interface FunctionalTemplate {
   estimatedMinutes: number;
   difficulty: "beginner" | "intermediate" | "advanced";
   exercises: FunctionalTemplateExerciseResolved[];
+  videoId?: string;
 }
 
 // Merges structural template data with localized exercise names/slugs (from
@@ -38,6 +39,7 @@ export async function getFunctionalTemplates(locale: LocaleSlug): Promise<Functi
       description: text?.description ?? "",
       estimatedMinutes: base.estimatedMinutes,
       difficulty: base.difficulty,
+      videoId: base.videoId,
       exercises: base.exercises.map((e) => {
         const ex = byId.get(e.exerciseId);
         return {

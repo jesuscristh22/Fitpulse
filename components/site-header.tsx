@@ -12,8 +12,8 @@ export function SiteHeader({ locale, dict }: { locale: LocaleSlug; dict: Diction
 
   return (
     <header className="absolute inset-x-0 top-0 z-20">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 sm:px-10">
-        <Link href={base} className="flex items-center gap-3">
+      <nav className="mx-auto flex max-w-[100rem] items-center justify-between gap-6 px-6 py-5 sm:px-10 lg:px-14">
+        <Link href={base} className="flex shrink-0 items-center gap-3">
           <Image src="/images/app-icon.png" alt="FitPulse" width={40} height={40} className="rounded-lg" />
           <div className="hidden leading-tight sm:block">
             <p className="font-heading text-lg font-extrabold tracking-tight">
@@ -25,7 +25,7 @@ export function SiteHeader({ locale, dict }: { locale: LocaleSlug; dict: Diction
           </div>
         </Link>
 
-        <div className="hidden items-center gap-6 text-sm text-silver md:flex">
+        <div className="hidden flex-1 items-center justify-center gap-8 whitespace-nowrap text-sm text-silver xl:flex">
           <Link href={base} className="hover:text-white">{dict.nav.home}</Link>
           <Link href={`${base}/exercicios`} className="hover:text-white">{dict.nav.library}</Link>
           <Link href={`${base}/treinos/funcionais`} className="hover:text-white">{dict.functionalWorkouts.navLabel}</Link>
@@ -43,7 +43,7 @@ export function SiteHeader({ locale, dict }: { locale: LocaleSlug; dict: Diction
           />
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex shrink-0 items-center gap-3">
           <div className="hidden sm:block">
             <LanguageSwitcher current={locale} />
           </div>
