@@ -97,9 +97,13 @@ export function MilitaryProgramView({ locale, dict }: { locale: LocaleSlug; dict
             <ul className="mt-3 space-y-2">
               {session.exercises.map((ex, i) => (
                 <li key={i} className="text-sm text-silver">
-                  <Link href={`${base}/exercicios/${ex.slug}`} className="font-semibold text-white hover:text-gold hover:underline">
-                    {ex.name}
-                  </Link>{" "}
+                  {ex.slug ? (
+                    <Link href={`${base}/exercicios/${ex.slug}`} className="font-semibold text-white hover:text-gold hover:underline">
+                      {ex.name}
+                    </Link>
+                  ) : (
+                    <span className="font-semibold text-white">{ex.name}</span>
+                  )}{" "}
                   — {ex.sets}x{ex.reps} · {mp.restLabel} {ex.restSeconds}s
                 </li>
               ))}

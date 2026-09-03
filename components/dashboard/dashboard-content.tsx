@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useUserData, calculateBmi, bmiCategory } from "@/lib/use-user-data";
 import { useWeeklyCompletedCount } from "@/lib/workout-sessions-client";
+import { useMilitaryProgram } from "@/lib/military-program-client";
 import type { Dictionary } from "@/lib/i18n";
 import type { LocaleSlug } from "@/lib/locales-config";
 import type { BlogPost } from "@/lib/blog-content";
@@ -45,6 +46,7 @@ export function DashboardContent({
 }) {
   const { account, profile, fitness, loading } = useUserData();
   const { count: weeklyCompleted } = useWeeklyCompletedCount();
+  const { program: militaryProgram, subscriptionStatus: militaryStatus } = useMilitaryProgram();
   const base = `/${locale}`;
   const de = dict.dashboardExtra;
 
@@ -137,16 +139,22 @@ export function DashboardContent({
             <dl className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-3">
               <div>
                 <dt className="text-xs text-silver">{de.goalLabelText}</dt>
-                <dd className="font-semibold capitalize">{fitness.goals?.[0]?.replaceAll("_", " ") ?? "—"}</dd>
+                <dd className="font-semibold">
+                  {fitness.goals?.[0] ? dict.onboarding.steps.goal.options[fitness.goals[0]] : "—"}
+                </dd>
               </div>
               <div>
                 <dt className="text-xs text-silver">{de.experienceLabelText}</dt>
-                <dd className="font-semibold capitalize">{fitness.experience ?? "—"}</dd>
+                <dd className="font-semibold">
+                  {fitness.experience ? dict.onboarding.steps.experience.options[fitness.experience] : "—"}
+                </dd>
               </div>
               <div>
                 <dt className="text-xs text-silver">{de.environmentLabelText}</dt>
-                <dd className="font-semibold capitalize">
-                  {fitness.environment?.map((e) => e.replaceAll("_", " ")).join(", ") || "—"}
+                <dd className="font-semibold">
+                  {fitness.environment?.length
+                    ? fitness.environment.map((e) => dict.onboarding.steps.environment.options[e]).join(", ")
+                    : "—"}
                 </dd>
               </div>
             </dl>
@@ -154,6 +162,32 @@ export function DashboardContent({
             <p className="mt-3 text-sm text-silver">{de.noDataYet}</p>
           )}
         </Card>
+
+        {/* FitPulse Tactical status */}
+        {(militaryStatus === "active" || militaryStatus === "trialing" || militaryProgram) && (
+          <Card className="lg:col-span-3">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <p className="text-xs uppercase text-silver">{dict.military.badge}</p>
+                {militaryProgram ? (
+                  <p className="mt-1 font-heading text-lg font-bold">{militaryProgram.programName}</p>
+                ) : (
+                  <p className="mt-1 text-sm text-silver">{dict.militaryProgram.subtitle}</p>
+                )}
+              </div>
+              <div className="flex items-center gap-3">
+                {(militaryStatus === "active" || militaryStatus === "trialing") && (
+                  <Badge variant="success">{militaryStatus}</Badge>
+                )}
+                <Link href={`${base}/militar/programa`}>
+                  <Button variant="primary" size="sm">
+                    {militaryProgram ? dict.militaryProgram.title : dict.militaryProgram.generateButton}
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </Card>
+        )}
       </div>
 
       {/* Blog teaser */}
