@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import { FieldValue } from "firebase-admin/firestore";
 import { adminDb } from "@/lib/firebase-admin";
 import { getStripe } from "@/lib/stripe-server";
+import type Stripe from "stripe";
 
 // Stripe webhooks require the RAW request body for signature verification —
 // never JSON.parse() before calling constructEvent, or the signature check
@@ -20,7 +20,7 @@ export async function POST(request: Request) {
   const rawBody = await request.text();
   const stripe = getStripe();
 
-  let event;
+  let event: Stripe.Event;
   try {
     event = stripe.webhooks.constructEvent(rawBody, signature, webhookSecret);
   } catch (error) {
@@ -30,8 +30,8 @@ export async function POST(request: Request) {
 
   // Idempotency guard (§31, §71): Stripe can and does deliver the same event
   // more than once. This doc's existence is the single source of truth for
-  // "have we already granted this credit" — checked and written before any
-  // credit is granted, so retries and duplicate deliveries are always safe.
+  // "have we already processed this event" — checked and written before any
+  // Firestore update happens, so retries and duplicate deliveries are safe.
   const eventRef = adminDb().collection("stripe_webhook_events").doc(event.id);
   const alreadyProcessed = await eventRef.get();
   if (alreadyProcessed.exists) {
@@ -40,27 +40,51 @@ export async function POST(request: Request) {
   await eventRef.set({ type: event.type, processedAt: new Date().toISOString() });
 
   try {
+    // Military AI Workout is a recurring monthly subscription. Access is
+    // gated on subscription status, not a one-time credit: activated here,
+    // then kept in sync by the subscription lifecycle events below.
     if (event.type === "checkout.session.completed") {
-      const session = event.data.object as { client_reference_id?: string | null; metadata?: Record<string, string> | null };
+      const session = event.data.object as Stripe.Checkout.Session;
       const uid = session.client_reference_id ?? session.metadata?.uid;
 
       if (uid) {
-        await adminDb()
-          .collection("users")
-          .doc(uid)
-          .set({ militaryAiCredits: FieldValue.increment(1) }, { merge: true });
-
+        await adminDb().collection("users").doc(uid).set(
+          {
+            militaryAiSubscriptionId: session.subscription ?? null,
+            militaryAiSubscriptionStatus: "active",
+          },
+          { merge: true },
+        );
         await adminDb().collection("military_purchases").add({
           uid,
           stripeEventId: event.id,
+          subscriptionId: session.subscription ?? null,
           purchasedAt: new Date().toISOString(),
         });
       } else {
         console.error("[stripe webhook] checkout.session.completed with no uid", event.id);
       }
     }
-    // Other event types (subscriptions, invoices) will be handled starting
-    // Phase 13 (Member Pro) — intentionally not handled yet.
+
+    // Renewed, past due, canceled, etc. — keeps access in sync with the
+    // subscription's real status for the rest of its lifecycle.
+    if (event.type === "customer.subscription.updated" || event.type === "customer.subscription.deleted") {
+      const subscription = event.data.object as Stripe.Subscription;
+      const uid = subscription.metadata?.uid;
+
+      if (uid) {
+        await adminDb().collection("users").doc(uid).set(
+          {
+            militaryAiSubscriptionId: subscription.id,
+            militaryAiSubscriptionStatus: event.type === "customer.subscription.deleted" ? "canceled" : subscription.status,
+          },
+          { merge: true },
+        );
+      } else {
+        console.error(`[stripe webhook] ${event.type} with no uid in metadata`, event.id);
+      }
+    }
+    // Member Pro subscriptions (Phase 13) will be handled here too, once built.
   } catch (error) {
     console.error("[stripe webhook] processing failed:", error);
     return NextResponse.json({ error: "Processing failed" }, { status: 500 });

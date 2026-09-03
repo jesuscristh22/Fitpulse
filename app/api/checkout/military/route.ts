@@ -4,10 +4,10 @@ import { getStripe } from "@/lib/stripe-server";
 import { getMilitaryPriceId } from "@/lib/stripe-pricing";
 import type { SupportedCountry } from "@/lib/types";
 
-// Creates a Stripe Checkout Session for the one-time "Military AI Workout"
-// purchase (§29-30). The webhook (/api/webhooks/stripe) — not this route,
-// and never the client's redirect back — is what actually grants the AI
-// generation credit, since redirects can be spoofed but signed webhooks can't.
+// Creates a Stripe Checkout Session for the "Military AI Workout" recurring
+// monthly subscription. The webhook (/api/webhooks/stripe) — not this route,
+// and never the client's redirect back — is what actually activates access,
+// since redirects can be spoofed but signed webhooks can't.
 export async function POST(request: Request) {
   try {
     const { idToken, locale } = await request.json();
@@ -29,10 +29,14 @@ export async function POST(request: Request) {
 
     const stripe = getStripe();
     const session = await stripe.checkout.sessions.create({
-      mode: "payment",
+      mode: "subscription",
       line_items: [{ price: priceId, quantity: 1 }],
       client_reference_id: uid,
       metadata: { uid, product: "military_ai_workout" },
+      // Metadata on the subscription itself (not just the session) so later
+      // lifecycle events (renewed, past due, canceled) can resolve the uid
+      // without needing a Firestore lookup by Stripe customer id.
+      subscription_data: { metadata: { uid, product: "military_ai_workout" } },
       success_url: `${origin}/${locale}/militar/sucesso?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/${locale}/militar/questionario`,
     });

@@ -36,7 +36,10 @@ export default function MilitaryLandingPage({ params }: { params: { locale: stri
             <p className="mt-6 max-w-md text-lg text-silver">{mil.subheadline}</p>
 
             <div className="mt-8 flex items-baseline gap-3">
-              <span className="font-heading text-3xl font-extrabold">{mil.price}</span>
+              <span className="font-heading text-3xl font-extrabold">
+                {mil.price}
+                <span className="text-lg font-normal text-silver">{mil.priceInterval}</span>
+              </span>
               <span className="text-sm text-silver">{mil.priceNote}</span>
             </div>
 
