@@ -429,7 +429,7 @@
     "headlineHighlight": "SEM PROBLEMA.",
     "subheadline": "Ganhe um programa de calistenia inspirado em condicionamento militar, feito por IA a partir das suas respostas.",
     "disclaimer": "FitPulse Tactical é um programa de fitness inspirado em condicionamento militar — não é afiliado a nenhuma força militar oficial.",
-    "priceNote": "Compra única, sem assinatura",
+    "priceNote": "Assinatura mensal, cancele quando quiser",
     "cta": "Montar Meu Programa",
     "featuresTitle": "O que vem no programa",
     "features": [
@@ -437,7 +437,8 @@
       "Só peso corporal — sem equipamento necessário",
       "Adaptado ao seu nível e disponibilidade"
     ],
-    "price": "R$ 19,90"
+    "price": "R$ 19,90",
+    "priceInterval": "/mês"
   },
   "militaryIntake": {
     "title": "Questionário Tactical",
@@ -565,7 +566,7 @@
   },
   "militarySuccess": {
     "title": "Pagamento confirmado!",
-    "subtitle": "Seu crédito de Military AI Workout já foi liberado na sua conta. A geração automática do programa chega na próxima atualização.",
+    "subtitle": "Sua assinatura do Military AI Workout está ativa. A geração automática do programa chega na próxima atualização.",
     "notConfirmedTitle": "Pagamento não confirmado",
     "notConfirmedSubtitle": "Não conseguimos confirmar esse pagamento. Se você foi cobrado, entre em contato pelo suporte.",
     "backToDashboard": "Voltar ao Painel"

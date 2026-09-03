@@ -429,7 +429,7 @@
     "headlineHighlight": "NO PROBLEM.",
     "subheadline": "Get an AI-powered military-inspired calisthenics program, built from your answers.",
     "disclaimer": "FitPulse Tactical is a fitness program inspired by military-style conditioning — it is not affiliated with any official military force.",
-    "priceNote": "One-time purchase, no subscription",
+    "priceNote": "Monthly subscription, cancel anytime",
     "cta": "Build My Program",
     "featuresTitle": "What's in the program",
     "features": [
@@ -437,7 +437,8 @@
       "Bodyweight only — no equipment needed",
       "Adapted to your level and availability"
     ],
-    "price": "$5.99"
+    "price": "$5.99",
+    "priceInterval": "/mo"
   },
   "militaryIntake": {
     "title": "Tactical Questionnaire",
@@ -565,7 +566,7 @@
   },
   "militarySuccess": {
     "title": "Payment confirmed!",
-    "subtitle": "Your Military AI Workout credit has been added to your account. Automatic program generation is coming in the next update.",
+    "subtitle": "Your Military AI Workout subscription is now active. Automatic program generation is coming in the next update.",
     "notConfirmedTitle": "Payment not confirmed",
     "notConfirmedSubtitle": "We couldn't confirm this payment. If you were charged, please contact support.",
     "backToDashboard": "Back to Dashboard"
