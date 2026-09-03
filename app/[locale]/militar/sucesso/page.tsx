@@ -52,7 +52,16 @@ export default async function MilitaryCheckoutSuccessPage({
               <p className="mt-4 text-silver">{ms.notConfirmedSubtitle}</p>
             </>
           )}
-          <Link href={`${base}/dashboard`} className="mt-8 inline-block text-gold hover:underline">
+          {paid && (
+            <div className="mt-8">
+              <Link href={`${base}/militar/programa`}>
+                <button className="rounded-md bg-gold px-6 py-3 text-sm font-bold uppercase text-carbon hover:bg-gold-light">
+                  {ms.viewProgram}
+                </button>
+              </Link>
+            </div>
+          )}
+          <Link href={`${base}/dashboard`} className="mt-4 inline-block text-gold hover:underline">
             {ms.backToDashboard}
           </Link>
         </div>

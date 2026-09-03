@@ -63,6 +63,11 @@ export function AuthNavActions({ locale, dict }: { locale: LocaleSlug; dict: Dic
                 {dict.profile.navLabel}
               </Link>
             </li>
+            <li>
+              <Link href={`${base}/militar/programa`} onClick={() => setOpen(false)} className="block px-4 py-2.5 text-sm text-white hover:bg-white/5">
+                {dict.militaryProgram.title}
+              </Link>
+            </li>
             <li className="border-t border-white/10 px-4 py-2.5">
               <SignOutButton locale={locale} label={dict.authForm.signOut} />
             </li>
