@@ -32,7 +32,7 @@ export const militaryProgramSchema = z.object({
   programName: z.string(),
   durationWeeks: z.number().int().positive(),
   daysPerWeek: z.number().int().min(1).max(7),
-  estimatedDuration: z.number().int().positive(),
+  estimatedDuration: z.number().int().min(15).max(35),
   difficulty: z.enum(["beginner", "intermediate", "advanced"]),
   goal: z.string(),
   sessions: z.array(
@@ -40,10 +40,12 @@ export const militaryProgramSchema = z.object({
       day: z.number().int(),
       exercises: z.array(
         z.object({
-          name: z.string(), sets: z.number().int().positive(),
-          reps: z.string(), restSeconds: z.number().int().nonnegative(),
+          slug: z.string(), // must match an exercise already in the library
+          sets: z.number().int().positive(),
+          reps: z.string(),
+          restSeconds: z.number().int().min(0).max(30),
         }),
-      ),
+      ).min(5),
     }),
   ),
 });

@@ -6,6 +6,7 @@ import { getFirebaseDb } from "./firebase-client";
 import { useAuth } from "./auth-context";
 
 export interface MilitaryProgramExercise {
+  slug: string;
   name: string;
   sets: number;
   reps: string;

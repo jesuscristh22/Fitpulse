@@ -1,7 +1,9 @@
 import "server-only";
 import { militaryProgramSchema } from "./validation";
+import { getExercises } from "./exercise-server";
 import type { z } from "zod";
 import type { MilitaryIntake } from "./military-intake-client";
+import type { LocaleSlug } from "./locales-config";
 
 type MilitaryProgram = z.infer<typeof militaryProgramSchema>;
 
@@ -12,15 +14,31 @@ const FOCUS_DESCRIPTIONS: Record<MilitaryIntake["focus"], string> = {
   general_conditioning: "general military-inspired conditioning",
 };
 
+const LANGUAGE_NAME: Record<LocaleSlug, string> = {
+  "pt-br": "Brazilian Portuguese",
+  en: "English",
+  es: "Spanish (Spain)",
+};
+
 // Calls OpenAI to generate a structured Military Calisthenics program from
-// the person's questionnaire answers. Bodyweight/calisthenics only — this
-// module never requires equipment. Output is validated against
-// militaryProgramSchema before it's trusted anywhere else in the app.
-export async function generateMilitaryProgram(intake: MilitaryIntake): Promise<MilitaryProgram> {
+// the person's questionnaire answers. The AI is constrained to pick
+// exercises ONLY from FitPulse's own exercise library (by slug) — this is
+// what lets every generated exercise link to a real page with instructions
+// and, where available, a demonstration video, instead of a free-text name
+// the AI invented that we could never reliably match to anything.
+export async function generateMilitaryProgram(
+  intake: MilitaryIntake,
+  locale: LocaleSlug,
+): Promise<MilitaryProgram> {
   const apiKey = process.env.OPENAI_API_KEY;
   if (!apiKey) {
     throw new Error("[CONFIGURATION REQUIRED] OPENAI_API_KEY is not set.");
   }
+
+  // Bodyweight-only pool, matching the Military module's "no equipment" spirit.
+  const allExercises = await getExercises(locale);
+  const pool = allExercises.filter((e) => e.equipment.includes("no_equipment"));
+  const poolForPrompt = pool.map((e) => ({ slug: e.slug, name: e.name, category: e.category }));
 
   const response = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",
@@ -37,15 +55,25 @@ export async function generateMilitaryProgram(intake: MilitaryIntake): Promise<M
           content:
             "You design FitPulse Tactical programs — general fitness inspired by military-style " +
             "conditioning. This is NOT an official military program and must never be presented as one. " +
-            "Use bodyweight/calisthenics exercises only (no equipment). Never diagnose injuries or " +
-            "prescribe medical treatment. If the person's stated limitations suggest something serious, " +
-            "keep the program conservative and add a note in the `goal` field recommending they consult " +
-            "a doctor before starting. Respond ONLY with a JSON object matching exactly this shape: " +
+            "Never diagnose injuries or prescribe medical treatment. If the person's stated limitations " +
+            "suggest something serious, keep the program conservative and add a note in the `goal` field " +
+            "recommending they consult a doctor before starting.\n\n" +
+            `Write every text field (programName, goal) in ${LANGUAGE_NAME[locale]}. This is mandatory.\n\n` +
+            "You may ONLY use exercises from this exact list, referencing each by its `slug` field exactly " +
+            "as given (never invent a slug, never use an exercise not in this list):\n" +
+            JSON.stringify(poolForPrompt) +
+            "\n\nBuild each session to take approximately 30 minutes total including rest, using rest " +
+            "periods of at most 30 seconds between sets. To fill that time appropriately, include 5 to 8 " +
+            "exercises per session (more for higher experience levels) with realistic set/rep ranges for " +
+            "a bodyweight/calisthenics session. Vary the exercises across days within the week so the " +
+            "program doesn't repeat the same 2-3 movements every session.\n\n" +
+            "Respond ONLY with a JSON object matching exactly this shape: " +
             '{ "programName": string, "durationWeeks": number, "daysPerWeek": number, ' +
-            '"estimatedDuration": number (minutes per session), "difficulty": "beginner"|"intermediate"|"advanced", ' +
-            '"goal": string, "sessions": [{ "day": number, "exercises": [{ "name": string, "sets": number, ' +
-            '"reps": string, "restSeconds": number }] }] }. Create exactly `daysPerWeek` sessions ' +
-            "representing one training week (the person repeats this week for the program's duration).",
+            '"estimatedDuration": number (minutes, 20-35), "difficulty": "beginner"|"intermediate"|"advanced", ' +
+            '"goal": string, "sessions": [{ "day": number, "exercises": [{ "slug": string (from the list above), ' +
+            '"sets": number, "reps": string, "restSeconds": number (0-30) }] }] }. Create exactly ' +
+            "`daysPerWeek` sessions representing one training week (the person repeats this week for the " +
+            "program's duration).",
         },
         {
           role: "user",
@@ -70,5 +98,23 @@ export async function generateMilitaryProgram(intake: MilitaryIntake): Promise<M
   if (!content) throw new Error("OpenAI returned no content");
 
   const parsed = JSON.parse(content);
-  return militaryProgramSchema.parse(parsed); // throws if the shape doesn't match — never trust free text
+  const program = militaryProgramSchema.parse(parsed); // throws if the shape doesn't match
+
+  // Defense in depth: drop any exercise slug the model might have hallucinated
+  // despite instructions, rather than trusting it blindly.
+  const validSlugs = new Set(pool.map((e) => e.slug));
+  const cleaned = {
+    ...program,
+    sessions: program.sessions.map((session) => ({
+      ...session,
+      exercises: session.exercises.filter((ex) => validSlugs.has(ex.slug)),
+    })),
+  };
+
+  const hasEmptySession = cleaned.sessions.some((s) => s.exercises.length === 0);
+  if (hasEmptySession) {
+    throw new Error("Generated program referenced exercises outside the library; please try again.");
+  }
+
+  return cleaned;
 }

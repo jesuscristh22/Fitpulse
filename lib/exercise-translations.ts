@@ -855,4 +855,129 @@ export const EXERCISE_TRANSLATIONS: Record<string, Record<LocaleSlug, ExerciseTe
       ],
     },
   },
+  "sit-up": {
+    "pt-br": {
+      name: "Abdominal (Padrão Militar)",
+      description: "O abdominal clássico usado em testes de aptidão física militar — trabalha o core de forma completa.",
+      instructions: [
+        "Deite de costas com os joelhos dobrados e pés apoiados no chão.",
+        "Cruze os braços sobre o peito ou entrelace os dedos atrás da cabeça.",
+        "Suba o tronco até os cotovelos tocarem as coxas, depois desça com controle.",
+      ],
+      safetyNotes: ["Evite puxar o pescoço com as mãos ao subir."],
+    },
+    en: {
+      name: "Sit-Up (Military Standard)",
+      description: "The classic sit-up used in military fitness tests — works the core through a full range of motion.",
+      instructions: [
+        "Lie on your back with your knees bent and feet flat on the floor.",
+        "Cross your arms over your chest or interlace your fingers behind your head.",
+        "Curl your torso up until your elbows touch your thighs, then lower with control.",
+      ],
+      safetyNotes: ["Avoid pulling on your neck with your hands as you come up."],
+    },
+    es: {
+      name: "Abdominal (Estándar Militar)",
+      description: "El abdominal clásico usado en pruebas de aptitud física militar — trabaja el core en todo su rango de movimiento.",
+      instructions: [
+        "Acuéstate boca arriba con las rodillas dobladas y los pies apoyados en el suelo.",
+        "Cruza los brazos sobre el pecho o entrelaza los dedos detrás de la cabeza.",
+        "Sube el torso hasta que los codos toquen los muslos, luego baja con control.",
+      ],
+      safetyNotes: ["Evita tirar del cuello con las manos al subir."],
+    },
+  },
+  "flutter-kicks": {
+    "pt-br": {
+      name: "Flutter Kicks",
+      description: "Exercício clássico de condicionamento militar para o core e flexores do quadril.",
+      instructions: [
+        "Deite de costas com as mãos sob os glúteos e a cabeça levemente elevada.",
+        "Levante as pernas retas a poucos centímetros do chão.",
+        "Alterne pequenos chutes para cima e para baixo, mantendo o core contraído.",
+      ],
+      safetyNotes: ["Mantenha a lombar pressionada contra o chão para proteger as costas."],
+    },
+    en: {
+      name: "Flutter Kicks",
+      description: "A classic military conditioning move for the core and hip flexors.",
+      instructions: [
+        "Lie on your back with your hands under your glutes and your head slightly raised.",
+        "Lift your straight legs a few inches off the floor.",
+        "Alternate small up-and-down kicks, keeping your core braced throughout.",
+      ],
+      safetyNotes: ["Keep your lower back pressed into the floor to protect your spine."],
+    },
+    es: {
+      name: "Flutter Kicks",
+      description: "Un movimiento clásico de acondicionamiento militar para el core y los flexores de cadera.",
+      instructions: [
+        "Acuéstate boca arriba con las manos bajo los glúteos y la cabeza ligeramente elevada.",
+        "Levanta las piernas rectas unos centímetros del suelo.",
+        "Alterna pequeñas patadas hacia arriba y abajo, manteniendo el core contraído.",
+      ],
+      safetyNotes: ["Mantén la zona lumbar presionada contra el suelo para proteger la espalda."],
+    },
+  },
+  "squat-thrust": {
+    "pt-br": {
+      name: "Squat Thrust",
+      description: "A base do burpee — um movimento de condicionamento militar completo, sem o salto final.",
+      instructions: [
+        "Comece em pé, depois agache e apoie as mãos no chão.",
+        "Jogue os pés para trás até a posição de prancha.",
+        "Traga os pés de volta para perto das mãos e levante-se.",
+      ],
+    },
+    en: {
+      name: "Squat Thrust",
+      description: "The foundation of the burpee — a full military conditioning move without the final jump.",
+      instructions: [
+        "Start standing, then squat down and place your hands on the floor.",
+        "Kick your feet back into a plank position.",
+        "Bring your feet back in toward your hands and stand up.",
+      ],
+    },
+    es: {
+      name: "Squat Thrust",
+      description: "La base del burpee — un movimiento completo de acondicionamiento militar sin el salto final.",
+      instructions: [
+        "Comienza de pie, luego agáchate y coloca las manos en el suelo.",
+        "Lleva los pies hacia atrás hasta la posición de plancha.",
+        "Trae los pies de vuelta cerca de las manos y ponte de pie.",
+      ],
+    },
+  },
+  "squat-jump": {
+    "pt-br": {
+      name: "Squat Jump",
+      description: "Um agachamento explosivo que desenvolve potência nas pernas, usado em treinos de condicionamento militar.",
+      instructions: [
+        "Fique em pé com os pés na largura dos ombros.",
+        "Agache até a coxa ficar paralela ao chão.",
+        "Exploda para cima em um salto, aterrissando suavemente de volta no agachamento.",
+      ],
+      safetyNotes: ["Aterrisse com os joelhos levemente flexionados para absorver o impacto."],
+    },
+    en: {
+      name: "Squat Jump",
+      description: "An explosive squat that builds leg power, used in military-style conditioning workouts.",
+      instructions: [
+        "Stand with feet shoulder-width apart.",
+        "Squat down until your thighs are parallel to the floor.",
+        "Explode upward into a jump, landing softly back into the squat.",
+      ],
+      safetyNotes: ["Land with knees slightly bent to absorb the impact."],
+    },
+    es: {
+      name: "Squat Jump",
+      description: "Una sentadilla explosiva que desarrolla potencia en las piernas, usada en entrenos de acondicionamiento militar.",
+      instructions: [
+        "Ponte de pie con los pies al ancho de los hombros.",
+        "Agáchate hasta que los muslos queden paralelos al suelo.",
+        "Explota hacia arriba en un salto, aterrizando suavemente de vuelta en la sentadilla.",
+      ],
+      safetyNotes: ["Aterriza con las rodillas ligeramente flexionadas para absorber el impacto."],
+    },
+  },
 };

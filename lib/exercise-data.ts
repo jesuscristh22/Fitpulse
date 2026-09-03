@@ -38,6 +38,10 @@ export const SEED_EXERCISES_BASE: ExerciseBase[] = [
   { id: "mountain-climbers", slug: "mountain-climbers", category: "military", difficulty: "beginner", muscles: ["core", "quads"], equipment: ["no_equipment"], alternatives: ["burpee", "plank"] },
   { id: "bear-crawl", slug: "bear-crawl", category: "military", difficulty: "intermediate", muscles: ["full_body", "core", "shoulders"], equipment: ["no_equipment"], alternatives: ["plank", "mountain-climbers"] },
   { id: "sprints", slug: "sprints", category: "military", difficulty: "advanced", muscles: ["quads", "hamstrings", "glutes", "calves"], equipment: ["no_equipment"], alternatives: ["running", "burpee"] },
+  { id: "sit-up", slug: "sit-up", category: "military", difficulty: "beginner", muscles: ["core"], equipment: ["no_equipment"], alternatives: ["plank", "flutter-kicks"] },
+  { id: "flutter-kicks", slug: "flutter-kicks", category: "military", difficulty: "beginner", muscles: ["core"], equipment: ["no_equipment"], alternatives: ["sit-up", "plank"] },
+  { id: "squat-thrust", slug: "squat-thrust", category: "military", difficulty: "intermediate", muscles: ["full_body", "quads", "core"], equipment: ["no_equipment"], alternatives: ["burpee", "squat-jump"] },
+  { id: "squat-jump", slug: "squat-jump", category: "military", difficulty: "intermediate", muscles: ["quads", "glutes", "calves"], equipment: ["no_equipment"], alternatives: ["squat-thrust", "bodyweight-squat"] },
 
   // ---- Mobility ----
   { id: "hip-flexor-stretch", slug: "hip-flexor-stretch", category: "mobility", difficulty: "beginner", muscles: ["core"], equipment: ["no_equipment"], alternatives: ["cat-cow"] },
