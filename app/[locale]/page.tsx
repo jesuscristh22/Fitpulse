@@ -230,7 +230,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
           <Image src="/images/back-shirt.jpg" alt="FitPulse member training" fill className="object-cover object-[60%_20%]" />
           <div className="absolute inset-0 bg-gradient-to-r from-carbon via-carbon/60 to-transparent" />
           <div className="absolute inset-y-0 left-0 flex max-w-md flex-col justify-center px-6 sm:px-10 lg:px-16">
-            <p className="font-heading text-xl font-bold leading-snug sm:text-2xl">"{dict.testimonial.quote}"</p>
+            <p className="font-heading text-xl font-bold leading-snug sm:text-2xl">&quot;{dict.testimonial.quote}&quot;</p>
             <p className="mt-4 text-sm text-silver">{dict.testimonial.author}</p>
           </div>
         </div>

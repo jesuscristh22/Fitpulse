@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useUserData, calculateBmi, bmiCategory } from "@/lib/use-user-data";
 import { useWeeklyCompletedCount } from "@/lib/workout-sessions-client";
+import { useMyWorkouts } from "@/lib/workouts-client";
 import { useMilitaryProgram } from "@/lib/military-program-client";
 import type { Dictionary } from "@/lib/i18n";
 import type { LocaleSlug } from "@/lib/locales-config";
@@ -46,6 +47,7 @@ export function DashboardContent({
 }) {
   const { account, profile, fitness, loading } = useUserData();
   const { count: weeklyCompleted } = useWeeklyCompletedCount();
+  const { workouts } = useMyWorkouts();
   const { program: militaryProgram, subscriptionStatus: militaryStatus } = useMilitaryProgram();
   const base = `/${locale}`;
   const de = dict.dashboardExtra;
@@ -160,6 +162,34 @@ export function DashboardContent({
             </dl>
           ) : (
             <p className="mt-3 text-sm text-silver">{de.noDataYet}</p>
+          )}
+        </Card>
+
+        {/* My Workouts preview */}
+        <Card className="lg:col-span-3">
+          <div className="flex items-center justify-between">
+            <p className="text-xs uppercase text-silver">{dict.myWorkouts.title}</p>
+          </div>
+          {workouts.length === 0 ? (
+            <p className="mt-3 text-sm text-silver">{dict.myWorkouts.empty}</p>
+          ) : (
+            <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-3">
+              {workouts.slice(0, 3).map((w) => {
+                const exerciseCount = new Set(w.sets.map((s) => s.exerciseId)).size;
+                return (
+                  <Link
+                    key={w.id}
+                    href={`${base}/treinos/${w.id}`}
+                    className="rounded-lg border border-white/10 p-3 transition-colors hover:border-gold/40"
+                  >
+                    <p className="font-heading text-sm font-bold">{w.name}</p>
+                    <p className="mt-1 text-xs text-silver">
+                      {dict.myWorkouts.exercisesCount.replace("{count}", String(exerciseCount))}
+                    </p>
+                  </Link>
+                );
+              })}
+            </div>
           )}
         </Card>
 

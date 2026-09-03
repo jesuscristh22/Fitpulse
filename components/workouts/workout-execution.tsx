@@ -64,6 +64,9 @@ export function WorkoutExecution({
     return () => clearTimeout(timer);
   }, [resting, restLeft]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- `finished` intentionally
+  // triggers a recompute of "now" the moment the session ends; it isn't read
+  // inside the callback itself.
   const elapsedSeconds = useMemo(() => {
     return Math.round((Date.now() - new Date(startedAtRef.current).getTime()) / 1000);
   }, [finished]);
