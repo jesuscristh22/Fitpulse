@@ -568,9 +568,25 @@
   },
   "militarySuccess": {
     "title": "¡Pago confirmado!",
-    "subtitle": "Tu suscripción de Military AI Workout ya está activa. La generación automática del programa llega en la próxima actualización.",
+    "subtitle": "Tu suscripción de Military AI Workout ya está activa. Genera tu programa ahora mismo.",
     "notConfirmedTitle": "Pago no confirmado",
     "notConfirmedSubtitle": "No pudimos confirmar este pago. Si se te cobró, contacta con soporte.",
-    "backToDashboard": "Volver al Panel"
+    "backToDashboard": "Volver al Panel",
+    "viewProgram": "Generar Mi Programa"
+  },
+  "militaryProgram": {
+    "title": "Tu Programa Tactical",
+    "subtitle": "Generado por IA a partir de tus respuestas en el cuestionario.",
+    "generateButton": "Generar Mi Programa",
+    "generating": "Generando tu programa...",
+    "regenerateButton": "Generar de Nuevo",
+    "regenerateNote": "Puedes generar un nuevo programa cada 24 horas.",
+    "noSubscription": "Necesitas una suscripción activa de Military AI Workout para generar tu programa.",
+    "subscribeCta": "Ver Planes de Tactical",
+    "disclaimer": "Programa generado por IA con fines de acondicionamiento físico general — no es un programa militar oficial, no sustituye la orientación médica. Si tienes lesiones o condiciones de salud, habla con un profesional antes de empezar.",
+    "weekLabel": "semanas",
+    "dayLabel": "Día",
+    "restLabel": "Descanso",
+    "error": "No se pudo generar el programa ahora. Inténtalo de nuevo en unos momentos."
   }
 }
