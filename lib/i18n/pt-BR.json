@@ -575,7 +575,8 @@
     "freeBadge": "Grátis",
     "startButton": "Iniciar Treino",
     "minutesLabel": "min",
-    "exercisesCount": "{count} exercícios"
+    "exercisesCount": "{count} exercícios",
+    "searchVideoLabel": "Buscar vídeo no YouTube"
   },
   "militarySuccess": {
     "title": "Pagamento confirmado!",
@@ -599,7 +600,7 @@
     "dayLabel": "Dia",
     "restLabel": "Descanso",
     "error": "Não foi possível gerar o programa agora. Tente novamente em instantes.",
-    "videoSearchNote": "Clique no nome de um exercício para ver vídeos de demonstração no YouTube."
+    "videoSearchNote": "Clique no nome de um exercício para ver instruções completas (quando já estiver na nossa biblioteca) ou uma busca de vídeos no YouTube."
   },
   "dance": {
     "navLabel": "Dança",

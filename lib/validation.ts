@@ -41,6 +41,9 @@ export const militaryProgramSchema = z.object({
       exercises: z.array(
         z.object({
           name: z.string(), // free text — not required to match our library
+          description: z.string(), // used to auto-add this exercise to our library if it's new
+          instructions: z.array(z.string()).min(2).max(5),
+          muscles: z.array(z.string()).default([]),
           sets: z.number().int().positive(),
           reps: z.string(),
           restSeconds: z.number().int().min(0).max(30),

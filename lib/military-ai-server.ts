@@ -57,8 +57,8 @@ export async function generateMilitaryProgram(
             "prescribe medical treatment. If the person's stated limitations suggest something " +
             "serious, keep the program conservative and add a note in the `goal` field recommending " +
             "they consult a doctor before starting.\n\n" +
-            `Write every text field (programName, goal, and every exercise's name) in ${LANGUAGE_NAME[locale]}. ` +
-            "This is mandatory.\n\n" +
+            `Write every text field (programName, goal, and every exercise's name, description, and ` +
+            `instructions) in ${LANGUAGE_NAME[locale]}. This is mandatory.\n\n` +
             "Use real, well-known, currently-taught bodyweight/calisthenics exercises — the kind you'd " +
             "see in an actual military PT session or a professional trainer's bootcamp class (e.g. " +
             "push-ups, pull-ups, sit-ups, flutter kicks, squat thrusts, bear crawls, mountain climbers, " +
@@ -73,6 +73,9 @@ export async function generateMilitaryProgram(
             '{ "programName": string, "durationWeeks": number, "daysPerWeek": number, ' +
             '"estimatedDuration": number (minutes, 20-35), "difficulty": "beginner"|"intermediate"|"advanced", ' +
             '"goal": string, "sessions": [{ "day": number, "exercises": [{ "name": string, ' +
+            '"description": string (one sentence explaining what the exercise trains), ' +
+            '"instructions": string[] (2-4 short numbered steps on how to perform it correctly), ' +
+            '"muscles": string[] (main muscles worked, lowercase single words like "core", "quads", "chest"), ' +
             '"sets": number, "reps": string, "restSeconds": number (0-30) }] }] }. Create exactly ' +
             "`daysPerWeek` sessions representing one training week (the person repeats this week for " +
             "the program's duration).",

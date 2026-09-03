@@ -7,6 +7,8 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { VideoEmbed } from "@/components/ui/video-embed";
+import { getExerciseVideoId } from "@/lib/exercise-videos";
+import { buildExerciseVideoSearchUrl } from "@/lib/youtube-search-link";
 import { useAuth } from "@/lib/auth-context";
 import { saveWorkout } from "@/lib/workouts-client";
 import type { Dictionary } from "@/lib/i18n";
@@ -81,13 +83,32 @@ export function FunctionalWorkoutCard({
         <Badge variant="gold">{dict.library.difficulty[template.difficulty]}</Badge>
       </div>
 
-      <ul className="mt-4 flex-1 space-y-1">
-        {template.exercises.map((e) => (
-          <li key={e.exerciseId} className="text-xs text-silver">
-            {e.exerciseName} — {e.sets}x{e.reps ?? `${e.durationSeconds}s`}
-          </li>
-        ))}
-      </ul>
+      <div className="mt-4 flex-1 space-y-4">
+        {template.exercises.map((e) => {
+          const videoId = getExerciseVideoId(e.exerciseSlug, locale);
+          return (
+            <div key={e.exerciseId}>
+              <p className="text-xs font-semibold text-white">
+                {e.exerciseName} — {e.sets}x{e.reps ?? `${e.durationSeconds}s`}
+              </p>
+              {videoId ? (
+                <div className="mt-2">
+                  <VideoEmbed videoId={videoId} title={e.exerciseName} />
+                </div>
+              ) : (
+                <a
+                  href={buildExerciseVideoSearchUrl(e.exerciseName, locale)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-1 inline-block text-xs text-silver hover:text-gold hover:underline"
+                >
+                  {fw.searchVideoLabel}
+                </a>
+              )}
+            </div>
+          );
+        })}
+      </div>
 
       <Button variant="primary" size="md" onClick={handleStart} disabled={starting} className="mt-5 w-full gap-2">
         <Zap size={14} className="fill-carbon" /> {fw.startButton}

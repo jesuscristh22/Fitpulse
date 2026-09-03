@@ -5,6 +5,7 @@ export interface Exercise {
   id: string; name: string; slug: string; description: string; instructions: string[];
   muscles: string[]; equipment: string[]; difficulty: "beginner" | "intermediate" | "advanced";
   category: ExerciseCategory; mediaUrl?: string; safetyNotes?: string[]; alternatives?: string[];
+  videoId?: string; // auto-discovered exercises store their found video here (curated ones use EXERCISE_VIDEOS instead)
 }
 
 export interface WorkoutSet {

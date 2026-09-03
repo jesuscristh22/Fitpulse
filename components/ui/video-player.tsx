@@ -3,8 +3,18 @@ import type { LocaleSlug } from "@/lib/locales-config";
 
 // Responsive 16:9 embed using youtube-nocookie.com (privacy-enhanced mode —
 // no tracking cookies until the person actually presses play).
-export function ExerciseVideoPlayer({ slug, title, locale }: { slug: string; title: string; locale: LocaleSlug }) {
-  const videoId = getExerciseVideoId(slug, locale);
+export function ExerciseVideoPlayer({
+  slug,
+  title,
+  locale,
+  fallbackVideoId,
+}: {
+  slug: string;
+  title: string;
+  locale: LocaleSlug;
+  fallbackVideoId?: string;
+}) {
+  const videoId = getExerciseVideoId(slug, locale) ?? fallbackVideoId;
   if (!videoId) return null;
 
   return (

@@ -24,6 +24,7 @@ export const DANCE_ROUTINES: Record<LocaleSlug, DanceRoutine[]> = {
       description: "Uma aula leve pra quem nunca dançou treinando — combina passos simples com movimento funcional.",
       estimatedMinutes: 20,
       difficulty: "beginner",
+      videoId: "aOFWraYaD-A", // "Como dançar forró: aprenda o Passo Básico"
       moves: ["Passo básico de forró", "Marcha com balanço de braços", "Passo lateral com agachamento", "Alongamento dançado"],
     },
     {
@@ -32,6 +33,7 @@ export const DANCE_ROUTINES: Record<LocaleSlug, DanceRoutine[]> = {
       description: "Aula de cardio dançante, no estilo Zumba, pra elevar a frequência cardíaca se divertindo.",
       estimatedMinutes: 30,
       difficulty: "intermediate",
+      videoId: "6RQuxxZgJjk", // "Em Dança: Aprenda o passo básico da Salsa"
       moves: ["Salsa básico", "Merengue marchado", "Reggaeton perreo básico", "Cumbia passo cruzado"],
     },
     {
@@ -40,6 +42,7 @@ export const DANCE_ROUTINES: Record<LocaleSlug, DanceRoutine[]> = {
       description: "Combina coreografia latina com pausas de força funcional — o melhor dos dois mundos.",
       estimatedMinutes: 35,
       difficulty: "intermediate",
+      videoId: "T7eHx0Lf6Pc", // "Passo Básico De BACHATA - Aula 01"
       moves: ["Salsa com giro", "Agachamento com samba no pé", "Prancha entre séries de dança", "Bachata básico"],
     },
   ],
@@ -50,6 +53,7 @@ export const DANCE_ROUTINES: Record<LocaleSlug, DanceRoutine[]> = {
       description: "A light class for people who've never trained by dancing — simple steps combined with functional movement.",
       estimatedMinutes: 20,
       difficulty: "beginner",
+      videoId: "wV8cDpJa2f4", // "Salsa Beginners 1 - Salsa Basic Step for the Absolute Beginner"
       moves: ["Basic forró step", "March with arm swings", "Side step with squat", "Danced stretch"],
     },
     {
@@ -58,6 +62,7 @@ export const DANCE_ROUTINES: Record<LocaleSlug, DanceRoutine[]> = {
       description: "A Zumba-style dance cardio class to raise your heart rate while having fun.",
       estimatedMinutes: 30,
       difficulty: "intermediate",
+      videoId: "7nEOMuWrj2Y", // "How to Dance Merengue for Beginners | Basic Merengue Steps Patterns"
       moves: ["Basic salsa", "Marching merengue", "Basic reggaeton perreo", "Cumbia cross step"],
     },
     {
@@ -66,6 +71,7 @@ export const DANCE_ROUTINES: Record<LocaleSlug, DanceRoutine[]> = {
       description: "Combines Latin choreography with functional strength breaks — the best of both worlds.",
       estimatedMinutes: 35,
       difficulty: "intermediate",
+      videoId: "SWrsMw0Da7Q", // "Bachata Basic Steps for Beginners"
       moves: ["Salsa with turn", "Squat with samba footwork", "Plank between dance sets", "Basic bachata"],
     },
   ],
@@ -84,6 +90,7 @@ export const DANCE_ROUTINES: Record<LocaleSlug, DanceRoutine[]> = {
       description: "Clase de cardio bailado, estilo Zumba, para elevar el ritmo cardíaco divirtiéndote.",
       estimatedMinutes: 30,
       difficulty: "intermediate",
+      videoId: "XDu_iwJqnOc", // "PASOS BÁSICOS DE SALSA - Clase para principiantes"
       moves: ["Salsa básica", "Merengue marchado", "Perreo básico de reggaetón", "Cumbia paso cruzado"],
     },
     {
@@ -92,6 +99,7 @@ export const DANCE_ROUTINES: Record<LocaleSlug, DanceRoutine[]> = {
       description: "Combina coreografía latina con pausas de fuerza funcional — lo mejor de ambos mundos.",
       estimatedMinutes: 35,
       difficulty: "intermediate",
+      videoId: "uYnK-3aQGyk", // "Iniciación a la BACHATA - Pasos Básicos"
       moves: ["Salsa con giro", "Sentadilla con paso de samba", "Plancha entre series de baile", "Bachata básica"],
     },
   ],

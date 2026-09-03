@@ -22,22 +22,29 @@ function mergeWithTranslation(base: ExerciseBase, locale: LocaleSlug): Exercise 
   };
 }
 
-// Same graceful-fallback pattern as blog-server.ts: try Firestore's public
-// "exercises" collection first (populated by Super Admin content tools,
-// Phase 19+ — those docs are expected to already store locale-resolved text).
-// Falls back to the seed library, localized on the fly for the requested
-// locale, so the page is never empty and never crashes if Firebase isn't
-// configured yet.
+// Our 32 hand-written seed exercises are ALWAYS included — Firestore's
+// "exercises" collection is treated as an ADDITIVE extension (exercises the
+// Military AI generator discovers and auto-saves, or that Super Admin adds
+// later in Phase 19), never a replacement. A previous version of this
+// function returned ONLY Firestore's exercises whenever that collection was
+// non-empty, which would have silently erased the whole curated library the
+// moment a single AI-discovered exercise was saved — fixed here.
 export async function getExercises(locale: LocaleSlug): Promise<Exercise[]> {
+  const seedExercises = SEED_EXERCISES_BASE.map((base) => mergeWithTranslation(base, locale));
+
   try {
     const snapshot = await adminDb().collection("exercises").get();
-    if (!snapshot.empty) {
-      return snapshot.docs.map((doc) => doc.data() as Exercise);
-    }
+    const seedSlugs = new Set(seedExercises.map((e) => e.slug));
+
+    const discovered = snapshot.docs
+      .map((doc) => doc.data() as Exercise & { locale?: LocaleSlug })
+      .filter((e) => (!e.locale || e.locale === locale) && !seedSlugs.has(e.slug));
+
+    return [...seedExercises, ...discovered];
   } catch (error) {
-    console.error("[getExercises] Firestore unavailable, falling back to seed data:", error);
+    console.error("[getExercises] Firestore unavailable, using seed library only:", error);
+    return seedExercises;
   }
-  return SEED_EXERCISES_BASE.map((base) => mergeWithTranslation(base, locale));
 }
 
 export async function getExercise(locale: LocaleSlug, slug: string): Promise<Exercise | null> {

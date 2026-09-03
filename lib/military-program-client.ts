@@ -7,6 +7,7 @@ import { useAuth } from "./auth-context";
 
 export interface MilitaryProgramExercise {
   name: string;
+  slug?: string; // present when the name matched something in our own library
   sets: number;
   reps: string;
   restSeconds: number;
