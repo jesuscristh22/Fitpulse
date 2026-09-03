@@ -10,6 +10,7 @@ import { saveProfile } from "@/lib/profile-client";
 import { calculateAge, calculateBodyFatPercent, calculateBmr, calculateTdee, type ActivityLevel } from "@/lib/health-metrics";
 import {
   GENDER_OPTIONS,
+  COUNTRY_OPTIONS,
   GOAL_OPTIONS,
   ENVIRONMENT_OPTIONS,
   EXPERIENCE_OPTIONS,
@@ -19,7 +20,7 @@ import {
   ACTIVITY_LEVEL_OPTIONS,
 } from "@/lib/onboarding-options";
 import type { Dictionary } from "@/lib/i18n";
-import type { FitnessGoal, TrainingEnvironment } from "@/lib/types";
+import type { FitnessGoal, TrainingEnvironment, SupportedCountry } from "@/lib/types";
 
 function Pill({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
   return (
@@ -43,6 +44,7 @@ export function ProfileForm({ dict }: { dict: Dictionary }) {
   const [displayName, setDisplayName] = useState("");
   const [birthDate, setBirthDate] = useState("");
   const [gender, setGender] = useState<(typeof GENDER_OPTIONS)[number] | undefined>();
+  const [country, setCountry] = useState<SupportedCountry | undefined>();
   const [heightCm, setHeightCm] = useState<number | undefined>();
   const [weightKg, setWeightKg] = useState<number | undefined>();
   const [waistCm, setWaistCm] = useState<number | undefined>();
@@ -62,6 +64,7 @@ export function ProfileForm({ dict }: { dict: Dictionary }) {
   // Hydrate form fields once live data arrives.
   useEffect(() => {
     if (account?.displayName) setDisplayName(account.displayName);
+    if (account?.country) setCountry(account.country as SupportedCountry);
     if (profile) {
       setBirthDate(profile.birthDate ?? "");
       setGender(profile.gender);
@@ -93,6 +96,7 @@ export function ProfileForm({ dict }: { dict: Dictionary }) {
     try {
       await saveProfile(user.uid, {
         displayName,
+        country,
         profile: { birthDate, gender, heightCm, weightKg, waistCm, neckCm, hipCm, activityLevel },
         fitness: {
           goals: goal ? [goal] : undefined,
@@ -145,6 +149,17 @@ export function ProfileForm({ dict }: { dict: Dictionary }) {
             {GENDER_OPTIONS.map((g) => (
               <Pill key={g} active={gender === g} onClick={() => setGender(g)}>
                 {dict.onboarding.steps.gender.options[g]}
+              </Pill>
+            ))}
+          </div>
+        </div>
+        <div className="mt-4">
+          <label className="text-xs text-silver">{p.fields.country}</label>
+          <p className="mb-2 text-[11px] text-silver/70">{p.fields.countryNote}</p>
+          <div className="flex flex-wrap gap-2">
+            {COUNTRY_OPTIONS.map((c) => (
+              <Pill key={c} active={country === c} onClick={() => setCountry(c)}>
+                {dict.onboarding.steps.country.options[c]}
               </Pill>
             ))}
           </div>

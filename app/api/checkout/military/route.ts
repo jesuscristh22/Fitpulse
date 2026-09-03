@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { adminAuth, adminDb } from "@/lib/firebase-admin";
 import { getStripe } from "@/lib/stripe-server";
 import { getMilitaryPriceId } from "@/lib/stripe-pricing";
+import { isLocaleSlug } from "@/lib/locales-config";
 import type { SupportedCountry } from "@/lib/types";
 
 // Creates a Stripe Checkout Session for the "Military AI Workout" recurring
@@ -14,10 +15,15 @@ export async function POST(request: Request) {
     if (!idToken) {
       return NextResponse.json({ error: "Missing idToken" }, { status: 400 });
     }
+    if (!isLocaleSlug(locale)) {
+      return NextResponse.json({ error: "Invalid locale" }, { status: 400 });
+    }
 
     const decoded = await adminAuth().verifyIdToken(idToken);
     const uid = decoded.uid;
 
+    // Priced by the country the person registered with, not the site
+    // language they happen to be browsing in right now.
     const userDoc = await adminDb().collection("users").doc(uid).get();
     const country = (userDoc.data()?.country as SupportedCountry | undefined) ?? "US";
     const priceId = getMilitaryPriceId(country);
