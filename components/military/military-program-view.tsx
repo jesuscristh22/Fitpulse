@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
+import { useState } from "react";
 import { Zap, ShieldAlert } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -31,7 +31,7 @@ export function MilitaryProgramView({ locale, dict }: { locale: LocaleSlug; dict
       const res = await fetch("/api/military/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ idToken }),
+        body: JSON.stringify({ idToken, locale }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error ?? "Failed");
@@ -97,7 +97,10 @@ export function MilitaryProgramView({ locale, dict }: { locale: LocaleSlug; dict
             <ul className="mt-3 space-y-2">
               {session.exercises.map((ex, i) => (
                 <li key={i} className="text-sm text-silver">
-                  <span className="font-semibold text-white">{ex.name}</span> — {ex.sets}x{ex.reps} · {mp.restLabel} {ex.restSeconds}s
+                  <Link href={`${base}/exercicios/${ex.slug}`} className="font-semibold text-white hover:text-gold hover:underline">
+                    {ex.name}
+                  </Link>{" "}
+                  — {ex.sets}x{ex.reps} · {mp.restLabel} {ex.restSeconds}s
                 </li>
               ))}
             </ul>
