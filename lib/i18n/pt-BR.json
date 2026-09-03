@@ -505,7 +505,9 @@
       "neck": "Pescoço (cm)",
       "hip": "Quadril (cm)",
       "activityLevel": "Nível de atividade",
-      "bodyMeasurementsNote": "Opcional — usado só para estimar seu percentual de gordura."
+      "bodyMeasurementsNote": "Opcional — usado só para estimar seu percentual de gordura.",
+      "country": "País",
+      "countryNote": "É esse país que define a moeda e o preço cobrado (ex: Military AI Workout)."
     },
     "activityLevels": {
       "sedentary": "Sedentário (pouco ou nenhum exercício)",

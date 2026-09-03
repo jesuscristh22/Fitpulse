@@ -505,7 +505,9 @@
       "neck": "Neck (cm)",
       "hip": "Hip (cm)",
       "activityLevel": "Activity level",
-      "bodyMeasurementsNote": "Optional — only used to estimate your body fat percentage."
+      "bodyMeasurementsNote": "Optional — only used to estimate your body fat percentage.",
+      "country": "Country",
+      "countryNote": "This country determines the currency and price you're charged (e.g. Military AI Workout)."
     },
     "activityLevels": {
       "sedentary": "Sedentary (little or no exercise)",

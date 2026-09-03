@@ -505,7 +505,9 @@
       "neck": "Cuello (cm)",
       "hip": "Cadera (cm)",
       "activityLevel": "Nivel de actividad",
-      "bodyMeasurementsNote": "Opcional — solo se usa para estimar tu porcentaje de grasa corporal."
+      "bodyMeasurementsNote": "Opcional — solo se usa para estimar tu porcentaje de grasa corporal.",
+      "country": "País",
+      "countryNote": "Este país determina la moneda y el precio que se te cobra (ej: Military AI Workout)."
     },
     "activityLevels": {
       "sedentary": "Sedentario (poco o ningún ejercicio)",

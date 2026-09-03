@@ -3,8 +3,11 @@ import type { SupportedCountry } from "./types";
 
 // [CONFIGURATION REQUIRED] — each of these must be a real Stripe Price ID
 // (starts with "price_"), created in the Stripe Dashboard for the "Military
-// AI Workout" one-time-purchase Product. Portugal and Spain share one EUR
-// price per §73 (localized pricing table, not real-time currency conversion).
+// AI Workout" recurring monthly subscription. Priced by the country the
+// person registered with (users/{uid}.country from onboarding/profile) —
+// not the site language, since someone can browse in one language while
+// living in, and being billed for, a different country. Portugal and Spain
+// share the EUR price per §73.
 const PRICE_ENV_BY_COUNTRY: Record<SupportedCountry, string | undefined> = {
   BR: process.env.STRIPE_PRICE_MILITARY_BR,
   PT: process.env.STRIPE_PRICE_MILITARY_EU,
