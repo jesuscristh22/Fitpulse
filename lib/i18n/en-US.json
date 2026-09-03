@@ -370,7 +370,16 @@
     "instructionsTitle": "How to do it",
     "safetyTitle": "Safety",
     "alternativesTitle": "Alternatives",
-    "back": "Back to exercises"
+    "back": "Back to exercises",
+    "paywallTitle": "The full library is subscriber-only",
+    "paywallSubtitle": "Full access to exercises (with video and complete instructions) is a perk of an active subscription.",
+    "tryFreeGenerator": "Try Free Generator",
+    "subscribeCta": "View Plans",
+    "generatorTitle": "Exercise Generator",
+    "generatorSubtitle": "Pick a category and get an exercise suggestion — free, no account needed.",
+    "generateButton": "Generate Exercise",
+    "tryAgain": "Try Another",
+    "upsellNote": "Want the full library, with video and search by muscle/equipment? Subscribe to FitPulse Tactical."
   },
   "workoutBuilder": {
     "title": "Create Workout",
@@ -587,6 +596,14 @@
     "weekLabel": "weeks",
     "dayLabel": "Day",
     "restLabel": "Rest",
-    "error": "Couldn't generate the program right now. Please try again shortly."
+    "error": "Couldn't generate the program right now. Please try again shortly.",
+    "videoSearchNote": "Click an exercise name to see demonstration videos on YouTube."
+  },
+  "dance": {
+    "navLabel": "Dance",
+    "title": "Functional Dance",
+    "subtitle": "Dance classes used in functional training — developed with PE teachers.",
+    "movesLabel": "Moves",
+    "watchOnYoutube": "Watch videos on YouTube"
   }
 }

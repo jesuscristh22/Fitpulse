@@ -40,7 +40,7 @@ export const militaryProgramSchema = z.object({
       day: z.number().int(),
       exercises: z.array(
         z.object({
-          slug: z.string(), // must match an exercise already in the library
+          name: z.string(), // free text — not required to match our library
           sets: z.number().int().positive(),
           reps: z.string(),
           restSeconds: z.number().int().min(0).max(30),

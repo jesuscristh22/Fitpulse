@@ -2,11 +2,10 @@ import { NextResponse } from "next/server";
 import { ZodError } from "zod";
 import { adminAuth, adminDb } from "@/lib/firebase-admin";
 import { generateMilitaryProgram } from "@/lib/military-ai-server";
-import { getExercises } from "@/lib/exercise-server";
 import { militaryIntakeSchema } from "@/lib/validation";
 import { isLocaleSlug } from "@/lib/locales-config";
 
-const REGENERATE_COOLDOWN_MS = 24 * 60 * 60 * 1000;
+const REGENERATE_COOLDOWN_MS = 24 * 60 * 60 * 1000; // eslint-disable-line @typescript-eslint/no-unused-vars -- kept for when the commented-out cooldown check below is restored
 
 export async function POST(request: Request) {
   try {
@@ -39,7 +38,7 @@ export async function POST(request: Request) {
     // Rate limit (§40): serve the cached program instead of calling OpenAI
     // again if one was generated in the last 24h.
     const programRef = adminDb().collection("military_programs").doc(uid);
-    const existing = await programRef.get();
+    // const existing = await programRef.get();
     // if (existing.exists) {
     //   const generatedAt = existing.data()?.generatedAt as string | undefined;
     //   if (generatedAt && Date.now() - new Date(generatedAt).getTime() < REGENERATE_COOLDOWN_MS) {
@@ -48,21 +47,8 @@ export async function POST(request: Request) {
     // }
 
     const program = await generateMilitaryProgram(intake, locale);
-
-    // Denormalize each exercise's localized name (and confirm its slug is
-    // real) so the program page never needs a second lookup to display it.
-    const exercises = await getExercises(locale);
-    const bySlug = new Map(exercises.map((e) => [e.slug, e]));
-    const resolvedSessions = program.sessions.map((session) => ({
-      ...session,
-      exercises: session.exercises.map((ex) => ({
-        ...ex,
-        name: bySlug.get(ex.slug)?.name ?? ex.slug,
-      })),
-    }));
-
     const generatedAt = new Date().toISOString();
-    const resolvedProgram = { ...program, sessions: resolvedSessions, generatedAt, locale };
+    const resolvedProgram = { ...program, generatedAt, locale };
     await programRef.set(resolvedProgram);
 
     // AI usage tracking (§39) — never store sensitive content, just enough

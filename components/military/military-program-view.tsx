@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { useAuth } from "@/lib/auth-context";
 import { getFirebaseAuth } from "@/lib/firebase-client";
 import { useMilitaryProgram } from "@/lib/military-program-client";
+import { buildExerciseVideoSearchUrl } from "@/lib/youtube-search-link";
 import type { Dictionary } from "@/lib/i18n";
 import type { LocaleSlug } from "@/lib/locales-config";
 
@@ -87,6 +88,7 @@ export function MilitaryProgramView({ locale, dict }: { locale: LocaleSlug; dict
       </div>
 
       <p className="mt-4 text-silver">{program.goal}</p>
+      <p className="mt-2 text-xs text-silver/60">{mp.videoSearchNote}</p>
 
       <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
         {program.sessions.map((session) => (
@@ -97,13 +99,14 @@ export function MilitaryProgramView({ locale, dict }: { locale: LocaleSlug; dict
             <ul className="mt-3 space-y-2">
               {session.exercises.map((ex, i) => (
                 <li key={i} className="text-sm text-silver">
-                  {ex.slug ? (
-                    <Link href={`${base}/exercicios/${ex.slug}`} className="font-semibold text-white hover:text-gold hover:underline">
-                      {ex.name}
-                    </Link>
-                  ) : (
-                    <span className="font-semibold text-white">{ex.name}</span>
-                  )}{" "}
+                  <a
+                    href={buildExerciseVideoSearchUrl(ex.name, locale, "military")}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-semibold text-white hover:text-gold hover:underline"
+                  >
+                    {ex.name}
+                  </a>{" "}
                   — {ex.sets}x{ex.reps} · {mp.restLabel} {ex.restSeconds}s
                 </li>
               ))}

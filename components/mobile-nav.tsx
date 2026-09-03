@@ -18,6 +18,7 @@ export function MobileNav({ locale, dict }: { locale: LocaleSlug; dict: Dictiona
     { href: base, label: dict.nav.home },
     { href: `${base}/exercicios`, label: dict.nav.library },
     { href: `${base}/treinos/funcionais`, label: dict.functionalWorkouts.navLabel },
+    { href: `${base}/treinos/danca`, label: dict.dance.navLabel },
     { href: `${base}/militar`, label: dict.military.badge },
     { href: `${base}/planos`, label: dict.nav.pricing },
     { href: `${base}/blog`, label: dict.blog.title },

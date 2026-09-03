@@ -1,6 +1,5 @@
 import "server-only";
 import { militaryProgramSchema } from "./validation";
-import { getExercises } from "./exercise-server";
 import type { z } from "zod";
 import type { MilitaryIntake } from "./military-intake-client";
 import type { LocaleSlug } from "./locales-config";
@@ -21,11 +20,14 @@ const LANGUAGE_NAME: Record<LocaleSlug, string> = {
 };
 
 // Calls OpenAI to generate a structured Military Calisthenics program from
-// the person's questionnaire answers. The AI is constrained to pick
-// exercises ONLY from FitPulse's own exercise library (by slug) — this is
-// what lets every generated exercise link to a real page with instructions
-// and, where available, a demonstration video, instead of a free-text name
-// the AI invented that we could never reliably match to anything.
+// the person's questionnaire answers. Exercise names are free text — NOT
+// constrained to FitPulse's own exercise library — specifically so the
+// program reflects real, current calisthenics exercises used by military
+// instructors, personal trainers, and PE teachers, rather than being capped
+// at whatever we happen to have catalogued internally. Each exercise is
+// paired with a YouTube search link (not an embedded video) so the person
+// can find a real, current demonstration regardless of which exercise the
+// AI picked.
 export async function generateMilitaryProgram(
   intake: MilitaryIntake,
   locale: LocaleSlug,
@@ -34,11 +36,6 @@ export async function generateMilitaryProgram(
   if (!apiKey) {
     throw new Error("[CONFIGURATION REQUIRED] OPENAI_API_KEY is not set.");
   }
-
-  // Bodyweight-only pool, matching the Military module's "no equipment" spirit.
-  const allExercises = await getExercises(locale);
-  const pool = allExercises.filter((e) => e.equipment.includes("no_equipment"));
-  const poolForPrompt = pool.map((e) => ({ slug: e.slug, name: e.name, category: e.category }));
 
   const response = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",
@@ -54,26 +51,31 @@ export async function generateMilitaryProgram(
           role: "system",
           content:
             "You design FitPulse Tactical programs — general fitness inspired by military-style " +
-            "conditioning. This is NOT an official military program and must never be presented as one. " +
-            "Never diagnose injuries or prescribe medical treatment. If the person's stated limitations " +
-            "suggest something serious, keep the program conservative and add a note in the `goal` field " +
-            "recommending they consult a doctor before starting.\n\n" +
-            `Write every text field (programName, goal) in ${LANGUAGE_NAME[locale]}. This is mandatory.\n\n` +
-            "You may ONLY use exercises from this exact list, referencing each by its `slug` field exactly " +
-            "as given (never invent a slug, never use an exercise not in this list):\n" +
-            JSON.stringify(poolForPrompt) +
-            "\n\nBuild each session to take approximately 30 minutes total including rest, using rest " +
+            "conditioning, drawing on real bodyweight calisthenics exercises commonly taught by " +
+            "military instructors, personal trainers, and PE teachers. This is NOT an official " +
+            "military program and must never be presented as one. Never diagnose injuries or " +
+            "prescribe medical treatment. If the person's stated limitations suggest something " +
+            "serious, keep the program conservative and add a note in the `goal` field recommending " +
+            "they consult a doctor before starting.\n\n" +
+            `Write every text field (programName, goal, and every exercise's name) in ${LANGUAGE_NAME[locale]}. ` +
+            "This is mandatory.\n\n" +
+            "Use real, well-known, currently-taught bodyweight/calisthenics exercises — the kind you'd " +
+            "see in an actual military PT session or a professional trainer's bootcamp class (e.g. " +
+            "push-ups, pull-ups, sit-ups, flutter kicks, squat thrusts, bear crawls, mountain climbers, " +
+            "burpees, plank variations, lunges, sprints — and their many real variations). You are not " +
+            "limited to any fixed list — use your knowledge of current, credible calisthenics training.\n\n" +
+            "Build each session to take approximately 30 minutes total including rest, using rest " +
             "periods of at most 30 seconds between sets. To fill that time appropriately, include 5 to 8 " +
-            "exercises per session (more for higher experience levels) with realistic set/rep ranges for " +
-            "a bodyweight/calisthenics session. Vary the exercises across days within the week so the " +
-            "program doesn't repeat the same 2-3 movements every session.\n\n" +
+            "exercises per session (more for higher experience levels) with realistic set/rep ranges. " +
+            "Vary the exercises across days within the week so the program doesn't repeat the same 2-3 " +
+            "movements every session.\n\n" +
             "Respond ONLY with a JSON object matching exactly this shape: " +
             '{ "programName": string, "durationWeeks": number, "daysPerWeek": number, ' +
             '"estimatedDuration": number (minutes, 20-35), "difficulty": "beginner"|"intermediate"|"advanced", ' +
-            '"goal": string, "sessions": [{ "day": number, "exercises": [{ "slug": string (from the list above), ' +
+            '"goal": string, "sessions": [{ "day": number, "exercises": [{ "name": string, ' +
             '"sets": number, "reps": string, "restSeconds": number (0-30) }] }] }. Create exactly ' +
-            "`daysPerWeek` sessions representing one training week (the person repeats this week for the " +
-            "program's duration).",
+            "`daysPerWeek` sessions representing one training week (the person repeats this week for " +
+            "the program's duration).",
         },
         {
           role: "user",
@@ -85,7 +87,7 @@ export async function generateMilitaryProgram(
             `Limitations/injuries reported: ${intake.limitations?.trim() || "none reported"}.`,
         },
       ],
-      temperature: 0.6,
+      temperature: 0.7,
     }),
   });
 
@@ -98,23 +100,5 @@ export async function generateMilitaryProgram(
   if (!content) throw new Error("OpenAI returned no content");
 
   const parsed = JSON.parse(content);
-  const program = militaryProgramSchema.parse(parsed); // throws if the shape doesn't match
-
-  // Defense in depth: drop any exercise slug the model might have hallucinated
-  // despite instructions, rather than trusting it blindly.
-  const validSlugs = new Set(pool.map((e) => e.slug));
-  const cleaned = {
-    ...program,
-    sessions: program.sessions.map((session) => ({
-      ...session,
-      exercises: session.exercises.filter((ex) => validSlugs.has(ex.slug)),
-    })),
-  };
-
-  const hasEmptySession = cleaned.sessions.some((s) => s.exercises.length === 0);
-  if (hasEmptySession) {
-    throw new Error("Generated program referenced exercises outside the library; please try again.");
-  }
-
-  return cleaned;
+  return militaryProgramSchema.parse(parsed); // throws if the shape doesn't match — never trust free text blindly
 }

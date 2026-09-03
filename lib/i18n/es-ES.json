@@ -370,7 +370,16 @@
     "instructionsTitle": "Cómo hacerlo",
     "safetyTitle": "Seguridad",
     "alternativesTitle": "Alternativas",
-    "back": "Volver a ejercicios"
+    "back": "Volver a ejercicios",
+    "paywallTitle": "La biblioteca completa es solo para suscriptores",
+    "paywallSubtitle": "El acceso completo a los ejercicios (con video e instrucciones completas) es un beneficio de una suscripción activa.",
+    "tryFreeGenerator": "Probar Generador Gratis",
+    "subscribeCta": "Ver Planes",
+    "generatorTitle": "Generador de Ejercicios",
+    "generatorSubtitle": "Elige una categoría y recibe una sugerencia de ejercicio — gratis, sin necesidad de cuenta.",
+    "generateButton": "Generar Ejercicio",
+    "tryAgain": "Probar Otro",
+    "upsellNote": "¿Quieres la biblioteca completa, con video y búsqueda por músculo/equipo? Suscríbete a FitPulse Tactical."
   },
   "workoutBuilder": {
     "title": "Crear Entreno",
@@ -587,6 +596,14 @@
     "weekLabel": "semanas",
     "dayLabel": "Día",
     "restLabel": "Descanso",
-    "error": "No se pudo generar el programa ahora. Inténtalo de nuevo en unos momentos."
+    "error": "No se pudo generar el programa ahora. Inténtalo de nuevo en unos momentos.",
+    "videoSearchNote": "Haz clic en el nombre de un ejercicio para ver videos de demostración en YouTube."
+  },
+  "dance": {
+    "navLabel": "Baile",
+    "title": "Baile Funcional",
+    "subtitle": "Clases de baile usadas en entrenamiento funcional — desarrolladas con profesores de educación física.",
+    "movesLabel": "Movimientos",
+    "watchOnYoutube": "Ver videos en YouTube"
   }
 }

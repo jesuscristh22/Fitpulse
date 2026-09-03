@@ -29,6 +29,7 @@ export function SiteHeader({ locale, dict }: { locale: LocaleSlug; dict: Diction
           <Link href={base} className="hover:text-white">{dict.nav.home}</Link>
           <Link href={`${base}/exercicios`} className="hover:text-white">{dict.nav.library}</Link>
           <Link href={`${base}/treinos/funcionais`} className="hover:text-white">{dict.functionalWorkouts.navLabel}</Link>
+          <Link href={`${base}/treinos/danca`} className="hover:text-white">{dict.dance.navLabel}</Link>
           <Link href={`${base}/militar`} className="hover:text-white">{dict.military.badge}</Link>
           <Link href={`${base}/planos`} className="hover:text-white">{dict.nav.pricing}</Link>
           <Link href={`${base}/blog`} className="hover:text-white">{dict.blog.title}</Link>
