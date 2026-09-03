@@ -5,7 +5,9 @@ import { generateMilitaryProgram } from "@/lib/military-ai-server";
 import { militaryIntakeSchema } from "@/lib/validation";
 import { isLocaleSlug } from "@/lib/locales-config";
 
-const REGENERATE_COOLDOWN_MS = 24 * 60 * 60 * 1000; // eslint-disable-line @typescript-eslint/no-unused-vars -- kept for when the commented-out cooldown check below is restored
+// NOTE: the 24h regeneration cooldown below is temporarily disabled for
+// testing. Restore it (uncomment the block further down) before real users
+// hit this endpoint.
 
 export async function POST(request: Request) {
   try {
