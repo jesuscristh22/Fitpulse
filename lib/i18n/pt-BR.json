@@ -724,5 +724,50 @@
       "decline": "Recusar",
       "viewSharedInfo": "Informações compartilhadas"
     }
+  },
+  "gym": {
+    "navLabel": "Academias",
+    "createGymLabel": "Cadastrar Academia",
+    "myGymLabel": "Minha Academia",
+    "myMembershipLabel": "Minha Academia (Membro)",
+    "directory": {
+      "title": "Encontre uma Academia",
+      "subtitle": "Academias e estúdios parceiros do FitPulse.",
+      "noGyms": "Nenhuma academia cadastrada ainda.",
+      "join": "Entrar como Membro",
+      "joined": "Você é membro",
+      "applyStaff": "Aplicar como Funcionário",
+      "applied": "Aplicação enviada",
+      "alreadyMember": "Você já é membro de uma academia."
+    },
+    "create": {
+      "title": "Cadastrar Academia",
+      "subtitle": "Crie o perfil da sua academia ou estúdio no FitPulse.",
+      "namePlaceholder": "Nome da academia",
+      "cta": "Criar"
+    },
+    "profile": {
+      "title": "Minha Academia",
+      "description": "Descrição",
+      "descriptionPlaceholder": "Conte sobre sua academia, estrutura e diferenciais...",
+      "city": "Cidade",
+      "address": "Endereço",
+      "amenities": "Comodidades (separadas por vírgula)",
+      "save": "Salvar",
+      "saved": "Salvo!"
+    },
+    "staff": {
+      "title": "Minha Equipe",
+      "noStaff": "Nenhum funcionário ainda.",
+      "pending": "Pendente",
+      "active": "Ativo",
+      "accept": "Aceitar",
+      "decline": "Recusar"
+    },
+    "members": {
+      "title": "Membros da Academia",
+      "noMembers": "Nenhum membro ainda.",
+      "leave": "Sair da Academia"
+    }
   }
 }

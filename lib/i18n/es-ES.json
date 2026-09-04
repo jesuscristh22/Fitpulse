@@ -724,5 +724,50 @@
       "decline": "Rechazar",
       "viewSharedInfo": "Información compartida"
     }
+  },
+  "gym": {
+    "navLabel": "Gimnasios",
+    "createGymLabel": "Registrar Gimnasio",
+    "myGymLabel": "Mi Gimnasio",
+    "myMembershipLabel": "Mi Gimnasio (Miembro)",
+    "directory": {
+      "title": "Encuentra un Gimnasio",
+      "subtitle": "Gimnasios y estudios asociados a FitPulse.",
+      "noGyms": "Todavía no hay gimnasios registrados.",
+      "join": "Unirme como Miembro",
+      "joined": "Eres miembro",
+      "applyStaff": "Aplicar como Personal",
+      "applied": "Solicitud enviada",
+      "alreadyMember": "Ya eres miembro de un gimnasio."
+    },
+    "create": {
+      "title": "Registrar Gimnasio",
+      "subtitle": "Crea el perfil de tu gimnasio o estudio en FitPulse.",
+      "namePlaceholder": "Nombre del gimnasio",
+      "cta": "Crear"
+    },
+    "profile": {
+      "title": "Mi Gimnasio",
+      "description": "Descripción",
+      "descriptionPlaceholder": "Cuenta sobre tu gimnasio, instalaciones y qué lo hace diferente...",
+      "city": "Ciudad",
+      "address": "Dirección",
+      "amenities": "Comodidades (separadas por coma)",
+      "save": "Guardar",
+      "saved": "¡Guardado!"
+    },
+    "staff": {
+      "title": "Mi Personal",
+      "noStaff": "Todavía no hay personal.",
+      "pending": "Pendiente",
+      "active": "Activo",
+      "accept": "Aceptar",
+      "decline": "Rechazar"
+    },
+    "members": {
+      "title": "Miembros del Gimnasio",
+      "noMembers": "Todavía no hay miembros.",
+      "leave": "Salir del Gimnasio"
+    }
   }
 }

@@ -134,7 +134,7 @@ export function useMyCoachRelationship() {
       q,
       (snapshot) => {
         const list = snapshot.docs
-          .map((d) => ({ id: d.id, ...(d.data() as CoachRelationship) }))
+          .map((d) => ({ ...(d.data() as CoachRelationship), id: d.id }))
           .filter((r) => r.status !== "ended");
         setRelationship(list[0] ?? null);
         setLoading(false);
@@ -168,7 +168,7 @@ export function useMyClients() {
       q,
       (snapshot) => {
         const list = snapshot.docs
-          .map((d) => ({ id: d.id, ...(d.data() as CoachRelationship) }))
+          .map((d) => ({ ...(d.data() as CoachRelationship), id: d.id }))
           .filter((r) => r.status !== "ended");
         setClients(list);
         setLoading(false);

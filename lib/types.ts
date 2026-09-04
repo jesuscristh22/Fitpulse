@@ -73,6 +73,33 @@ export interface OrganizationMember {
   active: boolean;
 }
 
+export interface GymProfile {
+  id: string;
+  ownerId: string;
+  name: string;
+  description: string;
+  city?: string;
+  country?: SupportedCountry;
+  address?: string;
+  amenities: string[];
+  createdAt: string;
+}
+
+export interface GymStaffRelationship {
+  gymId: string;
+  staffId: string;
+  role: "gym_staff" | "gym_manager";
+  status: "pending" | "active" | "ended";
+  createdAt: string;
+}
+
+export interface GymMembership {
+  gymId: string;
+  memberId: string;
+  status: "active" | "ended";
+  createdAt: string;
+}
+
 export interface CoachProfile {
   userId: string;
   displayName?: string;

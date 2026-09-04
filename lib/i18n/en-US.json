@@ -724,5 +724,50 @@
       "decline": "Decline",
       "viewSharedInfo": "Shared info"
     }
+  },
+  "gym": {
+    "navLabel": "Gyms",
+    "createGymLabel": "Register Gym",
+    "myGymLabel": "My Gym",
+    "myMembershipLabel": "My Gym (Member)",
+    "directory": {
+      "title": "Find a Gym",
+      "subtitle": "Gyms and studios partnered with FitPulse.",
+      "noGyms": "No gyms registered yet.",
+      "join": "Join as Member",
+      "joined": "You're a member",
+      "applyStaff": "Apply as Staff",
+      "applied": "Application sent",
+      "alreadyMember": "You're already a member of a gym."
+    },
+    "create": {
+      "title": "Register Gym",
+      "subtitle": "Create your gym or studio's profile on FitPulse.",
+      "namePlaceholder": "Gym name",
+      "cta": "Create"
+    },
+    "profile": {
+      "title": "My Gym",
+      "description": "Description",
+      "descriptionPlaceholder": "Tell people about your gym, facilities, and what makes it different...",
+      "city": "City",
+      "address": "Address",
+      "amenities": "Amenities (comma-separated)",
+      "save": "Save",
+      "saved": "Saved!"
+    },
+    "staff": {
+      "title": "My Staff",
+      "noStaff": "No staff yet.",
+      "pending": "Pending",
+      "active": "Active",
+      "accept": "Accept",
+      "decline": "Decline"
+    },
+    "members": {
+      "title": "Gym Members",
+      "noMembers": "No members yet.",
+      "leave": "Leave Gym"
+    }
   }
 }

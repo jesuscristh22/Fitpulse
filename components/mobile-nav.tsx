@@ -39,6 +39,9 @@ export function MobileNav({ locale, dict }: { locale: LocaleSlug; dict: Dictiona
         { href: `${base}/meu-coach`, label: dict.coach.myCoachLabel },
         { href: `${base}/coach/perfil`, label: dict.coach.becomeCoachLabel },
         { href: `${base}/coach/clientes`, label: dict.coach.myClientsLabel },
+        { href: `${base}/academias`, label: dict.gym.navLabel },
+        { href: `${base}/gym/perfil`, label: dict.gym.myGymLabel },
+        { href: `${base}/gym/equipe`, label: dict.gym.staff.title },
       ]
     : [
         { href: `${base}/login`, label: dict.nav.login },

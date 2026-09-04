@@ -93,6 +93,21 @@ export function AuthNavActions({ locale, dict }: { locale: LocaleSlug; dict: Dic
                 {dict.coach.myClientsLabel}
               </Link>
             </li>
+            <li className="border-t border-white/10">
+              <Link href={`${base}/academias`} onClick={() => setOpen(false)} className="block px-4 py-2.5 text-sm text-white hover:bg-white/5">
+                {dict.gym.navLabel}
+              </Link>
+            </li>
+            <li>
+              <Link href={`${base}/gym/perfil`} onClick={() => setOpen(false)} className="block px-4 py-2.5 text-sm text-white hover:bg-white/5">
+                {dict.gym.myGymLabel}
+              </Link>
+            </li>
+            <li>
+              <Link href={`${base}/gym/equipe`} onClick={() => setOpen(false)} className="block px-4 py-2.5 text-sm text-white hover:bg-white/5">
+                {dict.gym.staff.title}
+              </Link>
+            </li>
             <li>
               <Link href={`${base}/militar/programa`} onClick={() => setOpen(false)} className="block px-4 py-2.5 text-sm text-white hover:bg-white/5">
                 {dict.militaryProgram.title}
