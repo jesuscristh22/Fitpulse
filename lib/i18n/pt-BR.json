@@ -608,5 +608,42 @@
     "subtitle": "Aulas de dança usadas em treinos funcionais — desenvolvidas com professores de educação física.",
     "movesLabel": "Movimentos",
     "watchOnYoutube": "Ver vídeos no YouTube"
+  },
+  "progress": {
+    "title": "Progresso",
+    "subtitle": "Seu histórico de peso, recordes pessoais e sua pontuação FitPulse — tudo transparente.",
+    "scoreTitle": "FitPulse Score",
+    "scoreBreakdown": "Consistência: {c} pts · Recordes: {r} pts · Acompanhamento: {t} pts",
+    "scoreDisclaimer": "Não é uma pontuação médica — mede sua atividade e consistência no app.",
+    "weightTitle": "Histórico de Peso",
+    "addWeight": "Registrar Peso",
+    "weightValuePlaceholder": "Peso (kg)",
+    "dateLabel": "Data",
+    "noWeightLogs": "Nenhum registro de peso ainda.",
+    "prTitle": "Recordes Pessoais",
+    "addPR": "Adicionar Recorde",
+    "exerciseLabel": "Exercício",
+    "customLabel": "Nome do exercício",
+    "valueLabel": "Valor",
+    "unitLabel": "Unidade",
+    "noPRs": "Nenhum recorde registrado ainda.",
+    "save": "Salvar",
+    "delete": "Excluir",
+    "units": {
+      "kg": "kg",
+      "reps": "reps",
+      "seconds": "segundos",
+      "minutes": "minutos"
+    },
+    "exercises": {
+      "bench_press": "Supino Reto",
+      "squat": "Agachamento",
+      "deadlift": "Levantamento Terra",
+      "pull_ups": "Barra Fixa (reps)",
+      "push_ups": "Flexão (reps)",
+      "plank": "Prancha (tempo)",
+      "running_5k": "Corrida 5km (tempo)",
+      "custom": "Outro (personalizado)"
+    }
   }
 }

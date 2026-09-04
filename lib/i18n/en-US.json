@@ -608,5 +608,42 @@
     "subtitle": "Dance classes used in functional training — developed with PE teachers.",
     "movesLabel": "Moves",
     "watchOnYoutube": "Watch videos on YouTube"
+  },
+  "progress": {
+    "title": "Progress",
+    "subtitle": "Your weight history, personal records, and FitPulse Score — all transparent.",
+    "scoreTitle": "FitPulse Score",
+    "scoreBreakdown": "Consistency: {c} pts · Records: {r} pts · Tracking: {t} pts",
+    "scoreDisclaimer": "Not a medical score — measures your activity and consistency in the app.",
+    "weightTitle": "Weight History",
+    "addWeight": "Log Weight",
+    "weightValuePlaceholder": "Weight (kg)",
+    "dateLabel": "Date",
+    "noWeightLogs": "No weight logs yet.",
+    "prTitle": "Personal Records",
+    "addPR": "Add Record",
+    "exerciseLabel": "Exercise",
+    "customLabel": "Exercise name",
+    "valueLabel": "Value",
+    "unitLabel": "Unit",
+    "noPRs": "No records logged yet.",
+    "save": "Save",
+    "delete": "Delete",
+    "units": {
+      "kg": "kg",
+      "reps": "reps",
+      "seconds": "seconds",
+      "minutes": "minutes"
+    },
+    "exercises": {
+      "bench_press": "Bench Press",
+      "squat": "Squat",
+      "deadlift": "Deadlift",
+      "pull_ups": "Pull-Ups (reps)",
+      "push_ups": "Push-Ups (reps)",
+      "plank": "Plank (time)",
+      "running_5k": "5k Run (time)",
+      "custom": "Other (custom)"
+    }
   }
 }

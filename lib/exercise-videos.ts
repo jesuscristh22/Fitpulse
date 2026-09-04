@@ -18,6 +18,9 @@ export const EXERCISE_VIDEOS: Record<string, Partial<Record<LocaleSlug, string>>
   "pull-up": { en: "Me_uNG19x8M" },
   "bodyweight-squat": { en: "kSWFejzUsJE" },
   plank: { en: "MVB7PgsAIs8" },
+  deadlift: { en: "Qo-a4IzpooU" }, // USMC PREP: HOW TO DEADLIFT
+  "bench-press": { en: "Y-ecGlPq7gk" }, // USMC PREP: HOW TO BENCH
+  "bear-crawl": { en: "Wgt1vdZ_YYk" }, // Final Round Training — Exercise: Bear Crawl
   burpee: { en: "qLBImHhCXSw", "pt-br": "ChNWqTWunj4", es: "KAFFFjaFryc" },
   "cat-cow": { en: "y39PrKY_4JM", "pt-br": "ohfiTnNHcHw", es: "JjQYGqCXbkA" },
   "jumping-jacks": { en: "uLVt6u15L98", "pt-br": "S2uqQ9zHZMc", es: "CcSADh4EbXc" },

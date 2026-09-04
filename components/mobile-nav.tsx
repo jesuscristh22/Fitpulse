@@ -33,6 +33,7 @@ export function MobileNav({ locale, dict }: { locale: LocaleSlug; dict: Dictiona
         { href: `${base}/treinos`, label: dict.nav.myWorkouts },
         { href: `${base}/calendario`, label: dict.calendar.navLabel },
         { href: `${base}/perfil`, label: dict.profile.navLabel },
+        { href: `${base}/progresso`, label: dict.progress.title },
       ]
     : [
         { href: `${base}/login`, label: dict.nav.login },

@@ -608,5 +608,42 @@
     "subtitle": "Clases de baile usadas en entrenamiento funcional — desarrolladas con profesores de educación física.",
     "movesLabel": "Movimientos",
     "watchOnYoutube": "Ver videos en YouTube"
+  },
+  "progress": {
+    "title": "Progreso",
+    "subtitle": "Tu historial de peso, récords personales y tu puntuación FitPulse — todo transparente.",
+    "scoreTitle": "FitPulse Score",
+    "scoreBreakdown": "Consistencia: {c} pts · Récords: {r} pts · Seguimiento: {t} pts",
+    "scoreDisclaimer": "No es una puntuación médica — mide tu actividad y consistencia en la app.",
+    "weightTitle": "Historial de Peso",
+    "addWeight": "Registrar Peso",
+    "weightValuePlaceholder": "Peso (kg)",
+    "dateLabel": "Fecha",
+    "noWeightLogs": "Todavía no hay registros de peso.",
+    "prTitle": "Récords Personales",
+    "addPR": "Añadir Récord",
+    "exerciseLabel": "Ejercicio",
+    "customLabel": "Nombre del ejercicio",
+    "valueLabel": "Valor",
+    "unitLabel": "Unidad",
+    "noPRs": "Todavía no hay récords registrados.",
+    "save": "Guardar",
+    "delete": "Eliminar",
+    "units": {
+      "kg": "kg",
+      "reps": "reps",
+      "seconds": "segundos",
+      "minutes": "minutos"
+    },
+    "exercises": {
+      "bench_press": "Press de Banca",
+      "squat": "Sentadilla",
+      "deadlift": "Peso Muerto",
+      "pull_ups": "Dominadas (reps)",
+      "push_ups": "Flexiones (reps)",
+      "plank": "Plancha (tiempo)",
+      "running_5k": "Carrera 5km (tiempo)",
+      "custom": "Otro (personalizado)"
+    }
   }
 }
