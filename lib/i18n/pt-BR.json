@@ -667,5 +667,62 @@
     "subscribeCta": "Ver Planos",
     "saveAndExecute": "Salvar e Executar",
     "error": "Não foi possível adaptar agora. Tente novamente."
+  },
+  "coach": {
+    "navLabel": "Coaches",
+    "becomeCoachLabel": "Seja um Coach",
+    "myCoachLabel": "Meu Coach",
+    "myClientsLabel": "Meus Clientes",
+    "directory": {
+      "title": "Encontre um Coach",
+      "subtitle": "Personal trainers e coaches disponíveis no FitPulse.",
+      "noCoaches": "Nenhum coach disponível ainda.",
+      "invite": "Convidar",
+      "invited": "Convite enviado",
+      "alreadyConnected": "Você já tem um coach ativo."
+    },
+    "profile": {
+      "title": "Perfil de Coach",
+      "becomeTitle": "Torne-se um Coach",
+      "becomeSubtitle": "Crie seu perfil para aparecer na busca de coaches do FitPulse.",
+      "becomeCta": "Criar Meu Perfil de Coach",
+      "bio": "Sobre você",
+      "bioPlaceholder": "Conte sua experiência, formação e estilo de treino...",
+      "specialties": "Especialidades (separadas por vírgula)",
+      "languages": "Idiomas (separados por vírgula)",
+      "city": "Cidade",
+      "online": "Atende online",
+      "inPerson": "Atende presencial",
+      "pricingNote": "Nota sobre preço (ex: a partir de R$150/mês)",
+      "save": "Salvar Perfil",
+      "saved": "Salvo!"
+    },
+    "relationship": {
+      "title": "Meu Coach",
+      "noCoach": "Você ainda não tem um coach.",
+      "findCoach": "Encontrar um Coach",
+      "pendingTitle": "Convite enviado",
+      "pendingSubtitle": "Aguardando o coach aceitar.",
+      "activeTitle": "Coach ativo",
+      "permissionsTitle": "O que seu coach pode ver",
+      "removeCoach": "Remover Coach",
+      "permissions": {
+        "workouts": "Meus treinos",
+        "progress": "Meu progresso",
+        "measurements": "Minhas medidas",
+        "progressPhotos": "Fotos de progresso",
+        "healthIntegrations": "Integrações de saúde",
+        "checkins": "Check-ins"
+      }
+    },
+    "clients": {
+      "title": "Meus Clientes",
+      "noClients": "Você ainda não tem clientes.",
+      "pending": "Pendente",
+      "active": "Ativo",
+      "accept": "Aceitar",
+      "decline": "Recusar",
+      "viewSharedInfo": "Informações compartilhadas"
+    }
   }
 }

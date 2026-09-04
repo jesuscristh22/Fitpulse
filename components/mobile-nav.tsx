@@ -35,6 +35,10 @@ export function MobileNav({ locale, dict }: { locale: LocaleSlug; dict: Dictiona
         { href: `${base}/perfil`, label: dict.profile.navLabel },
         { href: `${base}/progresso`, label: dict.progress.title },
         { href: `${base}/copiloto`, label: dict.copilot.navLabel },
+        { href: `${base}/coaches`, label: dict.coach.navLabel },
+        { href: `${base}/meu-coach`, label: dict.coach.myCoachLabel },
+        { href: `${base}/coach/perfil`, label: dict.coach.becomeCoachLabel },
+        { href: `${base}/coach/clientes`, label: dict.coach.myClientsLabel },
       ]
     : [
         { href: `${base}/login`, label: dict.nav.login },

@@ -73,6 +73,26 @@ export function AuthNavActions({ locale, dict }: { locale: LocaleSlug; dict: Dic
                 {dict.copilot.navLabel}
               </Link>
             </li>
+            <li className="border-t border-white/10">
+              <Link href={`${base}/coaches`} onClick={() => setOpen(false)} className="block px-4 py-2.5 text-sm text-white hover:bg-white/5">
+                {dict.coach.navLabel}
+              </Link>
+            </li>
+            <li>
+              <Link href={`${base}/meu-coach`} onClick={() => setOpen(false)} className="block px-4 py-2.5 text-sm text-white hover:bg-white/5">
+                {dict.coach.myCoachLabel}
+              </Link>
+            </li>
+            <li>
+              <Link href={`${base}/coach/perfil`} onClick={() => setOpen(false)} className="block px-4 py-2.5 text-sm text-white hover:bg-white/5">
+                {dict.coach.becomeCoachLabel}
+              </Link>
+            </li>
+            <li>
+              <Link href={`${base}/coach/clientes`} onClick={() => setOpen(false)} className="block px-4 py-2.5 text-sm text-white hover:bg-white/5">
+                {dict.coach.myClientsLabel}
+              </Link>
+            </li>
             <li>
               <Link href={`${base}/militar/programa`} onClick={() => setOpen(false)} className="block px-4 py-2.5 text-sm text-white hover:bg-white/5">
                 {dict.militaryProgram.title}

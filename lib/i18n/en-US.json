@@ -667,5 +667,62 @@
     "subscribeCta": "View Plans",
     "saveAndExecute": "Save & Start",
     "error": "Couldn't adapt right now. Please try again."
+  },
+  "coach": {
+    "navLabel": "Coaches",
+    "becomeCoachLabel": "Become a Coach",
+    "myCoachLabel": "My Coach",
+    "myClientsLabel": "My Clients",
+    "directory": {
+      "title": "Find a Coach",
+      "subtitle": "Personal trainers and coaches available on FitPulse.",
+      "noCoaches": "No coaches available yet.",
+      "invite": "Invite",
+      "invited": "Invite sent",
+      "alreadyConnected": "You already have an active coach."
+    },
+    "profile": {
+      "title": "Coach Profile",
+      "becomeTitle": "Become a Coach",
+      "becomeSubtitle": "Create your profile to show up in FitPulse's coach search.",
+      "becomeCta": "Create My Coach Profile",
+      "bio": "About you",
+      "bioPlaceholder": "Share your experience, background, and training style...",
+      "specialties": "Specialties (comma-separated)",
+      "languages": "Languages (comma-separated)",
+      "city": "City",
+      "online": "Available online",
+      "inPerson": "Available in person",
+      "pricingNote": "Pricing note (e.g. starting at $150/mo)",
+      "save": "Save Profile",
+      "saved": "Saved!"
+    },
+    "relationship": {
+      "title": "My Coach",
+      "noCoach": "You don't have a coach yet.",
+      "findCoach": "Find a Coach",
+      "pendingTitle": "Invite sent",
+      "pendingSubtitle": "Waiting for the coach to accept.",
+      "activeTitle": "Active coach",
+      "permissionsTitle": "What your coach can see",
+      "removeCoach": "Remove Coach",
+      "permissions": {
+        "workouts": "My workouts",
+        "progress": "My progress",
+        "measurements": "My measurements",
+        "progressPhotos": "Progress photos",
+        "healthIntegrations": "Health integrations",
+        "checkins": "Check-ins"
+      }
+    },
+    "clients": {
+      "title": "My Clients",
+      "noClients": "You don't have any clients yet.",
+      "pending": "Pending",
+      "active": "Active",
+      "accept": "Accept",
+      "decline": "Decline",
+      "viewSharedInfo": "Shared info"
+    }
   }
 }

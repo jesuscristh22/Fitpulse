@@ -73,6 +73,22 @@ export interface OrganizationMember {
   active: boolean;
 }
 
+export interface CoachProfile {
+  userId: string;
+  displayName?: string;
+  bio: string;
+  specialties: string[];
+  languages: string[];
+  city?: string;
+  country?: SupportedCountry;
+  online: boolean;
+  inPerson: boolean;
+  pricingNote?: string;
+  photoURL?: string;
+  verificationStatus: "unverified" | "verified";
+  createdAt: string;
+}
+
 export interface CoachRelationship {
   id: string;
   memberId: string;
