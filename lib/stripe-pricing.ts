@@ -43,7 +43,7 @@ export async function savePricingConfig(config: PricingConfig) {
   await adminDb().collection("platform_config").doc("pricing").set(config, { merge: true });
 }
 
-async function resolvePriceId(product: "military" | "memberPro", country: SupportedCountry): Promise<string> {
+export async function resolvePriceId(product: "military" | "memberPro", country: SupportedCountry): Promise<string> {
   const config = await getPricingConfig();
   const priceId = config[product]?.[country] ?? ENV_FALLBACK[product][country];
   if (!priceId) {

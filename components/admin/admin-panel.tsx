@@ -30,6 +30,7 @@ const ALL_ROLES: UserRole[] = [
   "member", "coach", "gym_staff", "gym_manager", "gym_owner", "support", "platform_admin", "super_admin",
 ];
 const COUNTRIES: SupportedCountry[] = ["BR", "PT", "ES", "US"];
+const CURRENCY_LABEL: Record<SupportedCountry, string> = { BR: "R$", PT: "€", ES: "€", US: "$" };
 
 async function idToken() {
   return getFirebaseAuth().currentUser?.getIdToken();
@@ -49,6 +50,8 @@ export function AdminPanel({ dict }: { dict: Dictionary }) {
   const [pricing, setPricing] = useState<{ military: Record<string, string>; memberPro: Record<string, string> }>({
     military: {}, memberPro: {},
   });
+  const [amounts, setAmounts] = useState<Record<string, string>>({});
+  const [amountStatus, setAmountStatus] = useState<Record<string, "idle" | "saving" | "saved" | "error">>({});
   const [loading, setLoading] = useState(true);
   const [forbidden, setForbidden] = useState(false);
 
@@ -123,6 +126,28 @@ export function AdminPanel({ dict }: { dict: Dictionary }) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ idToken: token, action: "save", config: pricing }),
     });
+  }
+
+  async function handleUpdateAmount(product: "military" | "memberPro", country: SupportedCountry) {
+    const key = `${product}_${country}`;
+    const amount = Number(amounts[key]);
+    if (!amount || amount <= 0) return;
+    setAmountStatus((prev) => ({ ...prev, [key]: "saving" }));
+    try {
+      const token = await idToken();
+      const res = await fetch("/api/admin/pricing/update-amount", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ idToken: token, product, country, amount }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error ?? "failed");
+      setPricing((prev) => ({ ...prev, [product]: { ...prev[product], [country]: data.newPriceId } }));
+      setAmountStatus((prev) => ({ ...prev, [key]: "saved" }));
+    } catch (err) {
+      console.error("[AdminPanel] update amount failed:", err);
+      setAmountStatus((prev) => ({ ...prev, [key]: "error" }));
+    }
   }
 
   if (loading) return null;
@@ -211,27 +236,56 @@ export function AdminPanel({ dict }: { dict: Dictionary }) {
       {tab === "pricing" && (
         <Card className="mt-6">
           <p className="text-sm text-silver">{a.pricing.subtitle}</p>
+          <p className="mt-2 text-xs text-gold">{a.pricing.realAmountNote}</p>
+
           {(["military", "memberPro"] as const).map((product) => (
             <div key={product} className="mt-6">
               <p className="text-xs font-semibold uppercase text-gold">{product}</p>
-              <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                {COUNTRIES.map((country) => (
-                  <div key={country}>
-                    <label className="text-xs text-silver">{country}</label>
-                    <Input
-                      value={pricing[product][country] ?? ""}
-                      onChange={(e) =>
-                        setPricing((prev) => ({ ...prev, [product]: { ...prev[product], [country]: e.target.value } }))
-                      }
-                      placeholder="price_..."
-                      className="mt-1"
-                    />
-                  </div>
-                ))}
+              <div className="mt-3 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                {COUNTRIES.map((country) => {
+                  const key = `${product}_${country}`;
+                  const status = amountStatus[key] ?? "idle";
+                  return (
+                    <div key={country} className="rounded-lg border border-white/10 p-3">
+                      <label className="text-xs text-silver">{country}</label>
+
+                      <div className="mt-2 flex gap-2">
+                        <div className="flex items-center rounded-md border border-white/10 bg-carbon px-3 text-sm text-silver">
+                          {CURRENCY_LABEL[country]}
+                        </div>
+                        <Input
+                          type="number"
+                          step="0.01"
+                          placeholder={a.pricing.newAmountPlaceholder}
+                          value={amounts[key] ?? ""}
+                          onChange={(e) => setAmounts((prev) => ({ ...prev, [key]: e.target.value }))}
+                        />
+                        <Button variant="primary" size="sm" onClick={() => handleUpdateAmount(product, country)}>
+                          {status === "saving" ? "..." : a.pricing.updateAmount}
+                        </Button>
+                      </div>
+                      {status === "saved" && <p className="mt-1 text-xs text-emerald-400">{a.pricing.amountUpdated}</p>}
+                      {status === "error" && <p className="mt-1 text-xs text-red-400">{a.pricing.amountError}</p>}
+
+                      <details className="mt-3">
+                        <summary className="cursor-pointer text-xs text-silver/60">{a.pricing.advancedLabel}</summary>
+                        <label className="mt-2 block text-xs text-silver">{a.pricing.priceId}</label>
+                        <Input
+                          value={pricing[product][country] ?? ""}
+                          onChange={(e) =>
+                            setPricing((prev) => ({ ...prev, [product]: { ...prev[product], [country]: e.target.value } }))
+                          }
+                          placeholder="price_..."
+                          className="mt-1"
+                        />
+                      </details>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           ))}
-          <Button variant="primary" size="lg" onClick={handleSavePricing} className="mt-6 w-full">
+          <Button variant="secondary" size="md" onClick={handleSavePricing} className="mt-6 w-full">
             {a.pricing.save}
           </Button>
         </Card>

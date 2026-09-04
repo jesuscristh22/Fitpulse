@@ -802,7 +802,13 @@
       "country": "País",
       "priceId": "ID del Precio (Stripe)",
       "save": "Guardar Precios",
-      "saved": "¡Precios guardados!"
+      "saved": "¡Precios guardados!",
+      "realAmountNote": "El campo de abajo crea un precio nuevo de verdad en Stripe y archiva el anterior — esto es lo que realmente cambia lo que paga el cliente.",
+      "newAmountPlaceholder": "ej: 39.90",
+      "updateAmount": "Actualizar Valor",
+      "amountUpdated": "¡Valor actualizado en Stripe!",
+      "amountError": "No se pudo actualizar. Verifica que ya exista un precio configurado para ese país.",
+      "advancedLabel": "Avanzado: pegar ID de precio manualmente"
     }
   },
   "challenges": {
