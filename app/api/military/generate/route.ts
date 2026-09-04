@@ -5,6 +5,7 @@ import { generateMilitaryProgram } from "@/lib/military-ai-server";
 import { getExercises } from "@/lib/exercise-server";
 import { matchExerciseByName } from "@/lib/exercise-name-match";
 import { discoverAndSaveExercise } from "@/lib/exercise-discovery-server";
+import { checkRateLimit } from "@/lib/rate-limit-server";
 import { militaryIntakeSchema } from "@/lib/validation";
 import { isLocaleSlug } from "@/lib/locales-config";
 
@@ -38,6 +39,14 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "no_questionnaire" }, { status: 400 });
     }
     const intake = militaryIntakeSchema.parse(intakeDoc.data());
+
+    // Abuse/cost guardrail — generous on purpose (10/day) so it doesn't get
+    // in the way of testing, unlike the old hard single-generation-per-24h
+    // lock that used to live here.
+    const rateLimit = await checkRateLimit(uid, "military_generate", 10, 24 * 60 * 60 * 1000);
+    if (!rateLimit.allowed) {
+      return NextResponse.json({ error: "rate_limited" }, { status: 429 });
+    }
 
     const programRef = adminDb().collection("military_programs").doc(uid);
     // const existing = await programRef.get();

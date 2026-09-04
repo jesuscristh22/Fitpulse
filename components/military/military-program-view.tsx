@@ -38,7 +38,7 @@ export function MilitaryProgramView({ locale, dict }: { locale: LocaleSlug; dict
       if (!res.ok) throw new Error(data.error ?? "Failed");
     } catch (err) {
       console.error("[MilitaryProgramView] generate failed:", err);
-      setError(mp.error);
+      setError(err instanceof Error && err.message === "rate_limited" ? mp.rateLimited : mp.error);
     } finally {
       setGenerating(false);
     }

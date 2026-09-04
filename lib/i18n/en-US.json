@@ -602,7 +602,8 @@
     "dayLabel": "Day",
     "restLabel": "Rest",
     "error": "Couldn't generate the program right now. Please try again shortly.",
-    "videoSearchNote": "Click an exercise name for full instructions (when it's already in our library) or a YouTube video search."
+    "videoSearchNote": "Click an exercise name for full instructions (when it's already in our library) or a YouTube video search.",
+    "rateLimited": "You've hit today's generation limit. Try again tomorrow."
   },
   "dance": {
     "navLabel": "Dance",
@@ -666,7 +667,8 @@
     "noSubscription": "AI Copilot is a subscriber perk (Member Pro or Tactical).",
     "subscribeCta": "View Plans",
     "saveAndExecute": "Save & Start",
-    "error": "Couldn't adapt right now. Please try again."
+    "error": "Couldn't adapt right now. Please try again.",
+    "rateLimited": "You've hit today's adaptation limit. Try again tomorrow."
   },
   "coach": {
     "navLabel": "Coaches",

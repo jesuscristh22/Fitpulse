@@ -11,6 +11,7 @@ async function requireSuperAdmin(idToken: string) {
   if (!roles.includes("super_admin")) {
     throw new Error("forbidden");
   }
+  return decoded.uid;
 }
 
 // Creates a REAL new Stripe Price under the same Product as whatever price is
@@ -26,7 +27,7 @@ export async function POST(request: Request) {
     if (!idToken || !product || !country || typeof amount !== "number") {
       return NextResponse.json({ error: "Missing fields" }, { status: 400 });
     }
-    await requireSuperAdmin(idToken);
+    const actingUid = await requireSuperAdmin(idToken);
 
     const stripe = getStripe();
     const currentPriceId = await resolvePriceId(product, country as SupportedCountry);
@@ -53,6 +54,17 @@ export async function POST(request: Request) {
       [country]: newPrice.id,
     };
     await savePricingConfig(config);
+
+    await adminDb().collection("admin_audit_log").add({
+      actorUid: actingUid,
+      action: "update_price",
+      product,
+      country,
+      amount,
+      newPriceId: newPrice.id,
+      archivedPriceId: currentPriceId,
+      timestamp: new Date().toISOString(),
+    });
 
     return NextResponse.json({ ok: true, newPriceId: newPrice.id, currency: newPrice.currency, unitAmount: newPrice.unit_amount });
   } catch (error) {

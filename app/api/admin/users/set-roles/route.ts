@@ -30,6 +30,14 @@ export async function POST(request: Request) {
     await adminDb().collection("users").doc(targetUserId).set({ roles }, { merge: true });
     await setUserRoleClaims(targetUserId, roles as UserRole[]);
 
+    await adminDb().collection("admin_audit_log").add({
+      actorUid: actingUid,
+      action: "set_roles",
+      targetUserId,
+      roles,
+      timestamp: new Date().toISOString(),
+    });
+
     return NextResponse.json({ ok: true });
   } catch (error) {
     if (error instanceof Error && error.message === "forbidden") {

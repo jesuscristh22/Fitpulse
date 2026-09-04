@@ -5,6 +5,7 @@ import { generateCopilotAdaptation } from "@/lib/copilot-ai-server";
 import { getExercises } from "@/lib/exercise-server";
 import { matchExerciseByName } from "@/lib/exercise-name-match";
 import { discoverAndSaveExercise } from "@/lib/exercise-discovery-server";
+import { checkRateLimit } from "@/lib/rate-limit-server";
 import { isLocaleSlug } from "@/lib/locales-config";
 import type { FitnessProfile } from "@/lib/types";
 import type { Workout } from "@/lib/workouts";
@@ -34,6 +35,11 @@ export async function POST(request: Request) {
 
     const fitnessDoc = await adminDb().collection("fitness_profiles").doc(uid).get();
     const fitness = fitnessDoc.exists ? (fitnessDoc.data() as FitnessProfile) : null;
+
+    const rateLimit = await checkRateLimit(uid, "copilot_adapt", 30, 24 * 60 * 60 * 1000);
+    if (!rateLimit.allowed) {
+      return NextResponse.json({ error: "rate_limited" }, { status: 429 });
+    }
 
     // Most recently created workout, if any, for light context (§35 "recent workouts").
     const recentSnap = await adminDb()

@@ -602,7 +602,8 @@
     "dayLabel": "Dia",
     "restLabel": "Descanso",
     "error": "Não foi possível gerar o programa agora. Tente novamente em instantes.",
-    "videoSearchNote": "Clique no nome de um exercício para ver instruções completas (quando já estiver na nossa biblioteca) ou uma busca de vídeos no YouTube."
+    "videoSearchNote": "Clique no nome de um exercício para ver instruções completas (quando já estiver na nossa biblioteca) ou uma busca de vídeos no YouTube.",
+    "rateLimited": "Você atingiu o limite de gerações por hoje. Tente novamente amanhã."
   },
   "dance": {
     "navLabel": "Dança",
@@ -666,7 +667,8 @@
     "noSubscription": "O AI Copilot é um benefício de assinantes (Member Pro ou Tactical).",
     "subscribeCta": "Ver Planos",
     "saveAndExecute": "Salvar e Executar",
-    "error": "Não foi possível adaptar agora. Tente novamente."
+    "error": "Não foi possível adaptar agora. Tente novamente.",
+    "rateLimited": "Você atingiu o limite de adaptações por hoje. Tente novamente amanhã."
   },
   "coach": {
     "navLabel": "Coaches",

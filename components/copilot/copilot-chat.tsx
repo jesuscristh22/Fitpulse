@@ -52,7 +52,7 @@ export function CopilotChat({ locale, dict }: { locale: LocaleSlug; dict: Dictio
       setResult(data);
     } catch (err) {
       console.error("[CopilotChat] adapt failed:", err);
-      setError(c.error);
+      setError(err instanceof Error && err.message === "rate_limited" ? c.rateLimited : c.error);
     } finally {
       setLoading(false);
     }
