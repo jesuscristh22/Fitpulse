@@ -804,5 +804,20 @@
       "save": "Salvar Preços",
       "saved": "Preços salvos!"
     }
+  },
+  "challenges": {
+    "navLabel": "Desafios",
+    "title": "Desafios",
+    "subtitle": "Metas com prazo pra manter você motivado. Marque presença todo dia que treinar.",
+    "premiumBadge": "Premium",
+    "freeBadge": "Grátis",
+    "join": "Participar",
+    "checkIn": "Marcar Hoje",
+    "checkedInToday": "Já marcado hoje",
+    "progress": "{done} de {goal} check-ins",
+    "daysLeft": "{days} dias restantes",
+    "completed": "Desafio concluído! 🎉",
+    "premiumLocked": "Esse desafio é exclusivo pra assinantes.",
+    "subscribeCta": "Ver Planos"
   }
 }
