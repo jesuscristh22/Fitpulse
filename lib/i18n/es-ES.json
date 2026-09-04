@@ -769,5 +769,40 @@
       "noMembers": "Todavía no hay miembros.",
       "leave": "Salir del Gimnasio"
     }
+  },
+  "admin": {
+    "navLabel": "Admin",
+    "title": "Panel Super Admin",
+    "bootstrapTitle": "Configuración Inicial",
+    "bootstrapSubtitle": "Todavía no existe un Super Admin. Haz clic abajo para ser el primero.",
+    "bootstrapCta": "Convertirme en Super Admin",
+    "bootstrapDone": "¡Ahora eres Super Admin! Actualiza la página.",
+    "noAccess": "No tienes acceso a esta área.",
+    "stats": {
+      "title": "Visión General",
+      "totalUsers": "Usuarios",
+      "totalCoaches": "Coaches",
+      "totalGyms": "Gimnasios",
+      "activeMilitarySubs": "Suscriptores Tactical",
+      "activeMemberProSubs": "Suscriptores Member Pro"
+    },
+    "users": {
+      "title": "Usuarios",
+      "email": "Correo",
+      "name": "Nombre",
+      "roles": "Roles",
+      "subscriptions": "Suscripciones",
+      "save": "Guardar",
+      "saved": "¡Guardado!"
+    },
+    "pricing": {
+      "title": "Precios (Stripe)",
+      "subtitle": "Cambia esto aquí sin tocar variables de entorno ni volver a desplegar.",
+      "product": "Producto",
+      "country": "País",
+      "priceId": "ID del Precio (Stripe)",
+      "save": "Guardar Precios",
+      "saved": "¡Precios guardados!"
+    }
   }
 }

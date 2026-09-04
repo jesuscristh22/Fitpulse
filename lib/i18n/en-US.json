@@ -769,5 +769,40 @@
       "noMembers": "No members yet.",
       "leave": "Leave Gym"
     }
+  },
+  "admin": {
+    "navLabel": "Admin",
+    "title": "Super Admin Panel",
+    "bootstrapTitle": "Initial Setup",
+    "bootstrapSubtitle": "No Super Admin exists yet. Click below to become the first one.",
+    "bootstrapCta": "Become Super Admin",
+    "bootstrapDone": "You're now Super Admin! Refresh the page.",
+    "noAccess": "You don't have access to this area.",
+    "stats": {
+      "title": "Overview",
+      "totalUsers": "Users",
+      "totalCoaches": "Coaches",
+      "totalGyms": "Gyms",
+      "activeMilitarySubs": "Tactical Subscribers",
+      "activeMemberProSubs": "Member Pro Subscribers"
+    },
+    "users": {
+      "title": "Users",
+      "email": "Email",
+      "name": "Name",
+      "roles": "Roles",
+      "subscriptions": "Subscriptions",
+      "save": "Save",
+      "saved": "Saved!"
+    },
+    "pricing": {
+      "title": "Pricing (Stripe)",
+      "subtitle": "Change these here without touching environment variables or redeploying.",
+      "product": "Product",
+      "country": "Country",
+      "priceId": "Stripe Price ID",
+      "save": "Save Pricing",
+      "saved": "Pricing saved!"
+    }
   }
 }

@@ -20,7 +20,7 @@ export async function POST(request: Request) {
 
     const userDoc = await adminDb().collection("users").doc(uid).get();
     const country = (userDoc.data()?.country as SupportedCountry | undefined) ?? "US";
-    const priceId = getMemberProPriceId(country);
+    const priceId = await getMemberProPriceId(country);
 
     const origin =
       request.headers.get("origin") ??

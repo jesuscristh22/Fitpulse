@@ -769,5 +769,40 @@
       "noMembers": "Nenhum membro ainda.",
       "leave": "Sair da Academia"
     }
+  },
+  "admin": {
+    "navLabel": "Admin",
+    "title": "Painel Super Admin",
+    "bootstrapTitle": "Configuração Inicial",
+    "bootstrapSubtitle": "Nenhum Super Admin existe ainda. Clique abaixo para se tornar o primeiro.",
+    "bootstrapCta": "Tornar-me Super Admin",
+    "bootstrapDone": "Você agora é Super Admin! Atualize a página.",
+    "noAccess": "Você não tem acesso a esta área.",
+    "stats": {
+      "title": "Visão Geral",
+      "totalUsers": "Usuários",
+      "totalCoaches": "Coaches",
+      "totalGyms": "Academias",
+      "activeMilitarySubs": "Assinantes Tactical",
+      "activeMemberProSubs": "Assinantes Member Pro"
+    },
+    "users": {
+      "title": "Usuários",
+      "email": "E-mail",
+      "name": "Nome",
+      "roles": "Papéis",
+      "subscriptions": "Assinaturas",
+      "save": "Salvar",
+      "saved": "Salvo!"
+    },
+    "pricing": {
+      "title": "Preços (Stripe)",
+      "subtitle": "Altere aqui sem precisar mexer em variáveis de ambiente ou fazer novo deploy.",
+      "product": "Produto",
+      "country": "País",
+      "priceId": "ID do Preço (Stripe)",
+      "save": "Salvar Preços",
+      "saved": "Preços salvos!"
+    }
   }
 }

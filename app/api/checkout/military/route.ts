@@ -26,7 +26,7 @@ export async function POST(request: Request) {
     // language they happen to be browsing in right now.
     const userDoc = await adminDb().collection("users").doc(uid).get();
     const country = (userDoc.data()?.country as SupportedCountry | undefined) ?? "US";
-    const priceId = getMilitaryPriceId(country);
+    const priceId = await getMilitaryPriceId(country);
 
     const origin =
       request.headers.get("origin") ??

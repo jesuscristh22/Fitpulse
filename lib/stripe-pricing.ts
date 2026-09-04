@@ -1,41 +1,61 @@
 import "server-only";
+import { adminDb } from "./firebase-admin";
 import type { SupportedCountry } from "./types";
 
-// [CONFIGURATION REQUIRED] — each of these must be a real Stripe Price ID
-// (starts with "price_"), created in the Stripe Dashboard for the "Military
-// AI Workout" recurring monthly subscription. Priced by the country the
-// person registered with (users/{uid}.country from onboarding/profile) —
-// not the site language, since someone can browse in one language while
-// living in, and being billed for, a different country. Portugal and Spain
-// share the EUR price per §73.
-const PRICE_ENV_BY_COUNTRY: Record<SupportedCountry, string | undefined> = {
-  BR: process.env.STRIPE_PRICE_MILITARY_BR,
-  PT: process.env.STRIPE_PRICE_MILITARY_EU,
-  ES: process.env.STRIPE_PRICE_MILITARY_EU,
-  US: process.env.STRIPE_PRICE_MILITARY_US,
+// Portugal and Spain share one EUR price per §73 (localized pricing table,
+// not real-time currency conversion).
+const ENV_FALLBACK: Record<"military" | "memberPro", Record<SupportedCountry, string | undefined>> = {
+  military: {
+    BR: process.env.STRIPE_PRICE_MILITARY_BR,
+    PT: process.env.STRIPE_PRICE_MILITARY_EU,
+    ES: process.env.STRIPE_PRICE_MILITARY_EU,
+    US: process.env.STRIPE_PRICE_MILITARY_US,
+  },
+  memberPro: {
+    BR: process.env.STRIPE_PRICE_MEMBERPRO_BR,
+    PT: process.env.STRIPE_PRICE_MEMBERPRO_EU,
+    ES: process.env.STRIPE_PRICE_MEMBERPRO_EU,
+    US: process.env.STRIPE_PRICE_MEMBERPRO_US,
+  },
 };
 
-export function getMilitaryPriceId(country: SupportedCountry): string {
-  const priceId = PRICE_ENV_BY_COUNTRY[country];
+export interface PricingConfig {
+  military: Partial<Record<SupportedCountry, string>>;
+  memberPro: Partial<Record<SupportedCountry, string>>;
+}
+
+// Super Admin can override any of these at runtime from the admin panel
+// (Phase 17) — stored in Firestore so a price change never requires a new
+// deploy. Falls back to environment variables (the original Phase 10/13
+// setup) whenever a given product+country isn't in the Firestore config yet,
+// so nothing breaks for anyone who hasn't touched the admin panel.
+export async function getPricingConfig(): Promise<PricingConfig> {
+  try {
+    const doc = await adminDb().collection("platform_config").doc("pricing").get();
+    return (doc.data() as PricingConfig) ?? { military: {}, memberPro: {} };
+  } catch (error) {
+    console.error("[getPricingConfig] Firestore unavailable, using env fallback only:", error);
+    return { military: {}, memberPro: {} };
+  }
+}
+
+export async function savePricingConfig(config: PricingConfig) {
+  await adminDb().collection("platform_config").doc("pricing").set(config, { merge: true });
+}
+
+async function resolvePriceId(product: "military" | "memberPro", country: SupportedCountry): Promise<string> {
+  const config = await getPricingConfig();
+  const priceId = config[product]?.[country] ?? ENV_FALLBACK[product][country];
   if (!priceId) {
-    throw new Error(`[CONFIGURATION REQUIRED] No Stripe price configured for country "${country}".`);
+    throw new Error(`[CONFIGURATION REQUIRED] No Stripe price configured for ${product} / "${country}".`);
   }
   return priceId;
 }
 
-// Member Pro — the general subscription (§33), separate from Military AI
-// Workout. Suggested launch pricing: BRL 39.90/mo, EUR 12.99/mo, USD 14.99/mo.
-const MEMBER_PRO_PRICE_ENV_BY_COUNTRY: Record<SupportedCountry, string | undefined> = {
-  BR: process.env.STRIPE_PRICE_MEMBERPRO_BR,
-  PT: process.env.STRIPE_PRICE_MEMBERPRO_EU,
-  ES: process.env.STRIPE_PRICE_MEMBERPRO_EU,
-  US: process.env.STRIPE_PRICE_MEMBERPRO_US,
-};
+export async function getMilitaryPriceId(country: SupportedCountry): Promise<string> {
+  return resolvePriceId("military", country);
+}
 
-export function getMemberProPriceId(country: SupportedCountry): string {
-  const priceId = MEMBER_PRO_PRICE_ENV_BY_COUNTRY[country];
-  if (!priceId) {
-    throw new Error(`[CONFIGURATION REQUIRED] No Stripe price configured for country "${country}".`);
-  }
-  return priceId;
+export async function getMemberProPriceId(country: SupportedCountry): Promise<string> {
+  return resolvePriceId("memberPro", country);
 }
