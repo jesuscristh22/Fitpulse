@@ -28,6 +28,28 @@ export const militaryIntakeSchema = z.object({
   limitations: z.string().max(500).optional(),
 });
 
+// AI Copilot (Phase 14, §35-40) — adapts a workout to what the person says
+// right now ("I only have 20 minutes", "I only have dumbbells", "I'm
+// traveling"). Same principle as the Military schema: exercises are named
+// freely, then matched/auto-discovered against our library server-side.
+export const copilotResponseSchema = z.object({
+  message: z.string(), // short, encouraging explanation of what was adapted and why
+  workoutName: z.string(),
+  sets: z.array(
+    z.object({
+      name: z.string(),
+      description: z.string(),
+      instructions: z.array(z.string()).min(2).max(5),
+      muscles: z.array(z.string()).default([]),
+      setNumber: z.number().int().positive(),
+      reps: z.number().int().positive().optional(),
+      weightKg: z.number().positive().optional(),
+      durationSeconds: z.number().int().positive().optional(),
+      restSeconds: z.number().int().min(0).max(120).optional(),
+    }),
+  ).min(3),
+});
+
 export const militaryProgramSchema = z.object({
   programName: z.string(),
   durationWeeks: z.number().int().positive(),

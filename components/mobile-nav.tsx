@@ -34,6 +34,7 @@ export function MobileNav({ locale, dict }: { locale: LocaleSlug; dict: Dictiona
         { href: `${base}/calendario`, label: dict.calendar.navLabel },
         { href: `${base}/perfil`, label: dict.profile.navLabel },
         { href: `${base}/progresso`, label: dict.progress.title },
+        { href: `${base}/copiloto`, label: dict.copilot.navLabel },
       ]
     : [
         { href: `${base}/login`, label: dict.nav.login },

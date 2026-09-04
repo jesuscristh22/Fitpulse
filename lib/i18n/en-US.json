@@ -655,5 +655,17 @@
     "notConfirmedSubtitle": "We couldn't confirm this payment. If you were charged, please contact support.",
     "backToDashboard": "Back to Dashboard",
     "viewLibrary": "View Exercise Library"
+  },
+  "copilot": {
+    "navLabel": "AI Copilot",
+    "title": "AI Copilot",
+    "subtitle": "Tell me your situation right now, and I'll adapt a workout for you. E.g. \"I only have 20 minutes\", \"I only have dumbbells\", \"I'm traveling\".",
+    "placeholder": "Describe your situation...",
+    "send": "Adapt Workout",
+    "adapting": "Adapting...",
+    "noSubscription": "AI Copilot is a subscriber perk (Member Pro or Tactical).",
+    "subscribeCta": "View Plans",
+    "saveAndExecute": "Save & Start",
+    "error": "Couldn't adapt right now. Please try again."
   }
 }

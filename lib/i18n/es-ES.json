@@ -655,5 +655,17 @@
     "notConfirmedSubtitle": "No pudimos confirmar este pago. Si se te cobró, contacta con soporte.",
     "backToDashboard": "Volver al Panel",
     "viewLibrary": "Ver Biblioteca de Ejercicios"
+  },
+  "copilot": {
+    "navLabel": "AI Copilot",
+    "title": "AI Copilot",
+    "subtitle": "Cuéntame tu situación ahora, y adapto un entreno para ti. Ej: \"solo tengo 20 minutos\", \"solo tengo mancuernas\", \"estoy de viaje\".",
+    "placeholder": "Describe tu situación...",
+    "send": "Adaptar Entreno",
+    "adapting": "Adaptando...",
+    "noSubscription": "El AI Copilot es un beneficio de suscriptores (Member Pro o Tactical).",
+    "subscribeCta": "Ver Planes",
+    "saveAndExecute": "Guardar y Empezar",
+    "error": "No se pudo adaptar ahora. Inténtalo de nuevo."
   }
 }

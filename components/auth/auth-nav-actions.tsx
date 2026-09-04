@@ -69,6 +69,11 @@ export function AuthNavActions({ locale, dict }: { locale: LocaleSlug; dict: Dic
               </Link>
             </li>
             <li>
+              <Link href={`${base}/copiloto`} onClick={() => setOpen(false)} className="block px-4 py-2.5 text-sm text-white hover:bg-white/5">
+                {dict.copilot.navLabel}
+              </Link>
+            </li>
+            <li>
               <Link href={`${base}/militar/programa`} onClick={() => setOpen(false)} className="block px-4 py-2.5 text-sm text-white hover:bg-white/5">
                 {dict.militaryProgram.title}
               </Link>

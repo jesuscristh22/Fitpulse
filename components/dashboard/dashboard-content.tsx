@@ -82,6 +82,11 @@ export function DashboardContent({
             {dict.myWorkouts.newWorkout}
           </Button>
         </Link>
+        <Link href={`${base}/copiloto`}>
+          <Button variant="secondary" size="sm">
+            {dict.copilot.navLabel}
+          </Button>
+        </Link>
       </div>
 
       <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-3">
