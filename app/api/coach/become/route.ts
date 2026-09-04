@@ -19,7 +19,7 @@ export async function POST(request: Request) {
     const userRef = adminDb().collection("users").doc(uid);
     const userDoc = await userRef.get();
     const currentRoles = (userDoc.data()?.roles as UserRole[]) ?? ["member"];
-    const nextRoles = currentRoles.includes("coach") ? currentRoles : [...currentRoles, "coach"];
+    const nextRoles: UserRole[] = currentRoles.includes("coach") ? currentRoles : [...currentRoles, "coach"];
 
     await userRef.set({ roles: nextRoles }, { merge: true });
     await setUserRoleClaims(uid, nextRoles);
