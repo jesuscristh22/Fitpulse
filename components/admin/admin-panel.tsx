@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { AdminContentPanel } from "./admin-content-panel";
 import { useAuth } from "@/lib/auth-context";
 import { getFirebaseAuth } from "@/lib/firebase-client";
 import type { Dictionary } from "@/lib/i18n";
@@ -15,6 +16,9 @@ interface Stats {
   totalGyms: number;
   activeMilitarySubs: number;
   activeMemberProSubs: number;
+  militaryGenerations: number;
+  copilotUsage: number;
+  challengeParticipants: number;
 }
 
 interface AdminUser {
@@ -39,7 +43,7 @@ async function idToken() {
 export function AdminPanel({ dict }: { dict: Dictionary }) {
   const a = dict.admin;
   const { user } = useAuth();
-  const [tab, setTab] = useState<"stats" | "users" | "pricing">("stats");
+  const [tab, setTab] = useState<"stats" | "users" | "pricing" | "content">("stats");
 
   const [bootstrapping, setBootstrapping] = useState(false);
   const [bootstrapDone, setBootstrapDone] = useState(false);
@@ -171,7 +175,7 @@ export function AdminPanel({ dict }: { dict: Dictionary }) {
   return (
     <div className="mx-auto max-w-5xl">
       <div className="flex gap-2">
-        {(["stats", "users", "pricing"] as const).map((t) => (
+        {(["stats", "users", "pricing", "content"] as const).map((t) => (
           <button
             key={t}
             onClick={() => setTab(t)}
@@ -179,19 +183,22 @@ export function AdminPanel({ dict }: { dict: Dictionary }) {
               tab === t ? "border-gold bg-gold text-carbon" : "border-white/15 text-white"
             }`}
           >
-            {t === "stats" ? a.stats.title : t === "users" ? a.users.title : a.pricing.title}
+            {t === "stats" ? a.stats.title : t === "users" ? a.users.title : t === "pricing" ? a.pricing.title : a.content.title}
           </button>
         ))}
       </div>
 
       {tab === "stats" && stats && (
-        <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-5">
+        <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
           {([
             [a.stats.totalUsers, stats.totalUsers],
             [a.stats.totalCoaches, stats.totalCoaches],
             [a.stats.totalGyms, stats.totalGyms],
             [a.stats.activeMilitarySubs, stats.activeMilitarySubs],
             [a.stats.activeMemberProSubs, stats.activeMemberProSubs],
+            [a.stats.militaryGenerations, stats.militaryGenerations],
+            [a.stats.copilotUsage, stats.copilotUsage],
+            [a.stats.challengeParticipants, stats.challengeParticipants],
           ] as const).map(([label, value]) => (
             <Card key={label}>
               <p className="text-xs text-silver">{label}</p>
@@ -290,6 +297,7 @@ export function AdminPanel({ dict }: { dict: Dictionary }) {
           </Button>
         </Card>
       )}
+      {tab === "content" && <AdminContentPanel dict={dict} />}
     </div>
   );
 }

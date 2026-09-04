@@ -784,7 +784,10 @@
       "totalCoaches": "Coaches",
       "totalGyms": "Academias",
       "activeMilitarySubs": "Assinantes Tactical",
-      "activeMemberProSubs": "Assinantes Member Pro"
+      "activeMemberProSubs": "Assinantes Member Pro",
+      "militaryGenerations": "Programas Gerados (Tactical)",
+      "copilotUsage": "Usos do Copilot",
+      "challengeParticipants": "Participações em Desafios"
     },
     "users": {
       "title": "Usuários",
@@ -809,6 +812,22 @@
       "amountUpdated": "Valor atualizado na Stripe!",
       "amountError": "Não foi possível atualizar. Confira se já existe um preço configurado pra esse país.",
       "advancedLabel": "Avançado: colar ID de preço manualmente"
+    },
+    "content": {
+      "title": "Biblioteca",
+      "subtitle": "Edite qualquer exercício direto aqui — inclusive os originais, não só os descobertos pela IA.",
+      "locale": "Idioma",
+      "name": "Nome",
+      "description": "Descrição",
+      "instructions": "Instruções (uma por linha)",
+      "muscles": "Músculos (separados por vírgula)",
+      "category": "Categoria",
+      "difficulty": "Dificuldade",
+      "videoId": "ID do vídeo no YouTube (opcional)",
+      "save": "Salvar Exercício",
+      "saved": "Salvo!",
+      "addNew": "+ Adicionar Novo Exercício",
+      "back": "Voltar à lista"
     }
   },
   "challenges": {

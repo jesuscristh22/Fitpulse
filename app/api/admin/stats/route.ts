@@ -19,12 +19,24 @@ export async function POST(request: Request) {
     await requireSuperAdmin(idToken);
 
     const db = adminDb();
-    const [usersSnap, coachesSnap, gymsSnap, activeMilitarySnap, activeMemberProSnap] = await Promise.all([
+    const [
+      usersSnap,
+      coachesSnap,
+      gymsSnap,
+      activeMilitarySnap,
+      activeMemberProSnap,
+      militaryGenSnap,
+      copilotUsageSnap,
+      challengeParticipantsSnap,
+    ] = await Promise.all([
       db.collection("users").count().get(),
       db.collection("coach_profiles").count().get(),
       db.collection("gym_profiles").count().get(),
       db.collection("users").where("militaryAiSubscriptionStatus", "==", "active").count().get(),
       db.collection("users").where("memberProSubscriptionStatus", "==", "active").count().get(),
+      db.collection("ai_usage").where("feature", "==", "military_generator").count().get(),
+      db.collection("ai_usage").where("feature", "==", "member_copilot").count().get(),
+      db.collection("challenge_participants").count().get(),
     ]);
 
     return NextResponse.json({
@@ -33,6 +45,9 @@ export async function POST(request: Request) {
       totalGyms: gymsSnap.data().count,
       activeMilitarySubs: activeMilitarySnap.data().count,
       activeMemberProSubs: activeMemberProSnap.data().count,
+      militaryGenerations: militaryGenSnap.data().count,
+      copilotUsage: copilotUsageSnap.data().count,
+      challengeParticipants: challengeParticipantsSnap.data().count,
     });
   } catch (error) {
     if (error instanceof Error && error.message === "forbidden") {

@@ -784,7 +784,10 @@
       "totalCoaches": "Coaches",
       "totalGyms": "Gyms",
       "activeMilitarySubs": "Tactical Subscribers",
-      "activeMemberProSubs": "Member Pro Subscribers"
+      "activeMemberProSubs": "Member Pro Subscribers",
+      "militaryGenerations": "Programs Generated (Tactical)",
+      "copilotUsage": "Copilot Uses",
+      "challengeParticipants": "Challenge Participations"
     },
     "users": {
       "title": "Users",
@@ -809,6 +812,22 @@
       "amountUpdated": "Amount updated in Stripe!",
       "amountError": "Couldn't update. Check that a price is already configured for this country.",
       "advancedLabel": "Advanced: paste price ID manually"
+    },
+    "content": {
+      "title": "Library",
+      "subtitle": "Edit any exercise right here — including the originals, not just AI-discovered ones.",
+      "locale": "Language",
+      "name": "Name",
+      "description": "Description",
+      "instructions": "Instructions (one per line)",
+      "muscles": "Muscles (comma-separated)",
+      "category": "Category",
+      "difficulty": "Difficulty",
+      "videoId": "YouTube video ID (optional)",
+      "save": "Save Exercise",
+      "saved": "Saved!",
+      "addNew": "+ Add New Exercise",
+      "back": "Back to list"
     }
   },
   "challenges": {
