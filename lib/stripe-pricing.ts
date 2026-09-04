@@ -22,3 +22,20 @@ export function getMilitaryPriceId(country: SupportedCountry): string {
   }
   return priceId;
 }
+
+// Member Pro — the general subscription (§33), separate from Military AI
+// Workout. Suggested launch pricing: BRL 39.90/mo, EUR 12.99/mo, USD 14.99/mo.
+const MEMBER_PRO_PRICE_ENV_BY_COUNTRY: Record<SupportedCountry, string | undefined> = {
+  BR: process.env.STRIPE_PRICE_MEMBERPRO_BR,
+  PT: process.env.STRIPE_PRICE_MEMBERPRO_EU,
+  ES: process.env.STRIPE_PRICE_MEMBERPRO_EU,
+  US: process.env.STRIPE_PRICE_MEMBERPRO_US,
+};
+
+export function getMemberProPriceId(country: SupportedCountry): string {
+  const priceId = MEMBER_PRO_PRICE_ENV_BY_COUNTRY[country];
+  if (!priceId) {
+    throw new Error(`[CONFIGURATION REQUIRED] No Stripe price configured for country "${country}".`);
+  }
+  return priceId;
+}

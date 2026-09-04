@@ -12,10 +12,8 @@ import { Button } from "@/components/ui/button";
 import type { Dictionary } from "@/lib/i18n";
 import type { LocaleSlug } from "@/lib/locales-config";
 
-// Full exercise library access is a paid perk — this only checks the
-// Military AI Workout subscription for now (the only real paid product
-// wired up so far). Once Member Pro (Phase 13) exists, this should also
-// accept an active Member Pro status.
+// Full exercise library access is a paid perk — granted by either an active
+// Military AI Workout subscription OR an active Member Pro subscription.
 export function RequirePaidAccess({
   locale,
   dict,
@@ -27,7 +25,8 @@ export function RequirePaidAccess({
 }) {
   const { user, loading: authLoading } = useAuth();
   const router = useRouter();
-  const [status, setStatus] = useState<string | null>(null);
+  const [militaryStatus, setMilitaryStatus] = useState<string | null>(null);
+  const [memberProStatus, setMemberProStatus] = useState<string | null>(null);
   const [checked, setChecked] = useState(false);
   const base = `/${locale}`;
 
@@ -41,7 +40,8 @@ export function RequirePaidAccess({
     const unsubscribe = onSnapshot(
       doc(db, "users", user.uid),
       (snap) => {
-        setStatus((snap.data()?.militaryAiSubscriptionStatus as string) ?? null);
+        setMilitaryStatus((snap.data()?.militaryAiSubscriptionStatus as string) ?? null);
+        setMemberProStatus((snap.data()?.memberProSubscriptionStatus as string) ?? null);
         setChecked(true);
       },
       (err) => {
@@ -56,7 +56,8 @@ export function RequirePaidAccess({
     return <div className="flex min-h-screen items-center justify-center bg-carbon text-sm text-silver">Loading…</div>;
   }
 
-  const hasPaidAccess = status === "active" || status === "trialing";
+  const isActive = (status: string | null) => status === "active" || status === "trialing";
+  const hasPaidAccess = isActive(militaryStatus) || isActive(memberProStatus);
 
   if (!hasPaidAccess) {
     return (
@@ -71,7 +72,7 @@ export function RequirePaidAccess({
                 {dict.library.tryFreeGenerator}
               </Button>
             </Link>
-            <Link href={`${base}/militar`}>
+            <Link href={`${base}/planos`}>
               <Button variant="primary" size="md" className="w-full">
                 {dict.library.subscribeCta}
               </Button>

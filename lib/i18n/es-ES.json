@@ -125,7 +125,8 @@
           "interval": "siempre",
           "features": [
             "Entrenos manuales ilimitados",
-            "Biblioteca de ejercicios",
+            "Generador de ejercicios gratis",
+            "Funcional y Baile gratis",
             "Historial de entrenos"
           ]
         },
@@ -134,8 +135,8 @@
           "price": "€12,99",
           "interval": "mes",
           "features": [
+            "Biblioteca completa de ejercicios con video",
             "Generación de entrenos por IA ilimitada",
-            "AI Copilot",
             "Progreso y analítica avanzada",
             "Desafíos premium"
           ]
@@ -150,7 +151,8 @@
             "Analítica del gimnasio"
           ]
         }
-      ]
+      ],
+      "choosePlan": "Elegir"
     },
     "about": {
       "title": "Nosotros",
@@ -645,5 +647,13 @@
       "running_5k": "Carrera 5km (tiempo)",
       "custom": "Otro (personalizado)"
     }
+  },
+  "memberProSuccess": {
+    "title": "¡Suscripción confirmada!",
+    "subtitle": "Tu Member Pro está activo. Ya puedes acceder a la biblioteca completa de ejercicios.",
+    "notConfirmedTitle": "Pago no confirmado",
+    "notConfirmedSubtitle": "No pudimos confirmar este pago. Si se te cobró, contacta con soporte.",
+    "backToDashboard": "Volver al Panel",
+    "viewLibrary": "Ver Biblioteca de Ejercicios"
   }
 }

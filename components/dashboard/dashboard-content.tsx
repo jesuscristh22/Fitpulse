@@ -13,6 +13,10 @@ import type { LocaleSlug } from "@/lib/locales-config";
 import type { BlogPost } from "@/lib/blog-content";
 
 const BMI_MIN = 15;
+
+function isActive(status?: string): boolean {
+  return status === "active" || status === "trialing";
+}
 const BMI_MAX = 35;
 const BMI_ZONE_WIDTHS = { underweight: 17.5, normal: 32.5, overweight: 25, obese: 25 };
 
@@ -84,9 +88,12 @@ export function DashboardContent({
         {/* Plan card */}
         <Card>
           <p className="text-xs uppercase text-silver">{de.planLabel}</p>
-          <div className="mt-2 flex items-center gap-2">
-            <p className="font-heading text-2xl font-extrabold">{de.planFree}</p>
-            <Badge variant="gold">{de.planFree}</Badge>
+          <div className="mt-2 flex flex-wrap items-center gap-2">
+            {isActive(account?.memberProSubscriptionStatus) && <Badge variant="gold">Member Pro</Badge>}
+            {isActive(account?.militaryAiSubscriptionStatus) && <Badge variant="gold">{dict.military.badge}</Badge>}
+            {!isActive(account?.memberProSubscriptionStatus) && !isActive(account?.militaryAiSubscriptionStatus) && (
+              <Badge variant="default">{de.planFree}</Badge>
+            )}
           </div>
           <Link href={`${base}/planos`}>
             <Button variant="secondary" size="sm" className="mt-4 w-full">

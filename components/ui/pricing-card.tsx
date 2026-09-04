@@ -10,6 +10,7 @@ export function PricingCard({
   features,
   highlighted,
   onSelect,
+  ctaLabel,
 }: {
   name: string;
   price: string;
@@ -17,6 +18,7 @@ export function PricingCard({
   features: string[];
   highlighted?: boolean;
   onSelect?: () => void;
+  ctaLabel?: string;
 }) {
   return (
     <Card
@@ -38,7 +40,7 @@ export function PricingCard({
         ))}
       </ul>
       <Button variant={highlighted ? "primary" : "secondary"} className="mt-6 w-full" onClick={onSelect}>
-        Choose {name}
+        {ctaLabel ?? name}
       </Button>
     </Card>
   );

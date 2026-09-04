@@ -7,7 +7,14 @@ import { useAuth } from "./auth-context";
 import type { FitnessProfile, UserProfile } from "./types";
 
 interface UserData {
-  account?: { displayName?: string; email?: string; country?: string; locale?: string };
+  account?: {
+    displayName?: string;
+    email?: string;
+    country?: string;
+    locale?: string;
+    militaryAiSubscriptionStatus?: string;
+    memberProSubscriptionStatus?: string;
+  };
   profile?: UserProfile;
   fitness?: FitnessProfile;
 }

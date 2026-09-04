@@ -87,7 +87,7 @@ export function ExerciseGenerator({
 
       <Card className="mt-8 text-center">
         <p className="text-sm text-silver">{lib.upsellNote}</p>
-        <Link href={`${base}/militar`}>
+        <Link href={`${base}/planos`}>
           <Button variant="secondary" size="md" className="mt-4">
             {lib.subscribeCta}
           </Button>

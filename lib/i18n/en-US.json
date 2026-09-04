@@ -125,7 +125,8 @@
           "interval": "forever",
           "features": [
             "Unlimited manual workouts",
-            "Exercise library",
+            "Free exercise generator",
+            "Free Functional & Dance classes",
             "Workout history"
           ]
         },
@@ -134,8 +135,8 @@
           "price": "$14.99",
           "interval": "mo",
           "features": [
+            "Full exercise library with video",
             "Unlimited AI workout generation",
-            "AI Copilot",
             "Advanced progress & analytics",
             "Premium challenges"
           ]
@@ -150,7 +151,8 @@
             "Gym-wide analytics"
           ]
         }
-      ]
+      ],
+      "choosePlan": "Choose"
     },
     "about": {
       "title": "About",
@@ -645,5 +647,13 @@
       "running_5k": "5k Run (time)",
       "custom": "Other (custom)"
     }
+  },
+  "memberProSuccess": {
+    "title": "Subscription confirmed!",
+    "subtitle": "Your Member Pro is active. You can now access the full exercise library.",
+    "notConfirmedTitle": "Payment not confirmed",
+    "notConfirmedSubtitle": "We couldn't confirm this payment. If you were charged, please contact support.",
+    "backToDashboard": "Back to Dashboard",
+    "viewLibrary": "View Exercise Library"
   }
 }
