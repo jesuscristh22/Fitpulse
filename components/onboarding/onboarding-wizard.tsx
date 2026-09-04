@@ -135,7 +135,7 @@ export function OnboardingWizard({ locale, dict }: { locale: LocaleSlug; dict: D
       case "weight":
         return form.weightKg >= 25 && form.weightKg <= 400;
       case "goal":
-        return form.goals.length === 1;
+        return form.goals.length >= 1;
       case "environment":
         return form.environment.length >= 1;
       case "experience":
@@ -308,7 +308,7 @@ export function OnboardingWizard({ locale, dict }: { locale: LocaleSlug; dict: D
             <h2 className="font-heading text-xl font-bold">{o.steps.goal.title}</h2>
             <div className="mt-5 flex flex-wrap gap-2">
               {GOAL_OPTIONS.map((g) => (
-                <Pill key={g} active={form.goals[0] === g} onClick={() => setForm((f) => ({ ...f, goals: [g] }))}>
+                <Pill key={g} active={form.goals.includes(g)} onClick={() => setForm((f) => ({ ...f, goals: toggleMulti(f.goals, g) }))}>
                   {o.steps.goal.options[g]}
                 </Pill>
               ))}

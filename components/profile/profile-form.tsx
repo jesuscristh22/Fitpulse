@@ -51,7 +51,7 @@ export function ProfileForm({ dict }: { dict: Dictionary }) {
   const [neckCm, setNeckCm] = useState<number | undefined>();
   const [hipCm, setHipCm] = useState<number | undefined>();
   const [activityLevel, setActivityLevel] = useState<ActivityLevel>("moderate");
-  const [goal, setGoal] = useState<FitnessGoal | undefined>();
+  const [goals, setGoals] = useState<FitnessGoal[]>([]);
   const [environment, setEnvironment] = useState<TrainingEnvironment[]>([]);
   const [experience, setExperience] = useState<(typeof EXPERIENCE_OPTIONS)[number] | undefined>();
   const [daysAvailable, setDaysAvailable] = useState<number | undefined>();
@@ -76,7 +76,7 @@ export function ProfileForm({ dict }: { dict: Dictionary }) {
       if (profile.activityLevel) setActivityLevel(profile.activityLevel);
     }
     if (fitness) {
-      setGoal(fitness.goals?.[0]);
+      setGoals(fitness.goals ?? []);
       setEnvironment(fitness.environment ?? []);
       setExperience(fitness.experience);
       setDaysAvailable(fitness.daysAvailable);
@@ -99,7 +99,7 @@ export function ProfileForm({ dict }: { dict: Dictionary }) {
         country,
         profile: { birthDate, gender, heightCm, weightKg, waistCm, neckCm, hipCm, activityLevel },
         fitness: {
-          goals: goal ? [goal] : undefined,
+          goals: goals.length > 0 ? goals : undefined,
           environment,
           experience,
           daysAvailable,
@@ -259,7 +259,7 @@ export function ProfileForm({ dict }: { dict: Dictionary }) {
           <label className="text-xs text-silver">{dict.onboarding.steps.goal.title}</label>
           <div className="mt-2 flex flex-wrap gap-2">
             {GOAL_OPTIONS.map((g) => (
-              <Pill key={g} active={goal === g} onClick={() => setGoal(g)}>
+              <Pill key={g} active={goals.includes(g)} onClick={() => setGoals((prev) => toggleMulti(prev, g))}>
                 {dict.onboarding.steps.goal.options[g]}
               </Pill>
             ))}

@@ -154,7 +154,9 @@ export function DashboardContent({
               <div>
                 <dt className="text-xs text-silver">{de.goalLabelText}</dt>
                 <dd className="font-semibold">
-                  {fitness.goals?.[0] ? dict.onboarding.steps.goal.options[fitness.goals[0]] : "—"}
+                  {fitness.goals?.length
+                    ? fitness.goals.map((g) => dict.onboarding.steps.goal.options[g]).join(", ")
+                    : "—"}
                 </dd>
               </div>
               <div>
