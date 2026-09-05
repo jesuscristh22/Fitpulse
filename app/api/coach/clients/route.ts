@@ -13,7 +13,7 @@ export async function POST(request: Request) {
 
     const snapshot = await adminDb().collection("coach_relationships").where("coachId", "==", uid).get();
     const relationships = snapshot.docs
-      .map((d) => ({ id: d.id, ...(d.data() as CoachRelationship) }))
+      .map((d) => ({ ...(d.data() as CoachRelationship), id: d.id }))
       .filter((r) => r.status !== "ended");
 
     const names = await resolveDisplayNames(relationships.map((r) => r.memberId));

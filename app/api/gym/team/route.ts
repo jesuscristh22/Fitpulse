@@ -24,10 +24,10 @@ export async function POST(request: Request) {
     ]);
 
     const staffList = staffSnap.docs
-      .map((d) => ({ id: d.id, ...(d.data() as GymStaffRelationship) }))
+      .map((d) => ({ ...(d.data() as GymStaffRelationship), id: d.id }))
       .filter((s) => s.status !== "ended");
     const memberList = membersSnap.docs
-      .map((d) => ({ id: d.id, ...(d.data() as GymMembership) }))
+      .map((d) => ({ ...(d.data() as GymMembership), id: d.id }))
       .filter((m) => m.status !== "ended");
 
     const names = await resolveDisplayNames([
