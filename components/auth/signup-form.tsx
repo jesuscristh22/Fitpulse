@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect, useRef, type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
-import { createUserWithEmailAndPassword, signInWithRedirect, getRedirectResult, GoogleAuthProvider } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { getFirebaseAuth } from "@/lib/firebase-client";
 import { getAuthErrorMessage } from "@/lib/auth-error-messages";
 import { Button } from "@/components/ui/button";
@@ -39,31 +39,6 @@ export function SignupForm({
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
-  const checkedRedirect = useRef(false);
-
-  // Google sign-up uses a full-page redirect, not a popup — popups are
-  // unreliable on mobile browsers (often silently blocked, or behave
-  // inconsistently across in-app/mobile browser variants). This effect picks
-  // up the result once Google sends the person back to this page.
-  useEffect(() => {
-    if (checkedRedirect.current) return;
-    checkedRedirect.current = true;
-    getRedirectResult(getFirebaseAuth())
-      .then(async (credential) => {
-        if (!credential) return;
-        setBusy(true);
-        const idToken = await credential.user.getIdToken();
-        await provisionAndRedirect(idToken, locale, router);
-      })
-      .catch((err) => {
-        console.error("[SignupForm] Google redirect result failed:", err);
-        const message =
-          err instanceof Error && err.message === "provisioning_failed" ? dict.provisioningFailed : getAuthErrorMessage(err, dict);
-        if (message) setError(message);
-      })
-      .finally(() => setBusy(false));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   async function handleEmailSignup(e: FormEvent) {
     e.preventDefault();
@@ -83,18 +58,23 @@ export function SignupForm({
     }
   }
 
+  // Back to popup — signInWithRedirect has a confirmed, currently unresolved
+  // Firebase SDK bug ("missing initial state") on Android Chrome with
+  // storage partitioning enabled. Popup is the more broadly reliable option
+  // as of this writing; revisit if Firebase ships a real fix.
   async function handleGoogleSignup() {
     setError(null);
     setBusy(true);
     try {
-      await signInWithRedirect(getFirebaseAuth(), new GoogleAuthProvider());
-      // Page navigates away here — result is handled by the effect above
-      // once the person is redirected back.
+      const credential = await signInWithPopup(getFirebaseAuth(), new GoogleAuthProvider());
+      const idToken = await credential.user.getIdToken();
+      await provisionAndRedirect(idToken, locale, router);
     } catch (err) {
       console.error("[SignupForm] Google signup failed:", err);
       const message =
         err instanceof Error && err.message === "provisioning_failed" ? dict.provisioningFailed : getAuthErrorMessage(err, dict);
       if (message) setError(message);
+    } finally {
       setBusy(false);
     }
   }
