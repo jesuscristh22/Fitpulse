@@ -19,16 +19,7 @@ export default function LoginPage({ params }: { params: { locale: string } }) {
         <Card className="w-full max-w-sm">
           <h1 className="mb-6 text-center font-heading text-2xl font-bold">{dict.nav.login}</h1>
 
-          <LoginForm
-            locale={locale}
-            labels={{
-              google: dict.authForm.google,
-              email: dict.authForm.email,
-              password: dict.authForm.password,
-              submit: dict.authForm.loginSubmit,
-              error: dict.authForm.error,
-            }}
-          />
+          <LoginForm locale={locale} dict={dict.authForm} submitLabel={dict.authForm.loginSubmit} />
 
           <p className="mt-6 text-center text-sm text-silver">
             New to FitPulse?{" "}

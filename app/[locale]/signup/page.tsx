@@ -19,16 +19,7 @@ export default function SignupPage({ params }: { params: { locale: string } }) {
         <Card className="w-full max-w-sm">
           <h1 className="mb-6 text-center font-heading text-2xl font-bold">{dict.nav.cta}</h1>
 
-          <SignupForm
-            locale={locale}
-            labels={{
-              google: dict.authForm.google,
-              email: dict.authForm.email,
-              password: dict.authForm.password,
-              submit: dict.authForm.signupSubmit,
-              error: dict.authForm.error,
-            }}
-          />
+          <SignupForm locale={locale} dict={dict.authForm} submitLabel={dict.authForm.signupSubmit} />
 
           <p className="mt-6 text-center text-sm text-silver">
             Already have an account?{" "}

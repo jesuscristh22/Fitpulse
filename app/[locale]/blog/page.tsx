@@ -24,13 +24,13 @@ export default async function BlogPage({ params }: { params: { locale: string } 
     <main className="bg-carbon">
       <SiteHeader locale={locale} dict={dict} />
 
-      <section className="mx-auto max-w-7xl px-6 pb-8 pt-36 sm:px-10 sm:pt-44">
+      <section className="mx-auto max-w-[112rem] px-6 pb-8 pt-36 sm:px-10 sm:pt-44">
         <p className="text-xs font-semibold uppercase tracking-wide text-gold">{dict.blog.updatedWeekly}</p>
         <h1 className="mt-4 font-heading text-4xl font-extrabold leading-tight sm:text-5xl">{dict.blog.title}</h1>
         <p className="mt-4 max-w-xl text-silver">{dict.blog.subtitle}</p>
       </section>
 
-      <section className="mx-auto max-w-4xl px-6 pb-24 sm:px-10 sm:pb-32">
+      <section className="mx-auto max-w-[100rem] px-6 pb-24 sm:px-10 sm:pb-32">
         <div className="flex flex-col gap-6">
           {posts.map((post, i) => (
             <Link
@@ -39,7 +39,7 @@ export default async function BlogPage({ params }: { params: { locale: string } 
               className="flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-graphite transition-colors hover:border-gold/40 sm:flex-row"
             >
               <div className="relative h-48 w-full shrink-0 sm:h-auto sm:w-64">
-                <Image src={coverImages[i % coverImages.length]} alt={post.title} fill className="object-cover" />
+                <Image src={coverImages[i % coverImages.length]} alt={post.title} fill sizes="(max-width: 640px) 100vw, 256px" className="object-cover" />
               </div>
               <div className="flex flex-1 flex-col justify-center p-6">
                 <p className="text-xs text-silver">{new Date(post.publishedAt).toLocaleDateString(locale)}</p>

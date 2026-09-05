@@ -27,7 +27,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
           aria-hidden
           className="pointer-events-none absolute -right-40 top-0 h-[600px] w-[600px] rounded-full bg-gold/5 blur-3xl"
         />
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-14 px-6 sm:px-10 lg:grid-cols-2 lg:items-center lg:gap-8">
+        <div className="mx-auto grid max-w-[112rem] grid-cols-1 gap-14 px-6 sm:px-10 lg:grid-cols-2 lg:items-center lg:gap-8">
           {/* Left: copy */}
           <div className="animate-hero-rise">
             <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-graphite px-4 py-2 text-xs font-semibold uppercase tracking-wide text-gold">
@@ -119,7 +119,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
 
             <div className="pointer-events-none absolute -bottom-6 -left-6 hidden w-56 items-center gap-3 rounded-xl border border-white/10 bg-graphite/95 p-4 shadow-2xl backdrop-blur lg:flex">
               <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-lg">
-                <Image src="/images/feature-treadmill.jpg" alt="" fill className="object-cover" />
+                <Image src="/images/feature-treadmill.jpg" alt="" fill sizes="48px" className="object-cover" />
               </div>
               <div>
                 <p className="text-[11px] uppercase tracking-wide text-silver">{dict.hero.nextWorkoutLabel}</p>
@@ -143,7 +143,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
       </section>
 
       {/* ---------------- FEATURES GRID ---------------- */}
-      <section id="how-it-works" className="mx-auto max-w-7xl px-6 py-24 sm:px-10 sm:py-28">
+      <section id="how-it-works" className="mx-auto max-w-[112rem] px-6 py-24 sm:px-10 sm:py-28">
         <div className="max-w-xl">
           <p className="inline-block rounded-full border border-white/10 bg-graphite px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-gold">
             {dict.featuresSection.eyebrow}
@@ -172,7 +172,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
             return (
               <div key={card.title} className="overflow-hidden rounded-2xl border border-white/10 bg-graphite">
                 <div className="relative h-40 w-full">
-                  <Image src={images[i]} alt={card.title} fill className="object-cover" />
+                  <Image src={images[i]} alt={card.title} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" className="object-cover" />
                   <span className="absolute left-3 top-3 flex h-9 w-9 items-center justify-center rounded-lg border border-gold/40 bg-carbon/80 text-gold">
                     <Icon size={16} />
                   </span>
@@ -193,6 +193,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
           src="/images/never-give-up.jpg"
           alt="Never Give Up neon sign at a FitPulse gym"
           fill
+          sizes="100vw"
           className="object-cover object-center opacity-50"
         />
         <div className="absolute inset-0 bg-carbon/75" />
@@ -202,7 +203,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
       </section>
 
       {/* ---------------- SCORE SECTION ---------------- */}
-      <section className="mx-auto max-w-7xl px-6 py-24 sm:px-10 sm:py-28">
+      <section className="mx-auto max-w-[112rem] px-6 py-24 sm:px-10 sm:py-28">
         <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
           <div className="order-2 lg:order-1">
             <h2 className="font-heading text-3xl font-extrabold leading-tight sm:text-4xl">
@@ -227,7 +228,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
       {/* ---------------- TESTIMONIAL ---------------- */}
       <section className="relative overflow-hidden">
         <div className="relative aspect-[16/10] w-full sm:aspect-[21/9]">
-          <Image src="/images/back-shirt.jpg" alt="FitPulse member training" fill className="object-cover object-[60%_20%]" />
+          <Image src="/images/back-shirt.jpg" alt="FitPulse member training" fill sizes="100vw" className="object-cover object-[60%_20%]" />
           <div className="absolute inset-0 bg-gradient-to-r from-carbon via-carbon/60 to-transparent" />
           <div className="absolute inset-y-0 left-0 flex max-w-md flex-col justify-center px-6 sm:px-10 lg:px-16">
             <p className="font-heading text-xl font-bold leading-snug sm:text-2xl">&quot;{dict.testimonial.quote}&quot;</p>
@@ -237,7 +238,7 @@ export default function HomePage({ params }: { params: { locale: string } }) {
       </section>
 
       {/* ---------------- FINAL CTA ---------------- */}
-      <section className="mx-auto max-w-7xl px-6 py-24 text-center sm:px-10 sm:py-28">
+      <section className="mx-auto max-w-[112rem] px-6 py-24 text-center sm:px-10 sm:py-28">
         <h2 className="mx-auto max-w-xl font-heading text-3xl font-extrabold leading-tight sm:text-4xl">
           {dict.finalCta.headline}
         </h2>

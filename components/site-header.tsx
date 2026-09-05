@@ -12,7 +12,7 @@ export function SiteHeader({ locale, dict }: { locale: LocaleSlug; dict: Diction
 
   return (
     <header className="absolute inset-x-0 top-0 z-20">
-      <nav className="mx-auto flex max-w-[100rem] items-center justify-between gap-6 px-6 py-5 sm:px-10 lg:px-14">
+      <nav className="mx-auto flex max-w-[112rem] items-center justify-between gap-6 px-6 py-5 sm:px-10 lg:px-14">
         <Link href={base} className="flex shrink-0 items-center gap-3">
           <Image src="/images/app-icon.png" alt="FitPulse" width={40} height={40} className="rounded-lg" />
           <div className="hidden leading-tight sm:block">

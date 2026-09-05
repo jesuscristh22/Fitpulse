@@ -24,7 +24,7 @@ export default function AboutPage({ params }: { params: { locale: string } }) {
       <SiteHeader locale={locale} dict={dict} />
 
       <section className="relative overflow-hidden pb-16 pt-36 sm:pt-44">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-6 sm:px-10 lg:grid-cols-2 lg:items-center">
+        <div className="mx-auto grid max-w-[112rem] grid-cols-1 gap-12 px-6 sm:px-10 lg:grid-cols-2 lg:items-center">
           <div>
             <p className="text-xs font-semibold uppercase tracking-wide text-gold">{dict.pages.about.title}</p>
             <h1 className="mt-4 font-heading text-4xl font-extrabold leading-tight sm:text-5xl">

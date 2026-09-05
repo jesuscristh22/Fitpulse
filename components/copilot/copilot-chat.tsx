@@ -20,6 +20,30 @@ interface AdaptedWorkout {
   sets: WorkoutSet[];
 }
 
+// Groups individual set entries (each carrying its own setNumber) into one
+// row per exercise showing "Nx reps" — works correctly whether the AI
+// produced one row per set (the intended shape) or, defensively, only a
+// single row per exercise.
+function groupSetsByExercise(sets: WorkoutSet[]) {
+  const groups: { exerciseName: string; count: number; reps?: number; durationSeconds?: number; weightKg?: number; restSeconds?: number }[] = [];
+  for (const s of sets) {
+    const existing = groups.find((g) => g.exerciseName === s.exerciseName);
+    if (existing) {
+      existing.count += 1;
+    } else {
+      groups.push({
+        exerciseName: s.exerciseName ?? "",
+        count: 1,
+        reps: s.reps,
+        durationSeconds: s.durationSeconds,
+        weightKg: s.weightKg,
+        restSeconds: s.restSeconds,
+      });
+    }
+  }
+  return groups;
+}
+
 export function CopilotChat({ locale, dict }: { locale: LocaleSlug; dict: Dictionary }) {
   const c = dict.copilot;
   const { user } = useAuth();
@@ -114,12 +138,13 @@ export function CopilotChat({ locale, dict }: { locale: LocaleSlug; dict: Dictio
 
           <h3 className="mt-5 font-heading text-lg font-bold">{result.workoutName}</h3>
           <ul className="mt-3 space-y-1">
-            {result.sets.map((s, i) => (
+            {groupSetsByExercise(result.sets).map((group, i) => (
               <li key={i} className="text-sm text-silver">
-                <span className="font-semibold text-white">{s.exerciseName}</span>
-                {s.reps ? ` — ${s.reps} reps` : s.durationSeconds ? ` — ${s.durationSeconds}s` : ""}
-                {s.weightKg ? ` · ${s.weightKg}kg` : ""}
-                {s.restSeconds !== undefined ? ` · ${s.restSeconds}s rest` : ""}
+                <span className="font-semibold text-white">{group.exerciseName}</span>
+                {" — "}
+                {group.count}x{group.reps ? `${group.reps} reps` : group.durationSeconds ? `${group.durationSeconds}s` : ""}
+                {group.weightKg ? ` · ${group.weightKg}kg` : ""}
+                {group.restSeconds !== undefined ? ` · ${group.restSeconds}s rest` : ""}
               </li>
             ))}
           </ul>

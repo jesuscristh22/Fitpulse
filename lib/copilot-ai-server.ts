@@ -65,14 +65,16 @@ export async function generateCopilotAdaptation(params: {
             "and their fitness profile — you are not limited to any fixed list.\n\n" +
             "Respond ONLY with a JSON object matching exactly this shape: " +
             '{ "message": string (2-3 encouraging sentences explaining the adaptation), ' +
-            '"workoutName": string, "sets": [{ "name": string, ' +
+            '"workoutName": string, "exercises": [{ "name": string, ' +
             '"description": string (one sentence explaining what it trains), ' +
             '"instructions": string[] (2-4 short steps), ' +
-            '"muscles": string[] (lowercase single words), "setNumber": number, ' +
+            '"muscles": string[] (lowercase single words), ' +
+            '"sets": number (how many sets of this exercise, typically 2-4), ' +
             '"reps": number (optional), "weightKg": number (optional), ' +
             '"durationSeconds": number (optional), "restSeconds": number (optional, 0-120) }] }. ' +
-            "Include at least 3 exercises, each with a sensible setNumber sequence per exercise " +
-            "(e.g. 3 sets of the same exercise = setNumber 1, 2, 3).",
+            "Include at least 3 different exercises, each with a realistic `sets` count for the " +
+            "time available — never just 1 set unless the person explicitly asked for a single-round " +
+            "circuit.",
         },
         {
           role: "user",

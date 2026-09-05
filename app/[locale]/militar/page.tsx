@@ -23,7 +23,7 @@ export default function MilitaryLandingPage({ params }: { params: { locale: stri
       <SiteHeader locale={locale} dict={dict} />
 
       <section className="relative overflow-hidden pb-20 pt-36 sm:pt-44">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-6 sm:px-10 lg:grid-cols-2 lg:items-center">
+        <div className="mx-auto grid max-w-[112rem] grid-cols-1 gap-12 px-6 sm:px-10 lg:grid-cols-2 lg:items-center">
           <div>
             <p className="inline-block rounded-full border border-gold/40 bg-graphite px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-gold">
               {mil.badge}

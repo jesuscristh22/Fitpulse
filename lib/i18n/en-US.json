@@ -104,7 +104,10 @@
     "about": "About",
     "faq": "FAQ",
     "contact": "Contact",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "training": "Training",
+    "community": "Community",
+    "tagline": "Smart training, real tracking, and a community that pushes you further."
   },
   "pages": {
     "features": {
@@ -179,7 +182,16 @@
     "loginSubmit": "Log In",
     "signupSubmit": "Create Account",
     "error": "Something went wrong. Check your details and try again.",
-    "signOut": "Sign Out"
+    "signOut": "Sign Out",
+    "emailInUse": "That email is already registered. Try logging in instead.",
+    "invalidEmail": "That email doesn't look valid. Please check and try again.",
+    "weakPassword": "Password needs to be at least 6 characters.",
+    "wrongCredentials": "Incorrect email or password.",
+    "tooManyRequests": "Too many attempts in a row. Wait a bit and try again.",
+    "network": "No internet connection. Please check and try again.",
+    "generic": "Something went wrong. Check your details and try again.",
+    "popupClosed": "Window closed before finishing. Please try again.",
+    "provisioningFailed": "Your account was created, but there was a problem setting up your profile. Try signing in again — if it keeps happening, contact support."
   },
   "onboarding": {
     "title": "Let's get to know you",

@@ -10,6 +10,7 @@ import {
   query,
   where,
   getDocs,
+  getDoc,
   serverTimestamp,
 } from "firebase/firestore";
 import { getFirebaseDb, getFirebaseAuth } from "./firebase-client";
@@ -17,14 +18,18 @@ import { useAuth } from "./auth-context";
 import { stripUndefined } from "./firestore-utils";
 import type { GymProfile, GymStaffRelationship, GymMembership } from "./types";
 
-export async function createGym(name: string) {
+export async function createGym(name: string): Promise<{ ok?: boolean; error?: string; gymId?: string }> {
   const idToken = await getFirebaseAuth().currentUser?.getIdToken();
   const res = await fetch("/api/gym/create", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ idToken, name }),
   });
-  return res.json();
+  const data = await res.json();
+  if (!res.ok) {
+    throw new Error(data.error ?? `Request failed with status ${res.status}`);
+  }
+  return data;
 }
 
 export async function saveGymProfile(gymId: string, update: Partial<Omit<GymProfile, "id" | "ownerId" | "createdAt">>) {
@@ -73,8 +78,10 @@ export async function fetchGymDirectory(): Promise<GymProfile[]> {
 
 export async function applyAsStaff(gymId: string, staffId: string) {
   const db = getFirebaseDb();
+  const staffDoc = await getDoc(doc(db, "users", staffId));
   await addDoc(collection(db, "gym_staff"), {
-    gymId, staffId, role: "gym_staff", status: "pending", createdAt: serverTimestamp(),
+    gymId, staffId, staffDisplayName: staffDoc.data()?.displayName ?? "",
+    role: "gym_staff", status: "pending", createdAt: serverTimestamp(),
   });
 }
 
@@ -119,8 +126,10 @@ export function useGymStaff(gymId: string | undefined) {
 
 export async function joinGym(gymId: string, memberId: string) {
   const db = getFirebaseDb();
+  const memberDoc = await getDoc(doc(db, "users", memberId));
   await addDoc(collection(db, "gym_memberships"), {
-    gymId, memberId, status: "active", createdAt: serverTimestamp(),
+    gymId, memberId, memberDisplayName: memberDoc.data()?.displayName ?? "",
+    status: "active", createdAt: serverTimestamp(),
   });
 }
 

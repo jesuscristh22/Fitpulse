@@ -12,6 +12,7 @@ export function GymProfileForm({ dict }: { dict: Dictionary }) {
   const { gym, loading } = useMyGym();
 
   const [creating, setCreating] = useState(false);
+  const [createError, setCreateError] = useState<string | null>(null);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [city, setCity] = useState("");
@@ -31,8 +32,13 @@ export function GymProfileForm({ dict }: { dict: Dictionary }) {
   async function handleCreate() {
     if (!name.trim()) return;
     setCreating(true);
+    setCreateError(null);
     try {
-      await createGym(name);
+      const result = await createGym(name);
+      if (result?.error) throw new Error(result.error);
+    } catch (err) {
+      console.error("[GymProfileForm] create failed:", err);
+      setCreateError(err instanceof Error ? err.message : "Failed to create gym");
     } finally {
       setCreating(false);
     }
@@ -57,6 +63,7 @@ export function GymProfileForm({ dict }: { dict: Dictionary }) {
         <h2 className="font-heading text-xl font-bold">{g.create.title}</h2>
         <p className="mt-3 text-sm text-silver">{g.create.subtitle}</p>
         <Input value={name} onChange={(e) => setName(e.target.value)} placeholder={g.create.namePlaceholder} className="mt-6" />
+        {createError && <p className="mt-3 text-sm text-red-400">{createError}</p>}
         <Button variant="primary" size="lg" onClick={handleCreate} disabled={creating || !name.trim()} className="mt-4 w-full">
           {g.create.cta}
         </Button>

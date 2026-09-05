@@ -104,7 +104,10 @@
     "about": "Nosotros",
     "faq": "Preguntas Frecuentes",
     "contact": "Contacto",
-    "rights": "Todos los derechos reservados."
+    "rights": "Todos los derechos reservados.",
+    "training": "Entrenos",
+    "community": "Comunidad",
+    "tagline": "Entrenos inteligentes, seguimiento real y una comunidad que te lleva más lejos."
   },
   "pages": {
     "features": {
@@ -179,7 +182,16 @@
     "loginSubmit": "Iniciar Sesión",
     "signupSubmit": "Crear Cuenta",
     "error": "Algo salió mal. Revisa tus datos e inténtalo de nuevo.",
-    "signOut": "Cerrar Sesión"
+    "signOut": "Cerrar Sesión",
+    "emailInUse": "Ese correo ya está registrado. Intenta iniciar sesión en vez de crear cuenta.",
+    "invalidEmail": "Ese correo no parece válido. Revísalo e inténtalo de nuevo.",
+    "weakPassword": "La contraseña necesita al menos 6 caracteres.",
+    "wrongCredentials": "Correo o contraseña incorrectos.",
+    "tooManyRequests": "Demasiados intentos seguidos. Espera un poco e inténtalo de nuevo.",
+    "network": "Sin conexión a internet. Revísala e inténtalo de nuevo.",
+    "generic": "Algo salió mal. Verifica los datos e inténtalo de nuevo.",
+    "popupClosed": "Ventana cerrada antes de terminar. Inténtalo de nuevo.",
+    "provisioningFailed": "Tu cuenta fue creada, pero hubo un problema al configurar tu perfil. Intenta iniciar sesión de nuevo — si persiste, contacta con soporte."
   },
   "onboarding": {
     "title": "Vamos a conocerte",

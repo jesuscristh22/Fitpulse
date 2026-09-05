@@ -37,7 +37,7 @@ export default function FeaturesPage({ params }: { params: { locale: string } })
     <main className="bg-carbon">
       <SiteHeader locale={locale} dict={dict} />
 
-      <section className="mx-auto max-w-7xl px-6 pb-16 pt-36 sm:px-10 sm:pt-44">
+      <section className="mx-auto max-w-[112rem] px-6 pb-16 pt-36 sm:px-10 sm:pt-44">
         <p className="text-xs font-semibold uppercase tracking-wide text-gold">{dict.pages.features.title}</p>
         <h1 className="mt-4 max-w-2xl font-heading text-4xl font-extrabold leading-tight sm:text-5xl">
           {dict.pages.features.headline}
@@ -45,14 +45,14 @@ export default function FeaturesPage({ params }: { params: { locale: string } })
         <p className="mt-4 max-w-xl text-silver">{dict.pages.features.subtext}</p>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 pb-16 sm:px-10">
+      <section className="mx-auto max-w-[112rem] px-6 pb-16 sm:px-10">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           {dict.featuresSection.cards.map((card, i) => {
             const Icon = cardIcons[i];
             return (
               <div key={card.title} className="overflow-hidden rounded-2xl border border-white/10 bg-graphite">
                 <div className="relative h-56 w-full">
-                  <Image src={images[i]} alt={card.title} fill className="object-cover" />
+                  <Image src={images[i]} alt={card.title} fill sizes="(max-width: 640px) 100vw, 50vw" className="object-cover" />
                   <span className="absolute left-4 top-4 flex h-10 w-10 items-center justify-center rounded-lg border border-gold/40 bg-carbon/80 text-gold">
                     <Icon size={18} />
                   </span>
@@ -68,7 +68,7 @@ export default function FeaturesPage({ params }: { params: { locale: string } })
       </section>
 
       {/* Real, clickable feature map of the whole site */}
-      <section className="mx-auto max-w-7xl px-6 pb-24 sm:px-10 sm:pb-32">
+      <section className="mx-auto max-w-[112rem] px-6 pb-24 sm:px-10 sm:pb-32">
         <h2 className="font-heading text-2xl font-extrabold">{dict.pages.features.realFeaturesTitle}</h2>
         <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {realFeatures.map((f) => (

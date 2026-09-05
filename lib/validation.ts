@@ -35,13 +35,13 @@ export const militaryIntakeSchema = z.object({
 export const copilotResponseSchema = z.object({
   message: z.string(), // short, encouraging explanation of what was adapted and why
   workoutName: z.string(),
-  sets: z.array(
+  exercises: z.array(
     z.object({
       name: z.string(),
       description: z.string(),
       instructions: z.array(z.string()).min(2).max(5),
       muscles: z.array(z.string()).default([]),
-      setNumber: z.number().int().positive(),
+      sets: z.number().int().positive(), // how many sets of this exercise
       reps: z.number().int().positive().optional(),
       weightKg: z.number().positive().optional(),
       durationSeconds: z.number().int().positive().optional(),

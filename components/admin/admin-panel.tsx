@@ -173,7 +173,7 @@ export function AdminPanel({ dict }: { dict: Dictionary }) {
   }
 
   return (
-    <div className="mx-auto max-w-5xl">
+    <div className="mx-auto max-w-[112rem]">
       <div className="flex gap-2">
         {(["stats", "users", "pricing", "content"] as const).map((t) => (
           <button

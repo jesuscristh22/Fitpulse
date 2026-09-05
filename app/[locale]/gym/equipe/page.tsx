@@ -14,7 +14,7 @@ export default function GymTeamPage({ params }: { params: { locale: string } }) 
     <RequireAuth locale={locale}>
       <main className="min-h-screen bg-carbon px-6 pb-24 pt-28">
         <SiteHeader locale={locale} dict={dict} />
-        <GymTeamView dict={dict} />
+        <GymTeamView locale={locale} dict={dict} />
       </main>
     </RequireAuth>
   );

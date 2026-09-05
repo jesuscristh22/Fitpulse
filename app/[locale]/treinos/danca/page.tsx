@@ -24,12 +24,12 @@ export default function DancePage({ params }: { params: { locale: string } }) {
     <main className="bg-carbon">
       <SiteHeader locale={locale} dict={dict} />
 
-      <section className="mx-auto max-w-7xl px-6 pb-8 pt-36 sm:px-10 sm:pt-44">
+      <section className="mx-auto max-w-[112rem] px-6 pb-8 pt-36 sm:px-10 sm:pt-44">
         <h1 className="font-heading text-4xl font-extrabold leading-tight sm:text-5xl">{dict.dance.title}</h1>
         <p className="mt-4 max-w-xl text-silver">{dict.dance.subtitle}</p>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 pb-24 sm:px-10 sm:pb-32">
+      <section className="mx-auto max-w-[112rem] px-6 pb-24 sm:px-10 sm:pb-32">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {routines.map((routine) => (
             <Card key={routine.slug} className="flex flex-col">

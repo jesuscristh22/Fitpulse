@@ -1,20 +1,47 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { useMyClients, respondToInvite } from "@/lib/coach-client";
+import { getFirebaseAuth } from "@/lib/firebase-client";
+import { respondToInvite } from "@/lib/coach-client";
 import type { Dictionary } from "@/lib/i18n";
+import type { CoachRelationship } from "@/lib/types";
+
+interface ClientRow extends CoachRelationship {
+  id: string;
+  memberName: string;
+}
 
 export function CoachClientList({ dict }: { dict: Dictionary }) {
   const c = dict.coach.clients;
-  const { clients, loading } = useMyClients();
+  const [clients, setClients] = useState<ClientRow[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  async function load() {
+    const idToken = await getFirebaseAuth().currentUser?.getIdToken();
+    const res = await fetch("/api/coach/clients", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ idToken }),
+    });
+    const data = await res.json();
+    setClients(data.clients ?? []);
+    setLoading(false);
+  }
+
+  useEffect(() => {
+    load();
+  }, []);
+
+  async function handleRespond(id: string, accept: boolean) {
+    await respondToInvite(id, accept);
+    load();
+  }
 
   if (loading) return null;
-
-  if (clients.length === 0) {
-    return <p className="text-center text-silver">{c.noClients}</p>;
-  }
+  if (clients.length === 0) return <p className="text-center text-silver">{c.noClients}</p>;
 
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -27,7 +54,7 @@ export function CoachClientList({ dict }: { dict: Dictionary }) {
         return (
           <Card key={client.id}>
             <div className="flex items-center justify-between">
-              <p className="font-heading text-sm font-bold">{client.memberId.slice(0, 8)}…</p>
+              <p className="font-heading text-sm font-bold">{client.memberName}</p>
               <Badge variant={isPending ? "warning" : "success"}>{isPending ? c.pending : c.active}</Badge>
             </div>
 
@@ -39,10 +66,10 @@ export function CoachClientList({ dict }: { dict: Dictionary }) {
 
             {isPending && (
               <div className="mt-4 flex gap-2">
-                <Button variant="primary" size="sm" onClick={() => respondToInvite(client.id, true)}>
+                <Button variant="primary" size="sm" onClick={() => handleRespond(client.id, true)}>
                   {c.accept}
                 </Button>
-                <Button variant="secondary" size="sm" onClick={() => respondToInvite(client.id, false)}>
+                <Button variant="secondary" size="sm" onClick={() => handleRespond(client.id, false)}>
                   {c.decline}
                 </Button>
               </div>

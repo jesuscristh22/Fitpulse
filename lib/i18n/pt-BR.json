@@ -104,7 +104,10 @@
     "about": "Sobre",
     "faq": "Perguntas Frequentes",
     "contact": "Contato",
-    "rights": "Todos os direitos reservados."
+    "rights": "Todos os direitos reservados.",
+    "training": "Treinos",
+    "community": "Comunidade",
+    "tagline": "Treinos inteligentes, acompanhamento de verdade e uma comunidade que te leva mais longe."
   },
   "pages": {
     "features": {
@@ -179,7 +182,16 @@
     "loginSubmit": "Entrar",
     "signupSubmit": "Criar Conta",
     "error": "Algo deu errado. Verifique os dados e tente novamente.",
-    "signOut": "Sair"
+    "signOut": "Sair",
+    "emailInUse": "Esse e-mail já está cadastrado. Tente entrar em vez de criar conta.",
+    "invalidEmail": "Esse e-mail não parece válido. Confira e tente de novo.",
+    "weakPassword": "A senha precisa ter pelo menos 6 caracteres.",
+    "wrongCredentials": "E-mail ou senha incorretos.",
+    "tooManyRequests": "Muitas tentativas seguidas. Espere um pouco e tente de novo.",
+    "network": "Sem conexão com a internet. Confira e tente de novo.",
+    "generic": "Algo deu errado. Verifique os dados e tente novamente.",
+    "popupClosed": "Janela fechada antes de concluir. Tente de novo.",
+    "provisioningFailed": "Sua conta foi criada, mas houve um problema ao configurar seu perfil. Tente entrar novamente — se persistir, fale com o suporte."
   },
   "onboarding": {
     "title": "Vamos te conhecer melhor",

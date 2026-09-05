@@ -57,19 +57,23 @@ export async function POST(request: Request) {
     // generator, so every exercise ends up linking to a real how-to page.
     const libraryExercises = await getExercises(locale);
     const resolvedSets = [];
-    for (const ex of adaptation.sets) {
+    for (const ex of adaptation.exercises) {
       const match = matchExerciseByName(ex.name, libraryExercises);
       const slug = match ? match.slug : (await discoverAndSaveExercise(ex, locale, "strength", ["no_equipment"])).slug;
-      resolvedSets.push({
-        exerciseId: slug,
-        exerciseName: ex.name,
-        exerciseSlug: slug,
-        setNumber: ex.setNumber,
-        reps: ex.reps,
-        weightKg: ex.weightKg,
-        durationSeconds: ex.durationSeconds,
-        restSeconds: ex.restSeconds,
-      });
+      // Expand the exercise's `sets` count into individual WorkoutSet rows
+      // (setNumber 1..N) — same pattern as the Functional Workout templates.
+      for (let setNumber = 1; setNumber <= ex.sets; setNumber++) {
+        resolvedSets.push({
+          exerciseId: slug,
+          exerciseName: ex.name,
+          exerciseSlug: slug,
+          setNumber,
+          reps: ex.reps,
+          weightKg: ex.weightKg,
+          durationSeconds: ex.durationSeconds,
+          restSeconds: ex.restSeconds,
+        });
+      }
     }
 
     await adminDb().collection("ai_usage").add({

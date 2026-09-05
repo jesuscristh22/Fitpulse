@@ -88,6 +88,7 @@ export interface GymProfile {
 export interface GymStaffRelationship {
   gymId: string;
   staffId: string;
+  staffDisplayName?: string;
   role: "gym_staff" | "gym_manager";
   status: "pending" | "active" | "ended";
   createdAt: string;
@@ -96,6 +97,7 @@ export interface GymStaffRelationship {
 export interface GymMembership {
   gymId: string;
   memberId: string;
+  memberDisplayName?: string;
   status: "active" | "ended";
   createdAt: string;
 }
@@ -119,6 +121,7 @@ export interface CoachProfile {
 export interface CoachRelationship {
   id: string;
   memberId: string;
+  memberDisplayName?: string;
   coachId: string;
   status: "pending" | "active" | "ended";
   permissions: {

@@ -14,7 +14,7 @@ export default function ChallengesPage({ params }: { params: { locale: string } 
     <RequireAuth locale={locale}>
       <main className="min-h-screen bg-carbon px-6 pb-24 pt-28">
         <SiteHeader locale={locale} dict={dict} />
-        <div className="mx-auto max-w-7xl">
+        <div className="mx-auto max-w-[112rem]">
           <h1 className="font-heading text-2xl font-bold">{dict.challenges.title}</h1>
           <p className="mt-1 text-sm text-silver">{dict.challenges.subtitle}</p>
           <div className="mt-8">

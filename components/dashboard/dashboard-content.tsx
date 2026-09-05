@@ -61,7 +61,7 @@ export function DashboardContent({
   const displayName = account?.displayName?.split(" ")[0] || "";
 
   return (
-    <div className="mx-auto max-w-5xl px-6 py-10 pt-28">
+    <div className="mx-auto max-w-[112rem] px-6 py-10 pt-28">
       <h1 className="font-heading text-2xl font-bold">
         {dict.dashboard.greeting}
         {displayName ? (

@@ -10,6 +10,7 @@ import {
   query,
   where,
   getDocs,
+  getDoc,
   serverTimestamp,
 } from "firebase/firestore";
 import { getFirebaseDb } from "./firebase-client";
@@ -83,8 +84,10 @@ export async function fetchCoachDirectory(): Promise<CoachProfile[]> {
 
 export async function inviteCoach(memberId: string, coachId: string) {
   const db = getFirebaseDb();
+  const memberDoc = await getDoc(doc(db, "users", memberId));
   await addDoc(collection(db, "coach_relationships"), {
     memberId,
+    memberDisplayName: memberDoc.data()?.displayName ?? "",
     coachId,
     status: "pending",
     permissions: DEFAULT_PERMISSIONS,

@@ -14,7 +14,7 @@ export default function CoachClientsPage({ params }: { params: { locale: string 
     <RequireAuth locale={locale}>
       <main className="min-h-screen bg-carbon px-6 pb-24 pt-28">
         <SiteHeader locale={locale} dict={dict} />
-        <div className="mx-auto max-w-7xl">
+        <div className="mx-auto max-w-[112rem]">
           <h1 className="font-heading text-2xl font-bold">{dict.coach.clients.title}</h1>
           <div className="mt-8">
             <CoachClientList dict={dict} />
