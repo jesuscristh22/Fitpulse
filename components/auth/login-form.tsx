@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState, useEffect, useRef, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
-import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithRedirect, getRedirectResult, GoogleAuthProvider } from "firebase/auth";
 import { getFirebaseAuth } from "@/lib/firebase-client";
 import { getAuthErrorMessage } from "@/lib/auth-error-messages";
 import { Button } from "@/components/ui/button";
@@ -23,6 +23,26 @@ export function LoginForm({
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const checkedRedirect = useRef(false);
+
+  // Google sign-in uses a full-page redirect, not a popup — popups are
+  // unreliable on mobile browsers (often silently blocked, or behave
+  // inconsistently across in-app/mobile browser variants). This effect picks
+  // up the result once Google sends the person back to this page.
+  useEffect(() => {
+    if (checkedRedirect.current) return;
+    checkedRedirect.current = true;
+    getRedirectResult(getFirebaseAuth())
+      .then((credential) => {
+        if (credential) router.push(`/${locale}/dashboard`);
+      })
+      .catch((err) => {
+        console.error("[LoginForm] Google redirect result failed:", err);
+        const message = getAuthErrorMessage(err, dict);
+        if (message) setError(message);
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   async function handleEmailLogin(e: FormEvent) {
     e.preventDefault();
@@ -44,13 +64,13 @@ export function LoginForm({
     setError(null);
     setBusy(true);
     try {
-      await signInWithPopup(getFirebaseAuth(), new GoogleAuthProvider());
-      router.push(`/${locale}/dashboard`);
+      await signInWithRedirect(getFirebaseAuth(), new GoogleAuthProvider());
+      // Page navigates away here — result is handled by the effect above
+      // once the person is redirected back.
     } catch (err) {
       console.error("[LoginForm] Google login failed:", err);
       const message = getAuthErrorMessage(err, dict);
       if (message) setError(message);
-    } finally {
       setBusy(false);
     }
   }
