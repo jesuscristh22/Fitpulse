@@ -19,6 +19,16 @@ const TOPIC_POOL = [
   "beginner-friendly calisthenics progressions",
   "how to avoid plateaus in strength training",
   "active recovery on rest days",
+  "what to eat before a workout for energy",
+  "the post-workout nutrition window, and whether it really matters",
+  "simple meal prep basics for busy, active people",
+  "reading a nutrition label with fitness goals in mind",
+  "understanding protein, carbs, and fat without overcomplicating it",
+  "easy, high-protein snack ideas for an active day",
+  "how much water a physically active person actually needs",
+  "the role of fiber in a fitness-focused diet",
+  "eating enough on a budget while training regularly",
+  "how carbs actually fuel your workouts",
 ];
 
 function pickWeeklyTopic(): string {
@@ -65,7 +75,16 @@ async function generateWithOpenAI(topic: string, languageName: string): Promise<
         {
           role: "system",
           content:
-            "You are a fitness content writer for FitPulse, a training app. Write general, evidence-based wellness information — never medical diagnoses, never specific medication or injury treatment advice. Keep a warm, encouraging, non-judgmental tone. Respond ONLY with a JSON object: { \"title\": string, \"excerpt\": string (under 20 words), \"body\": string[] (3 short paragraphs), \"tags\": string[] (2-3 lowercase tags) }.",
+            "You are a fitness content writer for FitPulse, a training app. Write general, " +
+            "evidence-based wellness information — never medical diagnoses, never specific " +
+            "medication or injury treatment advice. Keep a warm, encouraging, non-judgmental tone. " +
+            "Make the article genuinely complete and useful: include at least one concrete, " +
+            "actionable takeaway the reader can apply today (a specific habit, a rough amount, a " +
+            "simple rule of thumb) — not just general theory. If the topic is about food or " +
+            "nutrition, keep any numbers general/illustrative (never prescribe an exact diet, " +
+            "calorie target, or restriction) and note that individual needs vary. " +
+            'Respond ONLY with a JSON object: { "title": string, "excerpt": string (under 20 words), ' +
+            '"body": string[] (4-5 solid paragraphs), "tags": string[] (2-3 lowercase tags) }.',
         },
         {
           role: "user",

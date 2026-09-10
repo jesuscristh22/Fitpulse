@@ -32,6 +32,8 @@ export const EXERCISE_VIDEOS: Record<string, Partial<Record<LocaleSlug, string>>
   "sit-up": { en: "sLFV4DdEFNM" },
   "flutter-kicks": { en: "F2UAWc_ubjg" },
   "squat-thrust": { en: "v8C654fpSYo" },
+  "mountain-climbers": { en: "6wh2s_ZZxCI" },
+  "high-knees": { en: "A1nSIbmLMHk" },
   "squat-jump": { en: "yjq2x_j-Nrc" },
 };
 

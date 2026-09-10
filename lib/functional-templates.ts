@@ -56,4 +56,26 @@ export const FUNCTIONAL_TEMPLATES_BASE: FunctionalTemplateBase[] = [
       { exerciseId: "plank", sets: 3, durationSeconds: 40, restSeconds: 30 },
     ],
   },
+  {
+    slug: "cardio-intenso-funcional",
+    estimatedMinutes: 20,
+    difficulty: "intermediate",
+    exercises: [
+      { exerciseId: "jumping-jacks", sets: 4, durationSeconds: 30, restSeconds: 20 },
+      { exerciseId: "mountain-climbers", sets: 4, durationSeconds: 30, restSeconds: 20 },
+      { exerciseId: "burpee", sets: 4, reps: 8, restSeconds: 30 },
+      { exerciseId: "high-knees", sets: 4, durationSeconds: 30, restSeconds: 20 },
+    ],
+  },
+  {
+    slug: "potencia-funcional",
+    estimatedMinutes: 22,
+    difficulty: "advanced",
+    exercises: [
+      { exerciseId: "squat-jump", sets: 4, reps: 10, restSeconds: 30 },
+      { exerciseId: "burpee", sets: 4, reps: 8, restSeconds: 30 },
+      { exerciseId: "push-up", sets: 4, reps: 12, restSeconds: 30 },
+      { exerciseId: "mountain-climbers", sets: 4, durationSeconds: 30, restSeconds: 20 },
+    ],
+  },
 ];
