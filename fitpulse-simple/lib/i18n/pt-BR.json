@@ -1,0 +1,862 @@
+{
+  "common": {
+    "appName": "FitPulse",
+    "slogan": "Seu treino. Seu ritmo. Seus resultados."
+  },
+  "nav": {
+    "home": "Início",
+    "features": "Recursos",
+    "pricing": "Planos",
+    "about": "Sobre",
+    "contact": "Contato",
+    "login": "Entrar",
+    "cta": "Começar Agora",
+    "dashboard": "Painel",
+    "library": "Exercícios",
+    "myWorkouts": "Meus Treinos",
+    "more": "Mais"
+  },
+  "hero": {
+    "eyebrow": "Seu treino. Seu ritmo. Seus resultados.",
+    "headlineLine1": "Transforme seu",
+    "headlineHighlight1": "corpo",
+    "headlineMid": "e sua",
+    "headlineHighlight2": "vida",
+    "subtext": "Planos de treino personalizados, acompanhamento inteligente e uma comunidade que te motiva a ir além.",
+    "ctaPrimary": "Começar Agora",
+    "ctaSecondary": "Ver Como Funciona",
+    "weeklyGoalLabel": "Meta Semanal",
+    "weeklyGoalValue": "4/5 treinos",
+    "caloriesLabel": "Calorias Hoje",
+    "caloriesValue": "1.250",
+    "caloriesTarget": "/ 2.000 kcal",
+    "nextWorkoutLabel": "Próximo Treino",
+    "nextWorkoutName": "Costas e Bíceps",
+    "nextWorkoutMeta": "45 min · Intermediário",
+    "overallProgressLabel": "Progresso Geral",
+    "overallProgressValue": "78%"
+  },
+  "miniFeatures": [
+    {
+      "title": "Treinos Personalizados",
+      "desc": "Feitos para você"
+    },
+    {
+      "title": "Acompanhamento",
+      "desc": "Seu progresso importa"
+    },
+    {
+      "title": "Comunidade Ativa",
+      "desc": "Juntos somos mais fortes"
+    },
+    {
+      "title": "Resultados Reais",
+      "desc": "Foco, disciplina e evolução"
+    }
+  ],
+  "featuresSection": {
+    "eyebrow": "Por que escolher o FitPulse?",
+    "headline": "Tudo o que você precisa para",
+    "headlineHighlight": "evoluir",
+    "subtext": "Uma plataforma completa para transformar seus objetivos em conquistas reais.",
+    "cta": "Saiba Mais",
+    "cards": [
+      {
+        "title": "Treinos Inteligentes",
+        "desc": "Planos personalizados baseados no seu objetivo, nível e disponibilidade."
+      },
+      {
+        "title": "Acompanhamento Total",
+        "desc": "Monitore seus treinos, medidas, peso e evolução em tempo real."
+      },
+      {
+        "title": "Comunidade Motivadora",
+        "desc": "Conecte-se com pessoas, compartilhe conquistas e mantenha-se motivado."
+      },
+      {
+        "title": "Resultados Reais",
+        "desc": "Método comprovado que já transformou milhares de vidas."
+      }
+    ]
+  },
+  "manifesto": "Sua saúde. Seu coach. Seu progresso.",
+  "scoreSection": {
+    "headline": "Um score que explica a si mesmo.",
+    "subtext": "O FitPulse Score lê sua consistência, volume de treino e recuperação — e mostra exatamente por que ele mudou.",
+    "bullets": [
+      "Consistência semanal e sequências, rastreadas automaticamente",
+      "Recordes pessoais em força, calistenia e resistência",
+      "Compartilhado com um coach só quando você quiser"
+    ]
+  },
+  "testimonial": {
+    "quote": "Deixei de precisar de uma academia para me sentir uma atleta.",
+    "author": "Marta R., membro FitPulse desde 2024"
+  },
+  "finalCta": {
+    "headline": "Seu primeiro treino está pronto quando você estiver.",
+    "cta": "Começar Agora"
+  },
+  "footer": {
+    "product": "Produto",
+    "company": "Empresa",
+    "support": "Suporte",
+    "about": "Sobre",
+    "faq": "Perguntas Frequentes",
+    "contact": "Contato",
+    "rights": "Todos os direitos reservados.",
+    "training": "Treinos",
+    "community": "Comunidade",
+    "tagline": "Treinos inteligentes, acompanhamento de verdade e uma comunidade que te leva mais longe."
+  },
+  "pages": {
+    "features": {
+      "title": "Recursos",
+      "headline": "Cada ferramenta que você precisa, num só lugar.",
+      "subtext": "Do primeiro treino ao seu recorde pessoal, o FitPulse acompanha cada etapa da sua evolução.",
+      "realFeaturesTitle": "Explore cada parte do FitPulse",
+      "myWorkoutsDesc": "Monte seu próprio treino, escolhendo exercícios, séries e descanso."
+    },
+    "pricing": {
+      "title": "Planos",
+      "headline": "Um plano para cada fase da sua jornada.",
+      "subtext": "Comece de graça. Evolua quando fizer sentido para você.",
+      "plans": [
+        {
+          "name": "Free",
+          "price": "R$0",
+          "interval": "sempre",
+          "features": [
+            "Treinos manuais ilimitados",
+            "Gerador de exercícios grátis",
+            "Funcional e Dança grátis",
+            "Histórico de treinos"
+          ]
+        },
+        {
+          "name": "Member Pro",
+          "price": "R$39,90",
+          "interval": "mês",
+          "features": [
+            "Biblioteca completa de exercícios com vídeo",
+            "Geração de treino por IA ilimitada",
+            "Progresso e análises avançadas",
+            "Desafios premium"
+          ]
+        },
+        {
+          "name": "Business",
+          "price": "Sob consulta",
+          "interval": "",
+          "features": [
+            "Gestão de membros e staff",
+            "CRM e leads",
+            "Analytics da academia"
+          ]
+        }
+      ],
+      "choosePlan": "Escolher"
+    },
+    "about": {
+      "title": "Sobre",
+      "headline": "Treino. Saúde. Evolução. Comunidade.",
+      "body": "O FitPulse nasceu para ser o sistema operacional do fitness: um só lugar onde você pode treinar sozinho, com um coach, ou dentro da sua academia — sem nunca perder seu histórico ou sua identidade."
+    },
+    "contact": {
+      "title": "Contato",
+      "headline": "Fale com a gente.",
+      "subtext": "Dúvidas, parcerias ou suporte — estamos por aqui.",
+      "formName": "Nome",
+      "formEmail": "E-mail",
+      "formMessage": "Mensagem",
+      "formSubmit": "Enviar Mensagem"
+    }
+  },
+  "dashboard": {
+    "greeting": "Bom dia"
+  },
+  "authForm": {
+    "google": "Continuar com Google",
+    "email": "E-mail",
+    "password": "Senha",
+    "loginSubmit": "Entrar",
+    "signupSubmit": "Criar Conta",
+    "error": "Algo deu errado. Verifique os dados e tente novamente.",
+    "signOut": "Sair",
+    "emailInUse": "Esse e-mail já está cadastrado. Tente entrar em vez de criar conta.",
+    "invalidEmail": "Esse e-mail não parece válido. Confira e tente de novo.",
+    "weakPassword": "A senha precisa ter pelo menos 6 caracteres.",
+    "wrongCredentials": "E-mail ou senha incorretos.",
+    "tooManyRequests": "Muitas tentativas seguidas. Espere um pouco e tente de novo.",
+    "network": "Sem conexão com a internet. Confira e tente de novo.",
+    "generic": "Algo deu errado. Verifique os dados e tente novamente.",
+    "popupClosed": "Janela fechada antes de concluir. Tente de novo.",
+    "provisioningFailed": "Sua conta foi criada, mas houve um problema ao configurar seu perfil. Tente entrar novamente — se persistir, fale com o suporte."
+  },
+  "onboarding": {
+    "title": "Vamos te conhecer melhor",
+    "back": "Voltar",
+    "next": "Continuar",
+    "finish": "Concluir Cadastro",
+    "skip": "Prefiro não dizer",
+    "stepOf": "Passo {current} de {total}",
+    "steps": {
+      "name": {
+        "title": "Como podemos te chamar?",
+        "placeholder": "Seu nome"
+      },
+      "birthDate": {
+        "title": "Qual sua data de nascimento?",
+        "ageLabel": "anos"
+      },
+      "gender": {
+        "title": "Qual seu gênero?",
+        "options": {
+          "male": "Masculino",
+          "female": "Feminino",
+          "other": "Outro",
+          "prefer_not_to_say": "Prefiro não dizer"
+        }
+      },
+      "country": {
+        "title": "Onde você mora?",
+        "options": {
+          "BR": "Brasil",
+          "PT": "Portugal",
+          "ES": "Espanha",
+          "US": "Estados Unidos"
+        }
+      },
+      "language": {
+        "title": "Qual idioma você prefere?",
+        "options": {
+          "pt-BR": "Português (Brasil)",
+          "pt-PT": "Português (Portugal)",
+          "es-ES": "Español",
+          "en-US": "English"
+        }
+      },
+      "height": {
+        "title": "Qual sua altura?",
+        "unit": "cm"
+      },
+      "weight": {
+        "title": "Qual seu peso?",
+        "unit": "kg"
+      },
+      "goal": {
+        "title": "Qual seu principal objetivo?",
+        "options": {
+          "lose_weight": "Perder peso",
+          "build_muscle": "Ganhar músculo",
+          "increase_strength": "Aumentar força",
+          "improve_conditioning": "Melhorar condicionamento",
+          "military_fitness": "Condicionamento militar",
+          "calisthenics": "Calistenia",
+          "improve_mobility": "Melhorar mobilidade",
+          "improve_endurance": "Melhorar resistência",
+          "stay_active": "Manter-se ativo",
+          "general_fitness": "Fitness geral"
+        }
+      },
+      "environment": {
+        "title": "Onde você treina? (pode marcar mais de um)",
+        "options": {
+          "gym": "Academia",
+          "home": "Em casa",
+          "outdoor": "Ao ar livre",
+          "military_calisthenics": "Calistenia militar",
+          "hybrid": "Híbrido",
+          "with_coach": "Com coach"
+        }
+      },
+      "experience": {
+        "title": "Qual seu nível de experiência?",
+        "options": {
+          "beginner": "Iniciante",
+          "intermediate": "Intermediário",
+          "advanced": "Avançado"
+        }
+      },
+      "days": {
+        "title": "Quantos dias por semana você pode treinar?",
+        "suffix": "dias"
+      },
+      "time": {
+        "title": "Quanto tempo você tem por treino?",
+        "suffix": "min"
+      },
+      "equipment": {
+        "title": "Quais equipamentos você tem disponível?",
+        "options": {
+          "no_equipment": "Nenhum equipamento",
+          "dumbbells": "Halteres",
+          "barbell": "Barra",
+          "resistance_bands": "Faixas de resistência",
+          "pull_up_bar": "Barra fixa",
+          "full_gym": "Academia completa",
+          "other": "Outro"
+        }
+      },
+      "review": {
+        "title": "Confirme suas informações",
+        "subtext": "Você pode alterar tudo isso depois nas configurações."
+      }
+    }
+  },
+  "dashboardExtra": {
+    "planLabel": "Seu Plano",
+    "planFree": "Free",
+    "viewPlans": "Ver Planos",
+    "healthTitle": "Sua Saúde Agora",
+    "bmiLabel": "IMC",
+    "bmiDisclaimer": "Referência geral, não substitui orientação médica.",
+    "bmiCategories": {
+      "underweight": "Abaixo do peso",
+      "normal": "Peso normal",
+      "overweight": "Sobrepeso",
+      "obese": "Obesidade"
+    },
+    "consistencyLabel": "Consistência da Semana",
+    "workoutsOfGoal": "{done} de {goal} treinos",
+    "goalSummaryTitle": "Seu Perfil de Treino",
+    "goalLabelText": "Objetivo",
+    "experienceLabelText": "Experiência",
+    "environmentLabelText": "Ambiente",
+    "comingSoon": "Em breve",
+    "noDataYet": "Complete seu perfil no onboarding para ver isso aqui.",
+    "blogTeaserTitle": "Do Blog FitPulse",
+    "viewAllPosts": "Ver todos os posts",
+    "readMore": "Ler mais"
+  },
+  "blog": {
+    "title": "Blog FitPulse",
+    "subtitle": "Dicas de saúde, hidratação e treino, atualizado toda semana.",
+    "updatedWeekly": "Atualizado semanalmente pela nossa IA",
+    "back": "Voltar ao blog"
+  },
+  "library": {
+    "title": "Biblioteca de Exercícios",
+    "subtitle": "Explore exercícios por categoria, músculo, equipamento e dificuldade.",
+    "allCategories": "Todas",
+    "categories": {
+      "strength": "Força",
+      "cardio": "Cardio",
+      "calisthenics": "Calistenia",
+      "military": "Militar",
+      "mobility": "Mobilidade",
+      "warm-up": "Aquecimento",
+      "recovery": "Recuperação"
+    },
+    "difficulty": {
+      "beginner": "Iniciante",
+      "intermediate": "Intermediário",
+      "advanced": "Avançado"
+    },
+    "filterMuscle": "Músculo",
+    "filterEquipment": "Equipamento",
+    "filterDifficulty": "Dificuldade",
+    "allMuscles": "Todos os músculos",
+    "allEquipment": "Todo equipamento",
+    "allDifficulty": "Toda dificuldade",
+    "noResults": "Nenhum exercício encontrado com esses filtros.",
+    "clearFilters": "Limpar filtros",
+    "muscles": {
+      "chest": "Peito",
+      "back": "Costas",
+      "shoulders": "Ombros",
+      "biceps": "Bíceps",
+      "triceps": "Tríceps",
+      "quads": "Quadríceps",
+      "hamstrings": "Posterior de coxa",
+      "glutes": "Glúteos",
+      "calves": "Panturrilhas",
+      "core": "Core",
+      "full_body": "Corpo inteiro"
+    },
+    "equipment": {
+      "no_equipment": "Sem equipamento",
+      "dumbbells": "Halteres",
+      "barbell": "Barra",
+      "resistance_bands": "Faixas",
+      "pull_up_bar": "Barra fixa",
+      "full_gym": "Academia completa",
+      "other": "Outro"
+    },
+    "instructionsTitle": "Como fazer",
+    "safetyTitle": "Segurança",
+    "alternativesTitle": "Alternativas",
+    "back": "Voltar aos exercícios",
+    "paywallTitle": "Biblioteca completa é exclusiva para assinantes",
+    "paywallSubtitle": "Acesso total aos exercícios (com vídeo e instruções completas) é um benefício de quem tem uma assinatura ativa.",
+    "tryFreeGenerator": "Experimentar Gerador Grátis",
+    "subscribeCta": "Ver Planos",
+    "generatorTitle": "Gerador de Exercícios",
+    "generatorSubtitle": "Escolha uma categoria e receba uma sugestão de exercício — grátis, sem precisar de conta.",
+    "generateButton": "Gerar Exercício",
+    "tryAgain": "Tentar Outro",
+    "upsellNote": "Quer a biblioteca completa, com vídeo e busca por músculo/equipamento? Assine o FitPulse Tactical."
+  },
+  "workoutBuilder": {
+    "title": "Criar Treino",
+    "namePlaceholder": "Nome do treino (ex: Treino de Costas)",
+    "addExercise": "Adicionar Exercício",
+    "searchPlaceholder": "Buscar exercício...",
+    "noExercisesAdded": "Nenhum exercício adicionado ainda.",
+    "set": "Série",
+    "reps": "Reps",
+    "weightKg": "Carga (kg)",
+    "durationSec": "Duração (s)",
+    "restSec": "Descanso (s)",
+    "notes": "Notas",
+    "addSet": "+ Série",
+    "removeSet": "Remover",
+    "removeExercise": "Remover exercício",
+    "save": "Salvar Treino",
+    "saving": "Salvando...",
+    "nameRequired": "Dê um nome ao treino antes de salvar.",
+    "atLeastOneExercise": "Adicione pelo menos um exercício.",
+    "saveError": "Não foi possível salvar. Tente novamente."
+  },
+  "myWorkouts": {
+    "title": "Meus Treinos",
+    "newWorkout": "Novo Treino",
+    "empty": "Você ainda não criou nenhum treino.",
+    "createFirst": "Criar meu primeiro treino",
+    "exercisesCount": "{count} exercícios",
+    "viewDetails": "Ver detalhes",
+    "delete": "Excluir",
+    "confirmDelete": "Excluir este treino? Essa ação não pode ser desfeita.",
+    "back": "Voltar aos meus treinos"
+  },
+  "workoutExecution": {
+    "title": "Executando Treino",
+    "setOf": "Série {current} de {total}",
+    "target": "Alvo",
+    "actualReps": "Reps feitas",
+    "actualWeight": "Carga usada (kg)",
+    "completeSet": "Concluir Série",
+    "restTitle": "Descanso",
+    "restSkip": "Pular descanso",
+    "nextUp": "Próximo",
+    "finishNow": "Finalizar Treino",
+    "summaryTitle": "Treino Concluído!",
+    "setsCompletedLabel": "Séries concluídas",
+    "elapsedTimeLabel": "Tempo total",
+    "saveAndFinish": "Salvar e Finalizar",
+    "startWorkout": "Iniciar Treino",
+    "backToWorkouts": "Voltar aos meus treinos",
+    "notFound": "Treino não encontrado."
+  },
+  "military": {
+    "badge": "FitPulse Tactical",
+    "headline": "SEM ACADEMIA?",
+    "headlineHighlight": "SEM PROBLEMA.",
+    "subheadline": "Ganhe um programa de calistenia inspirado em condicionamento militar, feito por IA a partir das suas respostas.",
+    "disclaimer": "FitPulse Tactical é um programa de fitness inspirado em condicionamento militar — não é afiliado a nenhuma força militar oficial.",
+    "priceNote": "Assinatura mensal, cancele quando quiser",
+    "cta": "Montar Meu Programa",
+    "featuresTitle": "O que vem no programa",
+    "features": [
+      "Programa de 4 a 8 semanas, no seu ritmo",
+      "Só peso corporal — sem equipamento necessário",
+      "Adaptado ao seu nível e disponibilidade"
+    ],
+    "price": "R$ 19,90",
+    "priceInterval": "/mês"
+  },
+  "militaryIntake": {
+    "title": "Questionário Tactical",
+    "subtitle": "Suas respostas vão moldar o programa gerado pela IA.",
+    "steps": {
+      "experience": {
+        "title": "Qual seu nível de experiência?"
+      },
+      "focus": {
+        "title": "Qual o foco principal?",
+        "options": {
+          "selection_prep": "Preparação para processo seletivo",
+          "endurance": "Resistência",
+          "strength": "Força",
+          "general_conditioning": "Condicionamento geral"
+        }
+      },
+      "days": {
+        "title": "Quantos dias por semana?",
+        "suffix": "dias"
+      },
+      "weeks": {
+        "title": "Duração do programa?",
+        "suffix": "semanas"
+      },
+      "limitations": {
+        "title": "Alguma lesão ou limitação? (opcional)",
+        "placeholder": "Ex: dor no joelho direito"
+      }
+    },
+    "back": "Voltar",
+    "next": "Continuar",
+    "submit": "Salvar Respostas",
+    "savedTitle": "Respostas salvas!",
+    "savedSubtext": "O próximo passo é o pagamento — essa parte chega em breve. Suas respostas já estão guardadas e prontas para gerar seu programa assim que o checkout estiver disponível.",
+    "checkoutComingSoon": "Checkout em breve",
+    "backToTactical": "Voltar ao FitPulse Tactical",
+    "readyForCheckout": "Suas respostas foram salvas. O próximo passo é o pagamento — depois disso seu programa é gerado automaticamente.",
+    "goToCheckout": "Ir para Pagamento",
+    "redirecting": "Redirecionando...",
+    "checkoutError": "Não foi possível iniciar o pagamento. Tente novamente."
+  },
+  "profile": {
+    "navLabel": "Perfil",
+    "title": "Meu Perfil",
+    "subtitle": "Seus dados pessoais e de treino. Você pode atualizar tudo aqui.",
+    "save": "Salvar Alterações",
+    "saved": "Salvo!",
+    "saveError": "Não foi possível salvar. Tente novamente.",
+    "sections": {
+      "personal": "Dados Pessoais",
+      "body": "Medidas Corporais",
+      "training": "Perfil de Treino",
+      "health": "Sua Saúde Agora",
+      "diet": "Alimentação"
+    },
+    "fields": {
+      "name": "Nome",
+      "birthDate": "Data de nascimento",
+      "gender": "Gênero",
+      "height": "Altura (cm)",
+      "weight": "Peso (kg)",
+      "waist": "Cintura (cm)",
+      "neck": "Pescoço (cm)",
+      "hip": "Quadril (cm)",
+      "activityLevel": "Nível de atividade",
+      "bodyMeasurementsNote": "Opcional — usado só para estimar seu percentual de gordura.",
+      "country": "País",
+      "countryNote": "É esse país que define a moeda e o preço cobrado (ex: Military AI Workout)."
+    },
+    "activityLevels": {
+      "sedentary": "Sedentário (pouco ou nenhum exercício)",
+      "light": "Leve (exercício 1-3 dias/semana)",
+      "moderate": "Moderado (exercício 3-5 dias/semana)",
+      "active": "Ativo (exercício 6-7 dias/semana)",
+      "very_active": "Muito ativo (exercício intenso diário)"
+    },
+    "health": {
+      "bmiLabel": "IMC",
+      "bodyFatLabel": "% de Gordura Estimada",
+      "bodyFatMissing": "Adicione cintura e pescoço acima para calcular.",
+      "bmrLabel": "Taxa Metabólica Basal",
+      "tdeeLabel": "Calorias para Manter o Peso",
+      "tdeeSubtext": "Estimativa de quantas calorias por dia seu corpo gasta, considerando seu nível de atividade.",
+      "disclaimer": "Essas são estimativas gerais, não substituem avaliação de um médico ou nutricionista."
+    },
+    "diet": {
+      "intro": "Algumas referências gerais de alimentação — não é um plano personalizado.",
+      "tips": [
+        "Priorize proteínas magras (frango, peixe, ovos, leguminosas) em cada refeição principal.",
+        "Inclua fontes de carboidrato complexo (arroz integral, aveia, batata-doce) para ter energia nos treinos.",
+        "Coma vegetais e frutas variados ao longo do dia para fibras e micronutrientes.",
+        "Beba água regularmente — não espere sentir sede para se hidratar.",
+        "Preste atenção às porções em vez de cortar grupos alimentares inteiros."
+      ],
+      "disclaimer": "Isso é educativo e geral. Para um plano alimentar personalizado, converse com um nutricionista."
+    }
+  },
+  "calendar": {
+    "navLabel": "Calendário",
+    "title": "Calendário de Treinos",
+    "subtitle": "Atribua seus treinos aos dias da semana e acompanhe o que já foi concluído.",
+    "days": {
+      "mon": "Seg",
+      "tue": "Ter",
+      "wed": "Qua",
+      "thu": "Qui",
+      "fri": "Sex",
+      "sat": "Sáb",
+      "sun": "Dom"
+    },
+    "assign": "+ Atribuir treino",
+    "unassign": "Remover",
+    "restDay": "Dia de descanso",
+    "completed": "Concluído",
+    "noWorkouts": "Você ainda não criou treinos.",
+    "createWorkout": "Criar um treino"
+  },
+  "functionalWorkouts": {
+    "navLabel": "Funcional",
+    "title": "Treinos Funcionais",
+    "subtitle": "Treinos prontos, gratuitos, com vídeo — comece agora sem precisar montar nada.",
+    "freeBadge": "Grátis",
+    "startButton": "Iniciar Treino",
+    "minutesLabel": "min",
+    "exercisesCount": "{count} exercícios",
+    "searchVideoLabel": "Buscar vídeo no YouTube"
+  },
+  "militarySuccess": {
+    "title": "Pagamento confirmado!",
+    "subtitle": "Sua assinatura do Military AI Workout está ativa. Gere seu programa agora mesmo.",
+    "notConfirmedTitle": "Pagamento não confirmado",
+    "notConfirmedSubtitle": "Não conseguimos confirmar esse pagamento. Se você foi cobrado, entre em contato pelo suporte.",
+    "backToDashboard": "Voltar ao Painel",
+    "viewProgram": "Gerar Meu Programa"
+  },
+  "militaryProgram": {
+    "title": "Seu Programa Tactical",
+    "subtitle": "Gerado por IA a partir das suas respostas no questionário.",
+    "generateButton": "Gerar Meu Programa",
+    "generating": "Gerando seu programa...",
+    "regenerateButton": "Gerar Novamente",
+    "regenerateNote": "Você pode gerar um novo programa a cada 24 horas.",
+    "noSubscription": "Você precisa de uma assinatura ativa do Military AI Workout para gerar seu programa.",
+    "subscribeCta": "Ver Planos do Tactical",
+    "disclaimer": "Programa gerado por IA com fins de condicionamento físico geral — não é um programa militar oficial, não substitui orientação médica. Se você tem lesões ou condições de saúde, converse com um profissional antes de começar.",
+    "weekLabel": "semanas",
+    "dayLabel": "Dia",
+    "restLabel": "Descanso",
+    "error": "Não foi possível gerar o programa agora. Tente novamente em instantes.",
+    "videoSearchNote": "Clique no nome de um exercício para ver instruções completas (quando já estiver na nossa biblioteca) ou uma busca de vídeos no YouTube.",
+    "rateLimited": "Você atingiu o limite de gerações por hoje. Tente novamente amanhã."
+  },
+  "dance": {
+    "navLabel": "Dança",
+    "title": "Dança Funcional",
+    "subtitle": "Aulas de dança usadas em treinos funcionais — desenvolvidas com professores de educação física.",
+    "movesLabel": "Movimentos",
+    "watchOnYoutube": "Ver vídeos no YouTube"
+  },
+  "progress": {
+    "title": "Progresso",
+    "subtitle": "Seu histórico de peso, recordes pessoais e sua pontuação FitPulse — tudo transparente.",
+    "scoreTitle": "FitPulse Score",
+    "scoreBreakdown": "Consistência: {c} pts · Recordes: {r} pts · Acompanhamento: {t} pts",
+    "scoreDisclaimer": "Não é uma pontuação médica — mede sua atividade e consistência no app.",
+    "weightTitle": "Histórico de Peso",
+    "addWeight": "Registrar Peso",
+    "weightValuePlaceholder": "Peso (kg)",
+    "dateLabel": "Data",
+    "noWeightLogs": "Nenhum registro de peso ainda.",
+    "prTitle": "Recordes Pessoais",
+    "addPR": "Adicionar Recorde",
+    "exerciseLabel": "Exercício",
+    "customLabel": "Nome do exercício",
+    "valueLabel": "Valor",
+    "unitLabel": "Unidade",
+    "noPRs": "Nenhum recorde registrado ainda.",
+    "save": "Salvar",
+    "delete": "Excluir",
+    "units": {
+      "kg": "kg",
+      "reps": "reps",
+      "seconds": "segundos",
+      "minutes": "minutos"
+    },
+    "exercises": {
+      "bench_press": "Supino Reto",
+      "squat": "Agachamento",
+      "deadlift": "Levantamento Terra",
+      "pull_ups": "Barra Fixa (reps)",
+      "push_ups": "Flexão (reps)",
+      "plank": "Prancha (tempo)",
+      "running_5k": "Corrida 5km (tempo)",
+      "custom": "Outro (personalizado)"
+    }
+  },
+  "memberProSuccess": {
+    "title": "Assinatura confirmada!",
+    "subtitle": "Seu Member Pro está ativo. Você já pode acessar a biblioteca completa de exercícios.",
+    "notConfirmedTitle": "Pagamento não confirmado",
+    "notConfirmedSubtitle": "Não conseguimos confirmar esse pagamento. Se você foi cobrado, entre em contato pelo suporte.",
+    "backToDashboard": "Voltar ao Painel",
+    "viewLibrary": "Ver Biblioteca de Exercícios"
+  },
+  "copilot": {
+    "navLabel": "AI Copilot",
+    "title": "AI Copilot",
+    "subtitle": "Me conta sua situação agora, e eu adapto um treino pra você. Ex: \"só tenho 20 minutos\", \"só tenho halteres\", \"estou viajando\".",
+    "placeholder": "Descreva sua situação...",
+    "send": "Adaptar Treino",
+    "adapting": "Adaptando...",
+    "noSubscription": "O AI Copilot é um benefício de assinantes (Member Pro ou Tactical).",
+    "subscribeCta": "Ver Planos",
+    "saveAndExecute": "Salvar e Executar",
+    "error": "Não foi possível adaptar agora. Tente novamente.",
+    "rateLimited": "Você atingiu o limite de adaptações por hoje. Tente novamente amanhã."
+  },
+  "coach": {
+    "navLabel": "Coaches",
+    "becomeCoachLabel": "Seja um Coach",
+    "myCoachLabel": "Meu Coach",
+    "myClientsLabel": "Meus Clientes",
+    "directory": {
+      "title": "Encontre um Coach",
+      "subtitle": "Personal trainers e coaches disponíveis no FitPulse.",
+      "noCoaches": "Nenhum coach disponível ainda.",
+      "invite": "Convidar",
+      "invited": "Convite enviado",
+      "alreadyConnected": "Você já tem um coach ativo."
+    },
+    "profile": {
+      "title": "Perfil de Coach",
+      "becomeTitle": "Torne-se um Coach",
+      "becomeSubtitle": "Crie seu perfil para aparecer na busca de coaches do FitPulse.",
+      "becomeCta": "Criar Meu Perfil de Coach",
+      "bio": "Sobre você",
+      "bioPlaceholder": "Conte sua experiência, formação e estilo de treino...",
+      "specialties": "Especialidades (separadas por vírgula)",
+      "languages": "Idiomas (separados por vírgula)",
+      "city": "Cidade",
+      "online": "Atende online",
+      "inPerson": "Atende presencial",
+      "pricingNote": "Nota sobre preço (ex: a partir de R$150/mês)",
+      "save": "Salvar Perfil",
+      "saved": "Salvo!"
+    },
+    "relationship": {
+      "title": "Meu Coach",
+      "noCoach": "Você ainda não tem um coach.",
+      "findCoach": "Encontrar um Coach",
+      "pendingTitle": "Convite enviado",
+      "pendingSubtitle": "Aguardando o coach aceitar.",
+      "activeTitle": "Coach ativo",
+      "permissionsTitle": "O que seu coach pode ver",
+      "removeCoach": "Remover Coach",
+      "permissions": {
+        "workouts": "Meus treinos",
+        "progress": "Meu progresso",
+        "measurements": "Minhas medidas",
+        "progressPhotos": "Fotos de progresso",
+        "healthIntegrations": "Integrações de saúde",
+        "checkins": "Check-ins"
+      }
+    },
+    "clients": {
+      "title": "Meus Clientes",
+      "noClients": "Você ainda não tem clientes.",
+      "pending": "Pendente",
+      "active": "Ativo",
+      "accept": "Aceitar",
+      "decline": "Recusar",
+      "viewSharedInfo": "Informações compartilhadas"
+    }
+  },
+  "gym": {
+    "navLabel": "Academias",
+    "createGymLabel": "Cadastrar Academia",
+    "myGymLabel": "Minha Academia",
+    "myMembershipLabel": "Minha Academia (Membro)",
+    "directory": {
+      "title": "Encontre uma Academia",
+      "subtitle": "Academias e estúdios parceiros do FitPulse.",
+      "noGyms": "Nenhuma academia cadastrada ainda.",
+      "join": "Entrar como Membro",
+      "joined": "Você é membro",
+      "applyStaff": "Aplicar como Funcionário",
+      "applied": "Aplicação enviada",
+      "alreadyMember": "Você já é membro de uma academia."
+    },
+    "create": {
+      "title": "Cadastrar Academia",
+      "subtitle": "Crie o perfil da sua academia ou estúdio no FitPulse.",
+      "namePlaceholder": "Nome da academia",
+      "cta": "Criar"
+    },
+    "profile": {
+      "title": "Minha Academia",
+      "description": "Descrição",
+      "descriptionPlaceholder": "Conte sobre sua academia, estrutura e diferenciais...",
+      "city": "Cidade",
+      "address": "Endereço",
+      "amenities": "Comodidades (separadas por vírgula)",
+      "save": "Salvar",
+      "saved": "Salvo!"
+    },
+    "staff": {
+      "title": "Minha Equipe",
+      "noStaff": "Nenhum funcionário ainda.",
+      "pending": "Pendente",
+      "active": "Ativo",
+      "accept": "Aceitar",
+      "decline": "Recusar"
+    },
+    "members": {
+      "title": "Membros da Academia",
+      "noMembers": "Nenhum membro ainda.",
+      "leave": "Sair da Academia"
+    }
+  },
+  "admin": {
+    "navLabel": "Admin",
+    "title": "Painel Super Admin",
+    "bootstrapTitle": "Configuração Inicial",
+    "bootstrapSubtitle": "Nenhum Super Admin existe ainda. Clique abaixo para se tornar o primeiro.",
+    "bootstrapCta": "Tornar-me Super Admin",
+    "bootstrapDone": "Você agora é Super Admin! Atualize a página.",
+    "noAccess": "Você não tem acesso a esta área.",
+    "stats": {
+      "title": "Visão Geral",
+      "totalUsers": "Usuários",
+      "totalCoaches": "Coaches",
+      "totalGyms": "Academias",
+      "activeMilitarySubs": "Assinantes Tactical",
+      "activeMemberProSubs": "Assinantes Member Pro",
+      "militaryGenerations": "Programas Gerados (Tactical)",
+      "copilotUsage": "Usos do Copilot",
+      "challengeParticipants": "Participações em Desafios"
+    },
+    "users": {
+      "title": "Usuários",
+      "email": "E-mail",
+      "name": "Nome",
+      "roles": "Papéis",
+      "subscriptions": "Assinaturas",
+      "save": "Salvar",
+      "saved": "Salvo!"
+    },
+    "pricing": {
+      "title": "Preços (Stripe)",
+      "subtitle": "Altere aqui sem precisar mexer em variáveis de ambiente ou fazer novo deploy.",
+      "product": "Produto",
+      "country": "País",
+      "priceId": "ID do Preço (Stripe)",
+      "save": "Salvar Preços",
+      "saved": "Preços salvos!",
+      "realAmountNote": "O campo abaixo cria um preço novo de verdade na Stripe e arquiva o antigo — é isso que muda o quanto o cliente paga.",
+      "newAmountPlaceholder": "Ex: 39.90",
+      "updateAmount": "Atualizar Valor",
+      "amountUpdated": "Valor atualizado na Stripe!",
+      "amountError": "Não foi possível atualizar. Confira se já existe um preço configurado pra esse país.",
+      "advancedLabel": "Avançado: colar ID de preço manualmente"
+    },
+    "content": {
+      "title": "Biblioteca",
+      "subtitle": "Edite qualquer exercício direto aqui — inclusive os originais, não só os descobertos pela IA.",
+      "locale": "Idioma",
+      "name": "Nome",
+      "description": "Descrição",
+      "instructions": "Instruções (uma por linha)",
+      "muscles": "Músculos (separados por vírgula)",
+      "category": "Categoria",
+      "difficulty": "Dificuldade",
+      "videoId": "ID do vídeo no YouTube (opcional)",
+      "save": "Salvar Exercício",
+      "saved": "Salvo!",
+      "addNew": "+ Adicionar Novo Exercício",
+      "back": "Voltar à lista"
+    }
+  },
+  "challenges": {
+    "navLabel": "Desafios",
+    "title": "Desafios",
+    "subtitle": "Metas com prazo pra manter você motivado. Marque presença todo dia que treinar.",
+    "premiumBadge": "Premium",
+    "freeBadge": "Grátis",
+    "join": "Participar",
+    "checkIn": "Marcar Hoje",
+    "checkedInToday": "Já marcado hoje",
+    "progress": "{done} de {goal} check-ins",
+    "daysLeft": "{days} dias restantes",
+    "completed": "Desafio concluído! 🎉",
+    "premiumLocked": "Esse desafio é exclusivo pra assinantes.",
+    "subscribeCta": "Ver Planos"
+  }
+}

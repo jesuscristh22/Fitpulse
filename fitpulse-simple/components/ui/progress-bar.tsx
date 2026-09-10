@@ -1,0 +1,17 @@
+import { cn } from "@/lib/utils";
+
+export function ProgressBar({ value, className }: { value: number; className?: string }) {
+  const clamped = Math.min(100, Math.max(0, value));
+  return (
+    <div className={cn("h-2 w-full overflow-hidden rounded-full bg-white/10", className)}>
+      <div
+        className="h-full rounded-full bg-gradient-to-r from-gold to-gold-light transition-all"
+        style={{ width: `${clamped}%` }}
+        role="progressbar"
+        aria-valuenow={clamped}
+        aria-valuemin={0}
+        aria-valuemax={100}
+      />
+    </div>
+  );
+}
