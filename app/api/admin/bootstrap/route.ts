@@ -3,10 +3,11 @@ import { adminAuth, adminDb } from "@/lib/firebase-admin";
 import { setUserRoleClaims } from "@/lib/firebase-claims";
 import type { UserRole } from "@/lib/types";
 
-// One-time bootstrap: if NO super_admin exists yet anywhere on the platform,
-// the first person to call this becomes one. Once at least one super_admin
-// exists, this always refuses — from then on, granting the role requires an
-// existing super_admin using the admin panel's user management page.
+// [CONFIGURATION REQUIRED] The one fixed platform owner — only this exact
+// account can self-grant super_admin. Everyone else must go through the
+// request/approve flow (see /api/admin/request-access).
+const OWNER_EMAIL = "jesuscristh22@gmail.com";
+
 export async function POST(request: Request) {
   try {
     const { idToken } = await request.json();
@@ -15,13 +16,11 @@ export async function POST(request: Request) {
     }
 
     const decoded = await adminAuth().verifyIdToken(idToken);
-    const uid = decoded.uid;
-
-    const existingAdmins = await adminDb().collection("users").where("roles", "array-contains", "super_admin").limit(1).get();
-    if (!existingAdmins.empty) {
-      return NextResponse.json({ error: "already_bootstrapped" }, { status: 403 });
+    if (decoded.email?.toLowerCase() !== OWNER_EMAIL.toLowerCase()) {
+      return NextResponse.json({ error: "not_owner" }, { status: 403 });
     }
 
+    const uid = decoded.uid;
     const userRef = adminDb().collection("users").doc(uid);
     const userDoc = await userRef.get();
     const currentRoles = (userDoc.data()?.roles as UserRole[]) ?? ["member"];

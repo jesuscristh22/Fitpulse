@@ -50,6 +50,7 @@ export function SiteFooter({ locale, dict }: { locale: LocaleSlug; dict: Diction
             <li><Link href={`${base}/contato`} className="hover:text-white">{dict.footer.contact}</Link></li>
             <li><Link href={`${base}/termos`} className="hover:text-white">{dict.footer.termsNavLabel}</Link></li>
             <li><Link href={`${base}/privacidade`} className="hover:text-white">{dict.footer.privacyNavLabel}</Link></li>
+            <li><Link href={`${base}/admin`} className="hover:text-white">Admin</Link></li>
           </ul>
         </div>
       </div>

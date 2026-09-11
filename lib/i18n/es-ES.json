@@ -852,7 +852,24 @@
       "saved": "¡Guardado!",
       "addNew": "+ Añadir Nuevo Ejercicio",
       "back": "Volver a la lista"
-    }
+    },
+    "accessRequestSent": "¡Solicitud de acceso enviada! El administrador la revisará y aprobará si corresponde.",
+    "noAccessTitle": "Acceso Restringido",
+    "noAccessSubtitle": "Esta área es solo para administradores autorizados. Si necesitas acceso, solicítalo abajo.",
+    "requestAccessCta": "Solicitar Acceso",
+    "accessRequestsTab": "Solicitudes",
+    "paymentsTab": "Pagos",
+    "gymsTab": "Empresas",
+    "editName": "Editar Nombre",
+    "deleteUser": "Eliminar Usuario",
+    "deleteUserConfirm": "¿Estás seguro? Esto elimina PERMANENTEMENTE la cuenta y los datos de esta persona.",
+    "approve": "Aprobar",
+    "deny": "Rechazar",
+    "noRequests": "No hay solicitudes pendientes.",
+    "revenueTitle": "Ingresos",
+    "thisMonth": "Este mes",
+    "allTime": "Total",
+    "noGyms": "No hay gimnasios registrados."
   },
   "challenges": {
     "navLabel": "Desafíos",

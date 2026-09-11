@@ -54,7 +54,12 @@ export async function POST(request: Request) {
           { merge: true },
         );
         await adminDb().collection("military_purchases").add({
-          uid, stripeEventId: event.id, subscriptionId: session.subscription ?? null, purchasedAt: new Date().toISOString(),
+          uid,
+          stripeEventId: event.id,
+          subscriptionId: session.subscription ?? null,
+          amountTotal: session.amount_total ?? null,
+          currency: session.currency ?? null,
+          purchasedAt: new Date().toISOString(),
         });
       } else if (uid && product === "member_pro") {
         await adminDb().collection("users").doc(uid).set(
@@ -62,10 +67,43 @@ export async function POST(request: Request) {
           { merge: true },
         );
         await adminDb().collection("member_pro_purchases").add({
-          uid, stripeEventId: event.id, subscriptionId: session.subscription ?? null, purchasedAt: new Date().toISOString(),
+          uid,
+          stripeEventId: event.id,
+          subscriptionId: session.subscription ?? null,
+          amountTotal: session.amount_total ?? null,
+          currency: session.currency ?? null,
+          purchasedAt: new Date().toISOString(),
         });
       } else {
         console.error("[stripe webhook] checkout.session.completed with no uid/product", event.id);
+      }
+    }
+
+    // Monthly renewals — checkout.session.completed only fires once, at the
+    // FIRST payment. Every renewal after that comes through as invoice.paid,
+    // so this is what keeps the accounting/payments records complete for a
+    // subscription's whole lifetime, not just its first month.
+    if (event.type === "invoice.paid") {
+      const invoice = event.data.object as Stripe.Invoice;
+      const subscriptionId = typeof invoice.subscription === "string" ? invoice.subscription : invoice.subscription?.id;
+      if (subscriptionId) {
+        const stripe = getStripe();
+        const subscription = await stripe.subscriptions.retrieve(subscriptionId);
+        const uid = subscription.metadata?.uid;
+        const product = subscription.metadata?.product;
+        const collectionName = product === "military_ai_workout" ? "military_purchases" : product === "member_pro" ? "member_pro_purchases" : null;
+
+        if (uid && collectionName) {
+          await adminDb().collection(collectionName).add({
+            uid,
+            stripeEventId: event.id,
+            subscriptionId,
+            amountTotal: invoice.amount_paid,
+            currency: invoice.currency,
+            purchasedAt: new Date().toISOString(),
+            renewal: true,
+          });
+        }
       }
     }
 

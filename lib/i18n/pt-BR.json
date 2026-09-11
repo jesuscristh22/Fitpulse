@@ -852,7 +852,24 @@
       "saved": "Salvo!",
       "addNew": "+ Adicionar Novo Exercício",
       "back": "Voltar à lista"
-    }
+    },
+    "accessRequestSent": "Pedido de acesso enviado! O administrador vai revisar e liberar se aprovado.",
+    "noAccessTitle": "Acesso Restrito",
+    "noAccessSubtitle": "Esta área é só para administradores autorizados. Se você precisa de acesso, solicite abaixo.",
+    "requestAccessCta": "Solicitar Acesso",
+    "accessRequestsTab": "Solicitações",
+    "paymentsTab": "Pagamentos",
+    "gymsTab": "Empresas",
+    "editName": "Editar Nome",
+    "deleteUser": "Excluir Usuário",
+    "deleteUserConfirm": "Tem certeza? Isso apaga a conta e os dados dessa pessoa PERMANENTEMENTE.",
+    "approve": "Aprovar",
+    "deny": "Negar",
+    "noRequests": "Nenhuma solicitação pendente.",
+    "revenueTitle": "Receita",
+    "thisMonth": "Este mês",
+    "allTime": "Total",
+    "noGyms": "Nenhuma academia cadastrada."
   },
   "challenges": {
     "navLabel": "Desafios",

@@ -852,7 +852,24 @@
       "saved": "Saved!",
       "addNew": "+ Add New Exercise",
       "back": "Back to list"
-    }
+    },
+    "accessRequestSent": "Access request sent! The admin will review and approve if applicable.",
+    "noAccessTitle": "Restricted Access",
+    "noAccessSubtitle": "This area is for authorized admins only. If you need access, request it below.",
+    "requestAccessCta": "Request Access",
+    "accessRequestsTab": "Requests",
+    "paymentsTab": "Payments",
+    "gymsTab": "Companies",
+    "editName": "Edit Name",
+    "deleteUser": "Delete User",
+    "deleteUserConfirm": "Are you sure? This PERMANENTLY deletes this person's account and data.",
+    "approve": "Approve",
+    "deny": "Deny",
+    "noRequests": "No pending requests.",
+    "revenueTitle": "Revenue",
+    "thisMonth": "This month",
+    "allTime": "All time",
+    "noGyms": "No gyms registered."
   },
   "challenges": {
     "navLabel": "Challenges",

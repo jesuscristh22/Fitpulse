@@ -6,6 +6,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { AdminContentPanel } from "./admin-content-panel";
 import { AdminMessagesPanel } from "./admin-messages-panel";
+import { AdminAccessRequestsPanel } from "./admin-access-requests-panel";
+import { AdminPaymentsPanel } from "./admin-payments-panel";
+import { AdminGymsPanel } from "./admin-gyms-panel";
 import { useAuth } from "@/lib/auth-context";
 import { getFirebaseAuth } from "@/lib/firebase-client";
 import type { Dictionary } from "@/lib/i18n";
@@ -44,11 +47,16 @@ async function idToken() {
 export function AdminPanel({ dict }: { dict: Dictionary }) {
   const a = dict.admin;
   const { user } = useAuth();
-  const [tab, setTab] = useState<"stats" | "users" | "pricing" | "content" | "messages">("stats");
+  const [tab, setTab] = useState<"stats" | "users" | "pricing" | "content" | "messages" | "requests" | "payments" | "gyms">("stats");
 
   const [bootstrapping, setBootstrapping] = useState(false);
   const [bootstrapDone, setBootstrapDone] = useState(false);
   const [bootstrapError, setBootstrapError] = useState<string | null>(null);
+  const [notOwner, setNotOwner] = useState(false);
+  const [accessRequested, setAccessRequested] = useState(false);
+  const [requestingAccess, setRequestingAccess] = useState(false);
+  const [editingUserId, setEditingUserId] = useState<string | null>(null);
+  const [editingName, setEditingName] = useState("");
 
   const [stats, setStats] = useState<Stats | null>(null);
   const [users, setUsers] = useState<AdminUser[]>([]);
@@ -101,13 +109,34 @@ export function AdminPanel({ dict }: { dict: Dictionary }) {
         body: JSON.stringify({ idToken: token }),
       });
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error ?? "failed");
+      if (!res.ok) {
+        if (data.error === "not_owner") {
+          setNotOwner(true);
+          return;
+        }
+        throw new Error(data.error ?? "failed");
+      }
       await user?.getIdToken(true);
       setBootstrapDone(true);
     } catch (err) {
       setBootstrapError(err instanceof Error ? err.message : "failed");
     } finally {
       setBootstrapping(false);
+    }
+  }
+
+  async function handleRequestAccess() {
+    setRequestingAccess(true);
+    try {
+      const token = await idToken();
+      await fetch("/api/admin/request-access", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ idToken: token }),
+      });
+      setAccessRequested(true);
+    } finally {
+      setRequestingAccess(false);
     }
   }
 
@@ -122,6 +151,28 @@ export function AdminPanel({ dict }: { dict: Dictionary }) {
       body: JSON.stringify({ idToken: token, targetUserId: targetUser.id, roles: nextRoles }),
     });
     setUsers((prev) => prev.map((u) => (u.id === targetUser.id ? { ...u, roles: nextRoles } : u)));
+  }
+
+  async function saveUserName(targetUserId: string) {
+    const token = await idToken();
+    await fetch("/api/admin/users/update-profile", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ idToken: token, targetUserId, displayName: editingName }),
+    });
+    setUsers((prev) => prev.map((u) => (u.id === targetUserId ? { ...u, displayName: editingName } : u)));
+    setEditingUserId(null);
+  }
+
+  async function deleteUser(targetUserId: string) {
+    if (!confirm(a.deleteUserConfirm)) return;
+    const token = await idToken();
+    await fetch("/api/admin/users/delete", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ idToken: token, targetUserId }),
+    });
+    setUsers((prev) => prev.filter((u) => u.id !== targetUserId));
   }
 
   async function handleSavePricing() {
@@ -161,6 +212,20 @@ export function AdminPanel({ dict }: { dict: Dictionary }) {
     if (bootstrapDone) {
       return <Card className="mx-auto max-w-lg text-center"><p className="text-emerald-400">{a.bootstrapDone}</p></Card>;
     }
+    if (accessRequested) {
+      return <Card className="mx-auto max-w-lg text-center"><p className="text-silver">{a.accessRequestSent}</p></Card>;
+    }
+    if (notOwner) {
+      return (
+        <Card className="mx-auto max-w-lg text-center">
+          <h2 className="font-heading text-xl font-bold">{a.noAccessTitle}</h2>
+          <p className="mt-3 text-sm text-silver">{a.noAccessSubtitle}</p>
+          <Button variant="primary" size="lg" onClick={handleRequestAccess} disabled={requestingAccess} className="mt-6 w-full">
+            {a.requestAccessCta}
+          </Button>
+        </Card>
+      );
+    }
     return (
       <Card className="mx-auto max-w-lg text-center">
         <h2 className="font-heading text-xl font-bold">{a.bootstrapTitle}</h2>
@@ -176,7 +241,7 @@ export function AdminPanel({ dict }: { dict: Dictionary }) {
   return (
     <div className="mx-auto max-w-[112rem]">
       <div className="flex gap-2">
-        {(["stats", "users", "pricing", "content", "messages"] as const).map((t) => (
+        {(["stats", "users", "requests", "payments", "gyms", "pricing", "content", "messages"] as const).map((t) => (
           <button
             key={t}
             onClick={() => setTab(t)}
@@ -184,7 +249,14 @@ export function AdminPanel({ dict }: { dict: Dictionary }) {
               tab === t ? "border-gold bg-gold text-carbon" : "border-white/15 text-white"
             }`}
           >
-            {t === "stats" ? a.stats.title : t === "users" ? a.users.title : t === "pricing" ? a.pricing.title : t === "content" ? a.content.title : "Mensagens"}
+            {t === "stats" ? a.stats.title
+              : t === "users" ? a.users.title
+              : t === "requests" ? a.accessRequestsTab
+              : t === "payments" ? a.paymentsTab
+              : t === "gyms" ? a.gymsTab
+              : t === "pricing" ? a.pricing.title
+              : t === "content" ? a.content.title
+              : "Mensagens"}
           </button>
         ))}
       </div>
@@ -215,12 +287,33 @@ export function AdminPanel({ dict }: { dict: Dictionary }) {
             <Card key={u.id}>
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <div>
-                  <p className="text-sm font-semibold text-white">{u.displayName || u.email || u.id.slice(0, 10)}</p>
+                  {editingUserId === u.id ? (
+                    <div className="flex items-center gap-2">
+                      <Input value={editingName} onChange={(e) => setEditingName(e.target.value)} className="h-9 text-sm" />
+                      <Button variant="primary" size="sm" onClick={() => saveUserName(u.id)}>
+                        {a.users.save}
+                      </Button>
+                    </div>
+                  ) : (
+                    <p
+                      className="cursor-pointer text-sm font-semibold text-white hover:text-gold"
+                      onClick={() => {
+                        setEditingUserId(u.id);
+                        setEditingName(u.displayName);
+                      }}
+                      title={a.editName}
+                    >
+                      {u.displayName || u.email || u.id.slice(0, 10)}
+                    </p>
+                  )}
                   <p className="text-xs text-silver">{u.email}</p>
                 </div>
-                <div className="flex gap-2 text-xs text-silver">
+                <div className="flex items-center gap-3 text-xs text-silver">
                   {u.militaryAiSubscriptionStatus === "active" && <span className="text-gold">Tactical</span>}
                   {u.memberProSubscriptionStatus === "active" && <span className="text-gold">Member Pro</span>}
+                  <button onClick={() => deleteUser(u.id)} className="text-red-400 hover:text-red-300">
+                    {a.deleteUser}
+                  </button>
                 </div>
               </div>
               <div className="mt-3 flex flex-wrap gap-1.5">
@@ -300,6 +393,9 @@ export function AdminPanel({ dict }: { dict: Dictionary }) {
       )}
       {tab === "content" && <AdminContentPanel dict={dict} />}
       {tab === "messages" && <AdminMessagesPanel />}
+      {tab === "requests" && <AdminAccessRequestsPanel dict={dict} />}
+      {tab === "payments" && <AdminPaymentsPanel dict={dict} />}
+      {tab === "gyms" && <AdminGymsPanel dict={dict} />}
     </div>
   );
 }
