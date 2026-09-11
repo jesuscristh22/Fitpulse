@@ -48,6 +48,8 @@ export function SiteFooter({ locale, dict }: { locale: LocaleSlug; dict: Diction
           <ul className="space-y-2 text-sm text-silver">
             <li><Link href={`${base}/sobre`} className="hover:text-white">{dict.footer.about}</Link></li>
             <li><Link href={`${base}/contato`} className="hover:text-white">{dict.footer.contact}</Link></li>
+            <li><Link href={`${base}/termos`} className="hover:text-white">{dict.footer.termsNavLabel}</Link></li>
+            <li><Link href={`${base}/privacidade`} className="hover:text-white">{dict.footer.privacyNavLabel}</Link></li>
           </ul>
         </div>
       </div>

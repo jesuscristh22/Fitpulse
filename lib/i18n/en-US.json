@@ -107,7 +107,11 @@
     "rights": "All rights reserved.",
     "training": "Training",
     "community": "Community",
-    "tagline": "Smart training, real tracking, and a community that pushes you further."
+    "tagline": "Smart training, real tracking, and a community that pushes you further.",
+    "termsNavLabel": "Terms of Service",
+    "privacyNavLabel": "Privacy",
+    "termsDisclaimer": "This document was written to accurately reflect how FitPulse works, but it isn't a substitute for a lawyer's review before an official launch — especially given the health data involved.",
+    "privacyDisclaimer": "This document was written to accurately reflect how FitPulse handles your data, but it isn't a substitute for a lawyer's review before an official launch — especially given the health data involved."
   },
   "pages": {
     "features": {
@@ -169,7 +173,10 @@
       "formName": "Name",
       "formEmail": "Email",
       "formMessage": "Message",
-      "formSubmit": "Send Message"
+      "formSubmit": "Send Message",
+      "formSent": "Message sent! We'll get back to you soon.",
+      "formError": "Couldn't send it. Please try again.",
+      "formSending": "Sending..."
     }
   },
   "dashboard": {
@@ -615,7 +622,10 @@
     "restLabel": "Rest",
     "error": "Couldn't generate the program right now. Please try again shortly.",
     "videoSearchNote": "Click an exercise name for full instructions (when it's already in our library) or a YouTube video search.",
-    "rateLimited": "You've hit today's generation limit. Try again tomorrow."
+    "rateLimited": "You've hit today's generation limit. Try again tomorrow.",
+    "needsQuestionnaire": "You haven't filled out the Tactical questionnaire yet — I need your answers before generating the program.",
+    "goToQuestionnaire": "Fill Out Questionnaire",
+    "subscriptionSyncing": "Your subscription was just confirmed and is still syncing. Wait a few seconds and try again."
   },
   "dance": {
     "navLabel": "Dance",

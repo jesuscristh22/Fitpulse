@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { AdminContentPanel } from "./admin-content-panel";
+import { AdminMessagesPanel } from "./admin-messages-panel";
 import { useAuth } from "@/lib/auth-context";
 import { getFirebaseAuth } from "@/lib/firebase-client";
 import type { Dictionary } from "@/lib/i18n";
@@ -43,7 +44,7 @@ async function idToken() {
 export function AdminPanel({ dict }: { dict: Dictionary }) {
   const a = dict.admin;
   const { user } = useAuth();
-  const [tab, setTab] = useState<"stats" | "users" | "pricing" | "content">("stats");
+  const [tab, setTab] = useState<"stats" | "users" | "pricing" | "content" | "messages">("stats");
 
   const [bootstrapping, setBootstrapping] = useState(false);
   const [bootstrapDone, setBootstrapDone] = useState(false);
@@ -175,7 +176,7 @@ export function AdminPanel({ dict }: { dict: Dictionary }) {
   return (
     <div className="mx-auto max-w-[112rem]">
       <div className="flex gap-2">
-        {(["stats", "users", "pricing", "content"] as const).map((t) => (
+        {(["stats", "users", "pricing", "content", "messages"] as const).map((t) => (
           <button
             key={t}
             onClick={() => setTab(t)}
@@ -183,7 +184,7 @@ export function AdminPanel({ dict }: { dict: Dictionary }) {
               tab === t ? "border-gold bg-gold text-carbon" : "border-white/15 text-white"
             }`}
           >
-            {t === "stats" ? a.stats.title : t === "users" ? a.users.title : t === "pricing" ? a.pricing.title : a.content.title}
+            {t === "stats" ? a.stats.title : t === "users" ? a.users.title : t === "pricing" ? a.pricing.title : t === "content" ? a.content.title : "Mensagens"}
           </button>
         ))}
       </div>
@@ -298,6 +299,7 @@ export function AdminPanel({ dict }: { dict: Dictionary }) {
         </Card>
       )}
       {tab === "content" && <AdminContentPanel dict={dict} />}
+      {tab === "messages" && <AdminMessagesPanel />}
     </div>
   );
 }

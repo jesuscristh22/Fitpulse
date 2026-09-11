@@ -1,9 +1,7 @@
-import { Mail } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { ContactForm } from "@/components/contact/contact-form";
 import { getDictionary } from "@/lib/i18n";
 import { isLocaleSlug, type LocaleSlug } from "@/lib/locales-config";
 import { notFound } from "next/navigation";
@@ -24,21 +22,8 @@ export default function ContactPage({ params }: { params: { locale: string } }) 
         </h1>
         <p className="mt-4 max-w-md text-silver">{dict.pages.contact.subtext}</p>
 
-        {/* [CONFIGURATION REQUIRED] — form is UI-only; wire to an email service or
-            server action once a contact address/provider is chosen. */}
         <Card className="mt-10">
-          <form className="flex flex-col gap-4">
-            <Input type="text" placeholder={dict.pages.contact.formName} />
-            <Input type="email" placeholder={dict.pages.contact.formEmail} />
-            <textarea
-              placeholder={dict.pages.contact.formMessage}
-              rows={5}
-              className="w-full rounded-md border border-white/10 bg-carbon px-4 py-3 text-sm text-white outline-none placeholder:text-silver/60 focus:border-gold"
-            />
-            <Button type="submit" variant="primary" className="gap-2 self-start">
-              <Mail size={16} /> {dict.pages.contact.formSubmit}
-            </Button>
-          </form>
+          <ContactForm dict={dict.pages.contact} />
         </Card>
       </section>
 

@@ -107,7 +107,11 @@
     "rights": "Todos os direitos reservados.",
     "training": "Treinos",
     "community": "Comunidade",
-    "tagline": "Treinos inteligentes, acompanhamento de verdade e uma comunidade que te leva mais longe."
+    "tagline": "Treinos inteligentes, acompanhamento de verdade e uma comunidade que te leva mais longe.",
+    "termsNavLabel": "Termos de Uso",
+    "privacyNavLabel": "Privacidade",
+    "termsDisclaimer": "Este documento foi escrito para refletir com precisão como o FitPulse funciona, mas não substitui a revisão de um advogado antes de um lançamento oficial — especialmente por lidar com dados de saúde.",
+    "privacyDisclaimer": "Este documento foi escrito para refletir com precisão como o FitPulse trata seus dados, mas não substitui a revisão de um advogado antes de um lançamento oficial — especialmente por lidar com dados de saúde."
   },
   "pages": {
     "features": {
@@ -169,7 +173,10 @@
       "formName": "Nome",
       "formEmail": "E-mail",
       "formMessage": "Mensagem",
-      "formSubmit": "Enviar Mensagem"
+      "formSubmit": "Enviar Mensagem",
+      "formSent": "Mensagem enviada! Responderemos o quanto antes.",
+      "formError": "Não foi possível enviar. Tente novamente.",
+      "formSending": "Enviando..."
     }
   },
   "dashboard": {
@@ -615,7 +622,10 @@
     "restLabel": "Descanso",
     "error": "Não foi possível gerar o programa agora. Tente novamente em instantes.",
     "videoSearchNote": "Clique no nome de um exercício para ver instruções completas (quando já estiver na nossa biblioteca) ou uma busca de vídeos no YouTube.",
-    "rateLimited": "Você atingiu o limite de gerações por hoje. Tente novamente amanhã."
+    "rateLimited": "Você atingiu o limite de gerações por hoje. Tente novamente amanhã.",
+    "needsQuestionnaire": "Você ainda não preencheu o questionário Tactical — preciso das suas respostas antes de gerar o programa.",
+    "goToQuestionnaire": "Preencher Questionário",
+    "subscriptionSyncing": "Sua assinatura acabou de ser confirmada e ainda está sincronizando. Aguarde alguns segundos e tente de novo."
   },
   "dance": {
     "navLabel": "Dança",

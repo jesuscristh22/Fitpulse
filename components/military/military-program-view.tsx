@@ -19,6 +19,7 @@ export function MilitaryProgramView({ locale, dict }: { locale: LocaleSlug; dict
   const { program, subscriptionStatus, loading } = useMilitaryProgram();
   const [generating, setGenerating] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [needsQuestionnaire, setNeedsQuestionnaire] = useState(false);
   const base = `/${locale}`;
 
   const hasActiveSubscription = subscriptionStatus === "active" || subscriptionStatus === "trialing";
@@ -27,6 +28,7 @@ export function MilitaryProgramView({ locale, dict }: { locale: LocaleSlug; dict
     if (!user) return;
     setGenerating(true);
     setError(null);
+    setNeedsQuestionnaire(false);
     try {
       const idToken = await getFirebaseAuth().currentUser?.getIdToken();
       const res = await fetch("/api/military/generate", {
@@ -38,7 +40,20 @@ export function MilitaryProgramView({ locale, dict }: { locale: LocaleSlug; dict
       if (!res.ok) throw new Error(data.error ?? "Failed");
     } catch (err) {
       console.error("[MilitaryProgramView] generate failed:", err);
-      setError(err instanceof Error && err.message === "rate_limited" ? mp.rateLimited : mp.error);
+      const code = err instanceof Error ? err.message : "";
+      if (code === "rate_limited") {
+        setError(mp.rateLimited);
+      } else if (code === "no_questionnaire") {
+        setNeedsQuestionnaire(true);
+      } else if (code === "no_active_subscription") {
+        // Subscription status hasn't synced yet (webhook can lag a few
+        // seconds behind the redirect) — the page will pick it up once the
+        // realtime listener catches up, but let the person know why nothing
+        // happened yet instead of a generic failure.
+        setError(mp.subscriptionSyncing);
+      } else {
+        setError(mp.error);
+      }
     } finally {
       setGenerating(false);
     }
@@ -61,6 +76,18 @@ export function MilitaryProgramView({ locale, dict }: { locale: LocaleSlug; dict
   }
 
   if (!program) {
+    if (needsQuestionnaire) {
+      return (
+        <Card className="mx-auto max-w-lg text-center">
+          <p className="text-silver">{mp.needsQuestionnaire}</p>
+          <Link href={`${base}/militar/questionario`}>
+            <Button variant="primary" size="lg" className="mt-6 w-full">
+              {mp.goToQuestionnaire}
+            </Button>
+          </Link>
+        </Card>
+      );
+    }
     return (
       <Card className="mx-auto max-w-lg text-center">
         <p className="text-silver">{mp.subtitle}</p>
