@@ -43,13 +43,31 @@ export async function savePricingConfig(config: PricingConfig) {
   await adminDb().collection("platform_config").doc("pricing").set(config, { merge: true });
 }
 
+const COUNTRY_FALLBACK_ORDER: SupportedCountry[] = ["US", "BR", "PT", "ES"];
+
 export async function resolvePriceId(product: "military" | "memberPro", country: SupportedCountry): Promise<string> {
   const config = await getPricingConfig();
-  const priceId = config[product]?.[country] ?? ENV_FALLBACK[product][country];
-  if (!priceId) {
-    throw new Error(`[CONFIGURATION REQUIRED] No Stripe price configured for ${product} / "${country}".`);
+
+  const direct = config[product]?.[country] ?? ENV_FALLBACK[product][country];
+  if (direct) return direct;
+
+  // Nobody configured a price for this specific country (e.g. a friend
+  // testing from a country you haven't set up pricing for yet, or someone
+  // who skipped onboarding so their country defaulted to "US"). Rather than
+  // hard-failing checkout for them, fall back to whichever price you HAVE
+  // configured — they'll be charged in that currency instead of their own,
+  // which is a much better outcome than checkout not working at all.
+  for (const fallbackCountry of COUNTRY_FALLBACK_ORDER) {
+    const fallback = config[product]?.[fallbackCountry] ?? ENV_FALLBACK[product][fallbackCountry];
+    if (fallback) {
+      console.warn(
+        `[resolvePriceId] No ${product} price for "${country}" — falling back to "${fallbackCountry}"'s price.`,
+      );
+      return fallback;
+    }
   }
-  return priceId;
+
+  throw new Error(`[CONFIGURATION REQUIRED] No Stripe price configured for ${product} in any country yet.`);
 }
 
 export async function getMilitaryPriceId(country: SupportedCountry): Promise<string> {
