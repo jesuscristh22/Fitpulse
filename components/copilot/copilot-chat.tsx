@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Send, Sparkles, ShieldAlert } from "lucide-react";
+import { Send, Sparkles } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/lib/auth-context";
@@ -76,7 +76,13 @@ export function CopilotChat({ locale, dict }: { locale: LocaleSlug; dict: Dictio
       setResult(data);
     } catch (err) {
       console.error("[CopilotChat] adapt failed:", err);
-      setError(err instanceof Error && err.message === "rate_limited" ? c.rateLimited : c.error);
+      setError(
+        err instanceof Error && err.message === "rate_limited"
+          ? c.rateLimited
+          : err instanceof Error && err.message === "free_limit_reached"
+            ? c.freeLimitReached
+            : c.error,
+      );
     } finally {
       setLoading(false);
     }
@@ -98,22 +104,19 @@ export function CopilotChat({ locale, dict }: { locale: LocaleSlug; dict: Dictio
     }
   }
 
-  if (!hasPaidAccess) {
-    return (
-      <Card className="mx-auto max-w-lg text-center">
-        <ShieldAlert size={32} className="mx-auto text-gold" />
-        <p className="mt-4 text-silver">{c.noSubscription}</p>
-        <Link href={`/${locale}/planos`}>
-          <Button variant="primary" size="lg" className="mt-6 w-full">
-            {c.subscribeCta}
-          </Button>
-        </Link>
-      </Card>
-    );
-  }
-
   return (
     <div className="mx-auto max-w-2xl">
+      {!hasPaidAccess && (
+        <Card className="mb-6 flex items-center justify-between gap-4">
+          <p className="text-sm text-silver">{c.freeTierNote}</p>
+          <Link href={`/${locale}/planos`}>
+            <Button variant="secondary" size="sm">
+              {c.subscribeCta}
+            </Button>
+          </Link>
+        </Card>
+      )}
+
       <Card>
         <div className="flex gap-3">
           <textarea

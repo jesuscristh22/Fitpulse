@@ -14,6 +14,7 @@ export interface MilitaryProgramExercise {
 }
 export interface MilitaryProgramSession {
   day: number;
+  splitLabel: string;
   exercises: MilitaryProgramExercise[];
 }
 export interface MilitaryProgram {

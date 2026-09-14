@@ -25,20 +25,22 @@ export async function POST(request: Request) {
     const decoded = await adminAuth().verifyIdToken(idToken);
     const uid = decoded.uid;
 
+    // Freemium (Diego, Sept 2026): everyone can use the Copilot — no
+    // subscription required. Free members get 1 adaptation per week; an
+    // active subscription (either product) raises that to 30/day.
     const userDoc = await adminDb().collection("users").doc(uid).get();
     const isActive = (s?: string) => s === "active" || s === "trialing";
     const hasPaidAccess =
       isActive(userDoc.data()?.militaryAiSubscriptionStatus) || isActive(userDoc.data()?.memberProSubscriptionStatus);
-    if (!hasPaidAccess) {
-      return NextResponse.json({ error: "no_active_subscription" }, { status: 403 });
-    }
 
     const fitnessDoc = await adminDb().collection("fitness_profiles").doc(uid).get();
     const fitness = fitnessDoc.exists ? (fitnessDoc.data() as FitnessProfile) : null;
 
-    const rateLimit = await checkRateLimit(uid, "copilot_adapt", 30, 24 * 60 * 60 * 1000);
+    const rateLimit = hasPaidAccess
+      ? await checkRateLimit(uid, "copilot_adapt", 30, 24 * 60 * 60 * 1000)
+      : await checkRateLimit(uid, "copilot_adapt_free", 1, 7 * 24 * 60 * 60 * 1000);
     if (!rateLimit.allowed) {
-      return NextResponse.json({ error: "rate_limited" }, { status: 429 });
+      return NextResponse.json({ error: hasPaidAccess ? "rate_limited" : "free_limit_reached" }, { status: 429 });
     }
 
     // Most recently created workout, if any, for light context (§35 "recent workouts").

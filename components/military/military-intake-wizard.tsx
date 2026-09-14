@@ -8,11 +8,11 @@ import { ProgressBar } from "@/components/ui/progress-bar";
 import { useAuth } from "@/lib/auth-context";
 import { getFirebaseAuth } from "@/lib/firebase-client";
 import { saveMilitaryIntake, type MilitaryIntake } from "@/lib/military-intake-client";
-import { MILITARY_FOCUS_OPTIONS, MILITARY_DURATION_WEEKS_OPTIONS } from "@/lib/military-options";
+import { MILITARY_FOCUS_OPTIONS, MILITARY_EQUIPMENT_OPTIONS, MILITARY_DURATION_WEEKS_OPTIONS } from "@/lib/military-options";
 import { EXPERIENCE_OPTIONS, DAYS_OPTIONS } from "@/lib/onboarding-options";
 import type { Dictionary } from "@/lib/i18n";
 
-const STEPS = ["experience", "focus", "days", "weeks", "limitations"] as const;
+const STEPS = ["experience", "focus", "equipment", "days", "weeks", "limitations"] as const;
 
 function Pill({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
   return (
@@ -38,7 +38,7 @@ export function MilitaryIntakeWizard({ dict }: { dict: Dictionary }) {
   const [saving, setSaving] = useState(false);
   const [checkingOut, setCheckingOut] = useState(false);
   const [checkoutError, setCheckoutError] = useState<string | null>(null);
-  const [form, setForm] = useState<Partial<MilitaryIntake>>({ daysPerWeek: 4, durationWeeks: 4 });
+  const [form, setForm] = useState<Partial<MilitaryIntake>>({ equipment: "full_gym", daysPerWeek: 4, durationWeeks: 4 });
 
   const step = STEPS[stepIndex];
   const total = STEPS.length;
@@ -46,13 +46,14 @@ export function MilitaryIntakeWizard({ dict }: { dict: Dictionary }) {
   const isValid =
     step === "experience" ? !!form.experience :
     step === "focus" ? !!form.focus :
+    step === "equipment" ? !!form.equipment :
     step === "days" ? !!form.daysPerWeek :
     step === "weeks" ? !!form.durationWeeks :
     true;
 
   async function handleNext() {
     if (step === "limitations") {
-      if (!user || !form.experience || !form.focus || !form.daysPerWeek || !form.durationWeeks) return;
+      if (!user || !form.experience || !form.focus || !form.equipment || !form.daysPerWeek || !form.durationWeeks) return;
       setSaving(true);
       try {
         await saveMilitaryIntake(user.uid, form as MilitaryIntake);
@@ -133,6 +134,19 @@ export function MilitaryIntakeWizard({ dict }: { dict: Dictionary }) {
               {MILITARY_FOCUS_OPTIONS.map((f) => (
                 <Pill key={f} active={form.focus === f} onClick={() => setForm((prev) => ({ ...prev, focus: f }))}>
                   {mi.steps.focus.options[f]}
+                </Pill>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {step === "equipment" && (
+          <div>
+            <h2 className="font-heading text-xl font-bold">{mi.steps.equipment.title}</h2>
+            <div className="mt-5 flex flex-wrap gap-2">
+              {MILITARY_EQUIPMENT_OPTIONS.map((e) => (
+                <Pill key={e} active={form.equipment === e} onClick={() => setForm((prev) => ({ ...prev, equipment: e }))}>
+                  {mi.steps.equipment.options[e]}
                 </Pill>
               ))}
             </div>

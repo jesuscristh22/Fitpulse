@@ -499,6 +499,14 @@
       "limitations": {
         "title": "Any injuries or limitations? (optional)",
         "placeholder": "e.g. right knee pain"
+      },
+      "equipment": {
+        "title": "Where will you train?",
+        "options": {
+          "full_gym": "Full gym (barbells, dumbbells, machines)",
+          "home_dumbbells": "At home, dumbbells only",
+          "bodyweight_only": "No equipment at all (bodyweight)"
+        }
       }
     },
     "back": "Back",
@@ -625,7 +633,9 @@
     "rateLimited": "You've hit today's generation limit. Try again tomorrow.",
     "needsQuestionnaire": "You haven't filled out the Tactical questionnaire yet — I need your answers before generating the program.",
     "goToQuestionnaire": "Fill Out Questionnaire",
-    "subscriptionSyncing": "Your subscription was just confirmed and is still syncing. Wait a few seconds and try again."
+    "subscriptionSyncing": "Your subscription was just confirmed and is still syncing. Wait a few seconds and try again.",
+    "freeTierNote": "Free mode: 1 new program per week. Subscribe to Tactical to generate without limits and unlock the full gym program.",
+    "freeLimitReached": "You've already used your free program this week. Subscribe to Tactical to generate more."
   },
   "dance": {
     "navLabel": "Dance",
@@ -690,7 +700,9 @@
     "subscribeCta": "View Plans",
     "saveAndExecute": "Save & Start",
     "error": "Couldn't adapt right now. Please try again.",
-    "rateLimited": "You've hit today's adaptation limit. Try again tomorrow."
+    "rateLimited": "You've hit today's adaptation limit. Try again tomorrow.",
+    "freeTierNote": "Free mode: 1 adaptation per week. Subscribe to use it without limits.",
+    "freeLimitReached": "You've already used your free adaptation this week. Subscribe to use it more."
   },
   "coach": {
     "navLabel": "Coaches",

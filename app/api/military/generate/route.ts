@@ -26,13 +26,13 @@ export async function POST(request: Request) {
     const decoded = await adminAuth().verifyIdToken(idToken);
     const uid = decoded.uid;
 
-    // Gate on subscription status — set by the Stripe webhook (Phase 10),
-    // never trusted from anything the client sends directly.
+    // Freemium (Diego, Sept 2026): everyone can generate — no subscription
+    // required. Free members get 1 generation per week, just enough to try
+    // the feature; an active subscription raises that to the generous 10/day
+    // abuse guardrail below. Never a hard block anymore.
     const userDoc = await adminDb().collection("users").doc(uid).get();
     const status = userDoc.data()?.militaryAiSubscriptionStatus;
-    if (status !== "active" && status !== "trialing") {
-      return NextResponse.json({ error: "no_active_subscription" }, { status: 403 });
-    }
+    const hasSubscription = status === "active" || status === "trialing";
 
     const intakeDoc = await adminDb().collection("military_intake").doc(uid).get();
     if (!intakeDoc.exists) {
@@ -40,12 +40,11 @@ export async function POST(request: Request) {
     }
     const intake = militaryIntakeSchema.parse(intakeDoc.data());
 
-    // Abuse/cost guardrail — generous on purpose (10/day) so it doesn't get
-    // in the way of testing, unlike the old hard single-generation-per-24h
-    // lock that used to live here.
-    const rateLimit = await checkRateLimit(uid, "military_generate", 10, 24 * 60 * 60 * 1000);
+    const rateLimit = hasSubscription
+      ? await checkRateLimit(uid, "military_generate", 10, 24 * 60 * 60 * 1000)
+      : await checkRateLimit(uid, "military_generate_free", 1, 7 * 24 * 60 * 60 * 1000);
     if (!rateLimit.allowed) {
-      return NextResponse.json({ error: "rate_limited" }, { status: 429 });
+      return NextResponse.json({ error: hasSubscription ? "rate_limited" : "free_limit_reached" }, { status: 429 });
     }
 
     const programRef = adminDb().collection("military_programs").doc(uid);
@@ -71,7 +70,13 @@ export async function POST(request: Request) {
         if (match) {
           resolvedExercises.push({ ...ex, slug: match.slug });
         } else {
-          const saved = await discoverAndSaveExercise(ex, locale, "military", ["no_equipment"]);
+          const equipmentTags =
+            intake.equipment === "full_gym"
+              ? ["barbell", "dumbbell", "machine", "cable"]
+              : intake.equipment === "home_dumbbells"
+                ? ["dumbbell"]
+                : ["no_equipment"];
+          const saved = await discoverAndSaveExercise(ex, locale, "military", equipmentTags);
           resolvedExercises.push({ ...ex, slug: saved.slug });
         }
       }

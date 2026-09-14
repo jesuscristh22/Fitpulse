@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Zap, ShieldAlert } from "lucide-react";
+import { Zap } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -43,14 +43,10 @@ export function MilitaryProgramView({ locale, dict }: { locale: LocaleSlug; dict
       const code = err instanceof Error ? err.message : "";
       if (code === "rate_limited") {
         setError(mp.rateLimited);
+      } else if (code === "free_limit_reached") {
+        setError(mp.freeLimitReached);
       } else if (code === "no_questionnaire") {
         setNeedsQuestionnaire(true);
-      } else if (code === "no_active_subscription") {
-        // Subscription status hasn't synced yet (webhook can lag a few
-        // seconds behind the redirect) — the page will pick it up once the
-        // realtime listener catches up, but let the person know why nothing
-        // happened yet instead of a generic failure.
-        setError(mp.subscriptionSyncing);
       } else {
         setError(mp.error);
       }
@@ -61,49 +57,50 @@ export function MilitaryProgramView({ locale, dict }: { locale: LocaleSlug; dict
 
   if (loading) return null;
 
-  if (!hasActiveSubscription) {
-    return (
-      <Card className="mx-auto max-w-lg text-center">
-        <ShieldAlert size={32} className="mx-auto text-gold" />
-        <p className="mt-4 text-silver">{mp.noSubscription}</p>
-        <Link href={`${base}/militar`}>
-          <Button variant="primary" size="lg" className="mt-6 w-full">
-            {mp.subscribeCta}
-          </Button>
-        </Link>
-      </Card>
-    );
-  }
+  const freeTierBanner = !hasActiveSubscription && (
+    <Card className="mx-auto mb-6 flex max-w-3xl flex-wrap items-center justify-between gap-4">
+      <p className="text-sm text-silver">{mp.freeTierNote}</p>
+      <Link href={`${base}/militar`}>
+        <Button variant="secondary" size="sm">
+          {mp.subscribeCta}
+        </Button>
+      </Link>
+    </Card>
+  );
 
   if (!program) {
     if (needsQuestionnaire) {
       return (
-        <Card className="mx-auto max-w-lg text-center">
-          <p className="text-silver">{mp.needsQuestionnaire}</p>
-          <Link href={`${base}/militar/questionario`}>
-            <Button variant="primary" size="lg" className="mt-6 w-full">
-              {mp.goToQuestionnaire}
-            </Button>
-          </Link>
-        </Card>
+        <>
+          {freeTierBanner}
+          <Card className="mx-auto max-w-lg text-center">
+            <p className="text-silver">{mp.needsQuestionnaire}</p>
+            <Link href={`${base}/militar/questionario`}>
+              <Button variant="primary" size="lg" className="mt-6 w-full">
+                {mp.goToQuestionnaire}
+              </Button>
+            </Link>
+          </Card>
+        </>
       );
     }
     return (
-      <Card className="mx-auto max-w-lg text-center">
-        <p className="text-silver">{mp.subtitle}</p>
-        {error && <p className="mt-4 text-sm text-red-400">{error}</p>}
-        <Button variant="primary" size="lg" onClick={handleGenerate} disabled={generating} className="mt-6 w-full gap-2">
-          <Zap size={16} className="fill-carbon" /> {generating ? mp.generating : mp.generateButton}
-        </Button>
-      </Card>
+      <>
+        {freeTierBanner}
+        <Card className="mx-auto max-w-lg text-center">
+          <p className="text-silver">{mp.subtitle}</p>
+          {error && <p className="mt-4 text-sm text-red-400">{error}</p>}
+          <Button variant="primary" size="lg" onClick={handleGenerate} disabled={generating} className="mt-6 w-full gap-2">
+            <Zap size={16} className="fill-carbon" /> {generating ? mp.generating : mp.generateButton}
+          </Button>
+        </Card>
+      </>
     );
   }
 
-  const canRegenerate =
-    !program.generatedAt || Date.now() - new Date(program.generatedAt).getTime() > 24 * 60 * 60 * 1000;
-
   return (
     <div className="mx-auto max-w-3xl">
+      {freeTierBanner}
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h2 className="font-heading text-2xl font-bold">{program.programName}</h2>
@@ -120,9 +117,7 @@ export function MilitaryProgramView({ locale, dict }: { locale: LocaleSlug; dict
       <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
         {program.sessions.map((session) => (
           <Card key={session.day}>
-            <h3 className="font-heading text-sm font-bold text-gold">
-              {mp.dayLabel} {session.day}
-            </h3>
+            <h3 className="font-heading text-sm font-bold text-gold">{session.splitLabel}</h3>
             <ul className="mt-3 space-y-2">
               {session.exercises.map((ex, i) => (
                 <li key={i} className="text-sm text-silver">
@@ -153,12 +148,10 @@ export function MilitaryProgramView({ locale, dict }: { locale: LocaleSlug; dict
 
       {error && <p className="mt-4 text-sm text-red-400">{error}</p>}
 
-      {canRegenerate && (
-        <Button variant="secondary" size="md" onClick={handleGenerate} disabled={generating} className="mt-6">
-          {generating ? mp.generating : mp.regenerateButton}
-        </Button>
-      )}
-      <p className="mt-3 text-xs text-silver/60">{mp.regenerateNote}</p>
+      <Button variant="secondary" size="md" onClick={handleGenerate} disabled={generating} className="mt-6">
+        {generating ? mp.generating : mp.regenerateButton}
+      </Button>
+      <p className="mt-3 text-xs text-silver/60">{hasActiveSubscription ? mp.regenerateNote : mp.freeTierNote}</p>
       <p className="mt-6 text-xs text-silver/70">{mp.disclaimer}</p>
     </div>
   );

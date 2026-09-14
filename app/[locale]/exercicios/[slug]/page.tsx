@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowLeft, ShieldAlert } from "lucide-react";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { RequirePaidAccess } from "@/components/auth/require-paid-access";
+import { RequireAuth } from "@/components/auth/require-auth";
 import { Badge } from "@/components/ui/badge";
 import { ExerciseVideoPlayer } from "@/components/ui/video-player";
 import { getDictionary } from "@/lib/i18n";
@@ -28,7 +28,7 @@ export default async function ExerciseDetailPage({
   return (
     <main className="bg-carbon">
       <SiteHeader locale={locale} dict={dict} />
-      <RequirePaidAccess locale={locale} dict={dict}>
+      <RequireAuth locale={locale}>
         <article className="mx-auto max-w-2xl px-6 pb-24 pt-36 sm:px-10 sm:pt-44">
           <Link href={`/${locale}/exercicios`} className="inline-flex items-center gap-2 text-sm text-silver hover:text-white">
             <ArrowLeft size={14} /> {lib.back}
@@ -95,7 +95,7 @@ export default async function ExerciseDetailPage({
             </div>
           )}
         </article>
-      </RequirePaidAccess>
+      </RequireAuth>
 
       <SiteFooter locale={locale} dict={dict} />
     </main>

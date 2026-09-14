@@ -499,6 +499,14 @@
       "limitations": {
         "title": "¿Alguna lesión o limitación? (opcional)",
         "placeholder": "ej: dolor en la rodilla derecha"
+      },
+      "equipment": {
+        "title": "¿Dónde vas a entrenar?",
+        "options": {
+          "full_gym": "Gimnasio completo (barra, mancuernas y máquinas)",
+          "home_dumbbells": "En casa, solo con mancuernas",
+          "bodyweight_only": "Sin ningún equipo (peso corporal)"
+        }
       }
     },
     "back": "Atrás",
@@ -625,7 +633,9 @@
     "rateLimited": "Alcanzaste el límite de generaciones de hoy. Inténtalo de nuevo mañana.",
     "needsQuestionnaire": "Todavía no completaste el cuestionario Tactical — necesito tus respuestas antes de generar el programa.",
     "goToQuestionnaire": "Completar Cuestionario",
-    "subscriptionSyncing": "Tu suscripción se acaba de confirmar y todavía se está sincronizando. Espera unos segundos e inténtalo de nuevo."
+    "subscriptionSyncing": "Tu suscripción se acaba de confirmar y todavía se está sincronizando. Espera unos segundos e inténtalo de nuevo.",
+    "freeTierNote": "Modo gratis: 1 programa nuevo por semana. Suscríbete a Tactical para generar sin límite y desbloquear el programa completo de gimnasio.",
+    "freeLimitReached": "Ya usaste tu programa gratis de esta semana. Suscríbete a Tactical para generar más veces."
   },
   "dance": {
     "navLabel": "Baile",
@@ -690,7 +700,9 @@
     "subscribeCta": "Ver Planes",
     "saveAndExecute": "Guardar y Empezar",
     "error": "No se pudo adaptar ahora. Inténtalo de nuevo.",
-    "rateLimited": "Alcanzaste el límite de adaptaciones de hoy. Inténtalo de nuevo mañana."
+    "rateLimited": "Alcanzaste el límite de adaptaciones de hoy. Inténtalo de nuevo mañana.",
+    "freeTierNote": "Modo gratis: 1 adaptación por semana. Suscríbete para usarlo sin límite.",
+    "freeLimitReached": "Ya usaste tu adaptación gratis de esta semana. Suscríbete para usarla más veces."
   },
   "coach": {
     "navLabel": "Coaches",

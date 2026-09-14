@@ -23,6 +23,7 @@ export const onboardingSchema = z.object({
 export const militaryIntakeSchema = z.object({
   experience: z.enum(["beginner", "intermediate", "advanced"]),
   focus: z.enum(["selection_prep", "endurance", "strength", "general_conditioning"]),
+  equipment: z.enum(["full_gym", "home_dumbbells", "bodyweight_only"]).default("full_gym"),
   daysPerWeek: z.number().min(2).max(7),
   durationWeeks: z.number().min(4).max(8),
   limitations: z.string().max(500).optional(),
@@ -60,6 +61,7 @@ export const militaryProgramSchema = z.object({
   sessions: z.array(
     z.object({
       day: z.number().int(),
+      splitLabel: z.string(), // e.g. "Treino A — Peito, Ombro e Tríceps"
       exercises: z.array(
         z.object({
           name: z.string(), // free text — not required to match our library
@@ -68,9 +70,9 @@ export const militaryProgramSchema = z.object({
           muscles: z.array(z.string()).default([]),
           sets: z.number().int().positive(),
           reps: z.string(),
-          restSeconds: z.number().int().min(0).max(30),
+          restSeconds: z.number().int().min(0).max(120),
         }),
-      ).min(5),
+      ).min(4),
     }),
   ),
 });
